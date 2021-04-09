@@ -6,7 +6,8 @@ namespace A1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            int i = 15;
+            Console.WriteLine(i++);
         }
     }
 }
