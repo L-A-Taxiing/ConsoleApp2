@@ -1,19 +1,12 @@
 ﻿using System;
 
-namespace CSharp
+namespace Homework
 {
     class Program
     {
         static void Main(string[] args)
-
-        { string
-
-
-
-
-
-
-
+        {
+            Console.WriteLine("Hello World!");
         }
     }
 }
