@@ -7,6 +7,40 @@ namespace Homework
     {
         static void Main(string[] args)
         {
+
+            //C#二分查找
+            //int[] ids = { 2, 7, 8, 9, 21, 43, 95 };
+            //int left = 0, right = ids.Length - 1;
+            //int result = -1;
+            //int target = 7;
+            //while (left <= right)
+            //{
+            //    int middle = left + (right - left) / 2;
+            //    if (target == ids[middle])
+            //    {
+            //        result = middle;
+            //        break;
+            //    }
+
+            //    else if (target > ids[middle])
+            //    {
+            //        left = middle + 1;
+            //    }
+            //    else
+            //    {
+            //        right = middle - 1;
+            //    }
+            //}
+            //if (result != -1)
+            //{
+            //    Console.WriteLine(result);
+            //}
+            //else
+            //{
+            //    Console.WriteLine("没找到");
+            //}
+
+
             //C#循环作业
             //1.分别用for循环和while循环输出：1,2,3,4,5 和 1,3,5,7,9
             //int[] names = { 1, 2, 3, 4, 5 };
@@ -86,7 +120,7 @@ namespace Homework
             //        if (j % i == 0)
             //        {
             //            found = true;
-                        
+
             //        }
             //    }
             //    if (!found)
@@ -102,17 +136,6 @@ namespace Homework
             //{
             //    arr[i] = i;
             //}
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -172,12 +195,9 @@ namespace Homework
             //    Console.WriteLine (studentids[i]);
             //}
 
-           
 
 
-
-
-            //在数组中查找某个值，比如在int[]{ 1,2,8,4,5};找到8；
+            //在数组中查找某个值，比如在int[]{ 1,2,8,4,5}; 找到8；
             //找到了，输出：找到了，在数组中第几位；
             //找不到，输出：没找到；
             //int[] studentids = { 1, 2, 4, 4, 5 };
@@ -193,16 +213,16 @@ namespace Homework
             //if (!found)
             //{
             //    Console.WriteLine("没找到");
-        }/*else nothing*/
+            //}/*else nothing*/
             //int[] studentids = { 1, 2, 8, 4, 5 };
             //for (int i = 0; i < studentids.Length; i++)
             //{
-            //    if (studentids[i]==8)
+            //    if (studentids[i] == 8)
             //    {
             //        Console.WriteLine($"找到了，在数组中第{(i + 1)} 位");
-            //        break;continue;
+            //        break; continue;
             //    }
-            //    else 
+            //    else
             //    {
             //        if (i == studentids.Length - 1)
             //        {
@@ -211,9 +231,7 @@ namespace Homework
 
             //    }
 
-        }
-     
-
+            //}
 
 
             //观察一起帮登录页面，用if...else ...完成以下功能。
@@ -224,7 +242,6 @@ namespace Homework
             //以上全部正确无误，输出：“恭喜！登录成功！”
             //string captcha = "999";
             //Console.WriteLine("请输入验证码");
-
             //if (captcha != (Console.ReadLine()))
             //{
             //    Console.WriteLine("验证码错误");
@@ -378,7 +395,7 @@ namespace Homework
 
 
 
-    }
+        }
 
 
 
@@ -391,12 +408,12 @@ namespace Homework
 
 
 
-          
 
 
 
 
-    
+
+
 
 
 
