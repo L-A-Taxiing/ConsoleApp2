@@ -8,39 +8,6 @@ namespace Homework
         static void Main(string[] args)
         {
 
-            //C#二分查找
-            //int[] ids = { 2, 7, 8, 9, 21, 43, 95 };
-            //int left = 0, right = ids.Length - 1;
-            //int result = -1;
-            //int target = 7;
-            //while (left <= right)
-            //{
-            //    int middle = left + (right - left) / 2;
-            //    if (target == ids[middle])
-            //    {
-            //        result = middle;
-            //        break;
-            //    }
-
-            //    else if (target > ids[middle])
-            //    {
-            //        left = middle + 1;
-            //    }
-            //    else
-            //    {
-            //        right = middle - 1;
-            //    }
-            //}
-            //if (result != -1)
-            //{
-            //    Console.WriteLine(result);
-            //}
-            //else
-            //{
-            //    Console.WriteLine("没找到");
-            //}
-
-
             //C#循环作业
             //1.分别用for循环和while循环输出：1,2,3,4,5 和 1,3,5,7,9
             //int[] names = { 1, 2, 3, 4, 5 };
@@ -57,7 +24,7 @@ namespace Homework
             //    i++;
             //}
             //2.用for循环输出存储在一维 / 二维数组里的源栈所有同学姓名 / 昵称
-            //string[] names = { "夏康平", "胡涛", "姜鹏","龚廷义", "刘佳宝", "刘盛民","秦慧" };
+            //string[] names = { "夏康平", "胡涛", "姜鹏", "龚廷义", "刘佳宝", "刘盛民", "秦慧" };
             //for (int i = 0; i < names.Length; i++)
             //{
             //    Console.WriteLine(names[i]);
@@ -89,7 +56,7 @@ namespace Homework
 
 
             //4.将源栈同学的成绩存入一个double数组中，用循环找到最高分和最低分
-            //double[] score = { 66.6, 59.9, 74.28, 82.34, 99.9, };
+            //double[] score = { 66.6, 59.9, 74.28, 82.34, 99.9};
             //double max = score[0];
             //for (int i = 0; i < score.Length; i++)
             //{
@@ -111,31 +78,87 @@ namespace Homework
             //Console.WriteLine(min);
 
 
-            ////5.找到100以内的所有质数（只能被1和它自己整除的数）
+            //5.找到100以内的所有质数（只能被1和它自己整除的数）
             //for (int j = 2; j <= 100; j++)
             //{
-            //    bool found = false;
+            //    bool found = true;
             //    for (int i = 2; i < j; i++)
             //    {
             //        if (j % i == 0)
             //        {
-            //            found = true;
-
+            //            found = false;
+            //            break;
             //        }
             //    }
-            //    if (!found)
+            //    if (found)
             //    {
             //        Console.WriteLine(j);
             //    }
             //}
 
-
             ////6.生成一个元素（值随机）从小到大排列的数组
-            //int[] arr = new int[100];
-            //for (int i = 1; i <= 100; i++)
+
+            //int[] nums = new int[10];
+            //Random elements = new Random();
+            //for (int i = 0; i < 10; i++)
             //{
-            //    arr[i] = i;
+            //    nums[i] = elements.Next(0, 100);
             //}
+            //for (int i = 0; i < 9; i++)
+            //{
+            //    for (int j = i + 1; j < 10; j++)
+            //    {
+            //        if (nums[j] < nums[i])
+            //        {
+            //            int temp = nums[i];
+            //            nums[i] = nums[j];
+            //            nums[j] = temp;
+            //        }
+            //    }
+            //}
+            //foreach (int value in nums)
+            //{
+            //    Console.WriteLine(value);
+            //}
+            //foreach (数据类型 变量名 in 数组名),遍历数组中的元素
+
+            ////7.设立并显示一个多维数组的值，元素值等于下标之和。Console.Write()
+            //int[,] names = new int[3, 4];
+            //for (int i = 0; i < names.GetLength(0); i++)
+            //{
+            //    for (int j = 0; j < names.GetLength(1); j++)
+            //    {
+            //        int a = i + j;
+            //        names[i, j] = a;
+            //        Console.Write(names[i, j] + " ");
+            //        if (j == 3)
+            //        {
+            //            Console.WriteLine();
+            //        }
+            //    }
+            //}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -168,7 +191,7 @@ namespace Homework
             //}
             //Console.WriteLine(min);
 
-            int[] studentids = { -88, 7, 9, 10, 2, 4, -500 };
+            //int[] studentids = { -88, 7, 9, 10, 2, 4, -500 };
             //[2]--[4]
             //int temp = studentids[4];
             //studentids[4] = studentids[2];
@@ -399,6 +422,7 @@ namespace Homework
 
 
 
+        
 
 
 
@@ -416,35 +440,60 @@ namespace Homework
 
 
 
+        //二分查找 作业
+        /// <summary>
+        /// 利用二分查找target
+        /// </summary>
+        /// <param name="ids">一串数字</param>
+        /// <param name="target">目标数字</param>
+        /// <returns>寻找结果</returns>
+        static int FindNum(int[] ids,int target)
+        {
+            //int[]ids= { 2,7, 8, 9, 21, 43, 95 };
+            int left = 0, right = ids.Length - 1;
+            int result = -1;
+            //target = 7;
+            while (left <= right)
+            {
+                int middle = left + (right - left) / 2;
+                if (target == ids[middle])
+                {
+                    result=middle;
+                    break;
+                }
+
+                else if (target > ids[middle])
+                {
+                    left = middle + 1;
+                }
+                else
+                {
+                    right = middle - 1;
+                }
+            }
+            if (result != -1)
+            {
+               return(result);
+            }
+            else
+            {
+                return -1;
+            }
+
+        }
 
 
 
+        //计算得到源栈同学的平均成绩（精确到两位小数），方法名GetAverage()
+        //完成“猜数字”游戏，方法名GuessMe()：
+        //随机生成一个大于0小于1000的整数
+        //用户输入一个猜测值，系统进行判断，告知用户猜测的数是“大了”，还是“小了”
+        //没猜中可以继续猜，但最多不能超过10次
+        //如果5次之内猜中，输出：你真牛逼！
+        //如果8次之内猜中，输出：不错嘛！
+        //10次还没猜中，输出：(～￣(OO)￣)ブ
 
 
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
