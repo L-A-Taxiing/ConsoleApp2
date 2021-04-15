@@ -9,10 +9,238 @@ namespace Homework
         {
 
 
+            //函数作业：方法基础、声明、调用、返回值；第二题的调用
+            //Double[] grade = new double[] { 59.9, 78.5, 82.68,99.9,56.5,72.9};
+            //Console.WriteLine(Math.Round(GetAverage(grade),2));
+            //第三题的调用
+            //GuessMe();
+
+            //二分查找：调用
+            //Console.WriteLine(FindNum(new int[]{2,7,8,9,21,43,95 },7));
 
 
-            //计算得到源栈同学的平均成绩（精确到两位小数），方法名GetAverage()
-            //完成“猜数字”游戏，方法名GuessMe()：
+
+
+        }
+
+
+
+
+        //C#循环作业
+        //static void homework()
+        //{
+        //1.分别用for循环和while循环输出：1,2,3,4,5 和 1,3,5,7,9
+        //    int[] names = { 1, 2, 3, 4, 5 };
+        //for (int i = 0; i < names.Length; i++)
+        //{
+        //    Console.WriteLine(names[i]);
+        //}
+
+        //int[] names1 = { 1, 3, 5, 7, 9 };
+        //int i = 0;
+        //while (i < names1.Length)
+        //{
+        //    Console.WriteLine(names1[i]);
+        //    i++;
+        //}
+        //2.用for循环输出存储在一维 / 二维数组里的源栈所有同学姓名 / 昵称
+        //    string[] names = { "夏康平", "胡涛", "姜鹏", "龚廷义", "刘佳宝", "刘盛民", "秦慧" };
+        //for (int i = 0; i < names.Length; i++)
+        //{
+        //    Console.WriteLine(names[i]);
+        //}
+        //string[,] names1 = new string[7, 1];
+        //names1[0, 0] = "夏康平";
+        //names1[1, 0] = "胡涛";
+        //names1[2, 0] = "姜鹏";
+        //names1[3, 0] = "龚廷义";
+        //names1[4, 0] = "刘佳宝";
+        //names1[5, 0] = "刘盛民";
+        //names1[6, 0] = "秦慧";
+        //for (int i = 0; i < names1.GetLength(0); i++)
+        //{
+        //    for (int j = 0; j < names1.GetLength(1); j++)
+        //    {
+        //        Console.WriteLine(names1[i, j]);
+        //    }
+        //}
+
+
+        //3.让电脑计算并输出：99 + 97 + 95 + 93 + ...+1的值
+        //    int sum = 0;
+        //for (int i = 1; i < 100; i += 2)
+        //{
+        //    sum += i;
+        //}
+        //Console.WriteLine(sum);
+
+
+        //4.将源栈同学的成绩存入一个double数组中，用循环找到最高分和最低分
+        //    double[] score = { 66.6, 59.9, 74.28, 82.34, 99.9 };
+        //double max = score[0];
+        //for (int i = 0; i < score.Length; i++)
+        //{
+        //    if (max < score[i])
+        //    {
+        //        max = score[i];
+        //    }/*else continue*/
+        //}
+        //Console.WriteLine(max);
+
+        //double min = score[0];
+        //for (int i = 0; i < score.Length; i++)
+        //{
+        //    if (min > score[i])
+        //    {
+        //        min = score[i];
+        //    }
+        //}
+        //Console.WriteLine(min);
+
+
+        //5.找到100以内的所有质数（只能被1和它自己整除的数）
+        //    for (int j = 2; j <= 100; j++)
+        //{
+        //    bool found = true;
+        //    for (int i = 2; i < j; i++)
+        //    {
+        //        if (j % i == 0)
+        //        {
+        //            found = false;
+        //            break;
+        //        }
+        //    }
+        //    if (found)
+        //    {
+        //        Console.WriteLine(j);
+        //    }
+        //}
+
+        ////6.生成一个元素（值随机）从小到大排列的数组
+
+        //int[] nums = new int[10];
+        //Random elements = new Random();
+        //for (int i = 0; i < 10; i++)
+        //{
+        //    nums[i] = elements.Next(0, 100);
+        //}
+        //for (int i = 0; i < 9; i++)
+        //{
+        //    for (int j = i + 1; j < 10; j++)
+        //    {
+        //        if (nums[j] < nums[i])
+        //        {
+        //            int temp = nums[i];
+        //            nums[i] = nums[j];
+        //            nums[j] = temp;
+        //        }
+        //    }
+        //}
+        //foreach (int value in nums)
+        //{
+        //    Console.WriteLine(value);
+        //}
+        //foreach (数据类型 变量名 in 数组名),遍历数组中的元素
+        //订正：
+        //    int[] nums = new int[10];
+        //int sum = 0;
+        //Random elements = new Random();
+        //for (int i = 0; i < nums.Length; i++)
+        //{
+        //    nums[i] = elements.Next(0, 100);
+        //    sum += nums[i];
+        //    Console.WriteLine(sum);
+        //}
+
+
+
+
+        ////7.设立并显示一个多维数组的值，元素值等于下标之和。Console.Write()
+        //int[,] names = new int[3, 4];
+        //for (int i = 0; i < names.GetLength(0); i++)
+        //{
+        //    for (int j = 0; j < names.GetLength(1); j++)
+        //    {
+        //        int a = i + j;
+        //        names[i, j] = a;
+        //        Console.Write(names[i, j] + " ");
+        //        if (j == 3)
+        //        {
+        //            Console.WriteLine();
+        //        }
+        //    }
+        //}
+        //}
+
+        //二分查找 作业
+        /// <summary>
+        /// 利用二分查找target
+        /// </summary>
+        /// <param name="ids">一串数字</param>
+        /// <param name="target">目标数字</param>
+        /// <returns>寻找结果</returns>
+        //static int FindNum(int[] ids, int target)
+        //{
+        //    //int[] ids = { 2, 7, 8, 9, 21, 43, 95 };
+        //    int left = 0, right = ids.Length - 1;
+        //    int result = -1;
+        //    //target = 7;
+        //    while (left <= right)
+        //    {
+        //        int middle = left + (right - left) / 2;
+        //        if (target == ids[middle])
+        //        {
+        //            result = middle;
+        //            break;
+        //        }
+
+        //        else if (target > ids[middle])
+        //        {
+        //            left = middle + 1;
+        //        }
+        //        else
+        //        {
+        //            right = middle - 1;
+        //        }
+        //    }
+        //    if (result != -1)
+        //    {
+        //        return (result);
+        //    }
+        //    else
+        //    {
+        //        return -1;
+        //    }
+        //}
+
+
+        /// <summary>
+        /// 计算平均成绩
+        /// </summary>
+        /// <param name="grade">学生成绩</param>
+        /// <returns>平均成绩</returns>
+        //static double GetAverage(double[] grade)
+        //{
+        //    2.计算得到源栈同学的平均成绩(精确到两位小数)
+
+        //    double sum = 0;
+        //    for (int i = 0; i < grade.Length; i++)
+        //    {
+        //        sum += grade[i];
+        //    }
+        //    double average = sum / grade.Length;
+        //    return average;
+        //}
+
+
+
+
+
+
+        // 3."猜数字游戏"
+        static void GuessMe() 
+        {
+            //3.完成“猜数字”游戏，方法名GuessMe()：
             //随机生成一个大于0小于1000的整数
             //用户输入一个猜测值，系统进行判断，告知用户猜测的数是“大了”，还是“小了”
             //没猜中可以继续猜，但最多不能超过10次
@@ -20,187 +248,64 @@ namespace Homework
             //如果8次之内猜中，输出：不错嘛！
             //10次还没猜中，输出：(～￣(OO)￣)ブ
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            //C#循环作业
-            //1.分别用for循环和while循环输出：1,2,3,4,5 和 1,3,5,7,9
-            //int[] names = { 1, 2, 3, 4, 5 };
-            //for (int i = 0; i < names.Length; i++)
+            //Random nums = new Random();
+            //int random = nums.Next(1, 1000);
+            //Console.WriteLine("随机数是:"+random);
+            //Console.WriteLine("请输入一个不超过1000的自然数");
+            //for (int i = 1; i <= 10; i++)
             //{
-            //    Console.WriteLine(names[i]);
-            //}
 
-            //int[] names1 = { 1, 3, 5, 7, 9 };
-            //int i = 0;
-            //while (i < names1.Length)
-            //{
-            //    Console.WriteLine(names1[i]);
-            //    i++;
-            //}
-            //2.用for循环输出存储在一维 / 二维数组里的源栈所有同学姓名 / 昵称
-            //string[] names = { "夏康平", "胡涛", "姜鹏", "龚廷义", "刘佳宝", "刘盛民", "秦慧" };
-            //for (int i = 0; i < names.Length; i++)
-            //{
-            //    Console.WriteLine(names[i]);
-            //}
-            //string[,] names1 = new string[7, 1];
-            //names1[0, 0] = "夏康平";
-            //names1[1, 0] = "胡涛";
-            //names1[2, 0] = "姜鹏";
-            //names1[3, 0] = "龚廷义";
-            //names1[4, 0] = "刘佳宝";
-            //names1[5, 0] = "刘盛民";
-            //names1[6, 0] = "秦慧";
-            //for (int i = 0; i < names1.GetLength(0); i++)
-            //{
-            //    for (int j = 0; j < names1.GetLength(1); j++)
+            //    int Guessnum = Convert.ToInt32(Console.ReadLine());
+            //    if (Guessnum != random)
             //    {
-            //        Console.WriteLine(names1[i, j]);
-            //    }
-            //}
-
-
-            //3.让电脑计算并输出：99 + 97 + 95 + 93 + ...+1的值
-            //int sum = 0;
-            //for (int i = 1; i < 100; i+=2) 
-            //{
-            //    sum += i;
-            //}
-            //Console.WriteLine(sum);
-
-
-            //4.将源栈同学的成绩存入一个double数组中，用循环找到最高分和最低分
-            //double[] score = { 66.6, 59.9, 74.28, 82.34, 99.9 };
-            //double max = score[0];
-            //for (int i = 0; i < score.Length; i++)
-            //{
-            //    if (max < score[i])
-            //    {
-            //        max = score[i];
-            //    }/*else continue*/
-            //}
-            //Console.WriteLine(max);
-
-            //double min = score[0];
-            //for (int i = 0; i < score.Length; i++)
-            //{
-            //    if (min > score[i])
-            //    {
-            //        min = score[i];
-            //    }
-            //}
-            //Console.WriteLine(min);
-
-
-            //5.找到100以内的所有质数（只能被1和它自己整除的数）
-            //for (int j = 2; j <= 100; j++)
-            //{
-            //    bool found = true;
-            //    for (int i = 2; i < j; i++)
-            //    {
-            //        if (j % i == 0)
+            //        if (i == 10)
             //        {
-            //            found = false;
-            //            break;
+            //            Console.WriteLine("(～￣(OO)￣)ブ");
+            //            return;
+            //        }
+            //        if (Guessnum > random)
+            //        {
+            //            Console.WriteLine($"太大了哟！(还剩{10 - i}次)");
+            //        }
+            //        else
+            //        {
+            //            Console.WriteLine($"太小了呢!（还剩{10 - i}次）");
+            //        }
+
+            //    }
+            //    else
+            //    {
+            //        if (i <= 5)
+            //        {
+            //            Console.WriteLine("你真牛逼！");
+            //            Console.WriteLine($"恭喜你，答对了！只用了{i}次呢，棒棒哒！");
+            //            return;
+            //        }
+            //        else if (i < 8)
+            //        {
+            //            Console.WriteLine("不错嘛！");
+            //            Console.WriteLine($"恭喜你，答对了！只用了{i}次呢，棒棒哒！");
+            //            return;
+
+            //        }
+            //        else
+            //        {
+            //            Console.WriteLine($"恭喜你，答对了！只用了{i}次呢，棒棒哒！");
+            //            return;
             //        }
             //    }
-            //    if (found)
-            //    {
-            //        Console.WriteLine(j);
-            //    }
-            //}
 
-            ////6.生成一个元素（值随机）从小到大排列的数组
+            //}   
 
-            //int[] nums = new int[10];
-            //Random elements = new Random();
-            //for (int i = 0; i < 10; i++)
-            //{
-            //    nums[i] = elements.Next(0, 100);
-            //}
-            //for (int i = 0; i < 9; i++)
-            //{
-            //    for (int j = i + 1; j < 10; j++)
-            //    {
-            //        if (nums[j] < nums[i])
-            //        {
-            //            int temp = nums[i];
-            //            nums[i] = nums[j];
-            //            nums[j] = temp;
-            //        }
-            //    }
-            //}
-            //foreach (int value in nums)
-            //{
-            //    Console.WriteLine(value);
-            //}
-            //foreach (数据类型 变量名 in 数组名),遍历数组中的元素
+                    
 
-            ////7.设立并显示一个多维数组的值，元素值等于下标之和。Console.Write()
-            //int[,] names = new int[3, 4];
-            //for (int i = 0; i < names.GetLength(0); i++)
-            //{
-            //    for (int j = 0; j < names.GetLength(1); j++)
-            //    {
-            //        int a = i + j;
-            //        names[i, j] = a;
-            //        Console.Write(names[i, j] + " ");
-            //        if (j == 3)
-            //        {
-            //            Console.WriteLine();
-            //        }
-            //    }
-            //}
+
+                
+            
+
+
+
+        }
 
 
 
@@ -226,14 +331,38 @@ namespace Homework
 
 
 
-            ////1+2+3+4
-            //累计求和
-            //int sum = 0;
-            //for (int i = 1; i < 5; i++)
-            //{
-            //    sum += i;
-            //}
-            //Console.WriteLine(sum);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //之前作业和练习
+        static void practice()
+        {  ////1+2+3+4
+           //累计求和
+           //int sum = 0;
+           //for (int i = 1; i < 5; i++)
+           //{
+           //    sum += i;
+           //}
+           //Console.WriteLine(sum);
 
             //int[] studentids = { 8, 7, 9, 10, 2, 4, 5 };
             //int sum = 0;
@@ -315,9 +444,7 @@ namespace Homework
             //        {
             //            Console.WriteLine("没找到");
             //        }/*else nothing*/
-
             //    }
-
             //}
 
 
@@ -354,16 +481,7 @@ namespace Homework
             //    {
             //        Console.WriteLine("恭喜！登陆成功!");
             //    }
-            //string[] names = {"迪迦", "高斯", "赛罗" };
-            ////Console.WriteLine(names[1]);
-            //Console.WriteLine(names.Length);
-            //数组从0开始
-            //int[][] students = new int[3][];
-            //students[0] = new int[] { 1, 2 };
-            //students[1] = new int[] { 3, 4, 5 };
-            //students[2] = new int[5];
-            //int[] i = students[1];
-            //Console.WriteLine(i[1]);
+
             //作业：
             //将源栈同学姓名 / 昵称分别：
             //按进栈时间装入一维数组，
@@ -381,175 +499,11 @@ namespace Homework
             //names[2, 2] = "秦慧";
             //names[3, 3] = "刘伟";
             //Console.WriteLine(students.Length);
-            //Console.WriteLine(names.Length);
-            //int[] age;
-            //age = new int[1];
-            //int[] age = new int[1];
-            //age[0] = 15;
-            //int[] age = new int[] { 12, 22, 34, 23 };
-            ////int[] age = { 12, 22, 34, 23 };//简写
-            //string[] username;
-            //username = new string[3] { "alxe", "bill","c"};
-            //string[] username = { "alxe", "bill", "c" };
-            //string[] username = new string[] { "alxe", "bill", "c" };
-            //int[,] mda = new int[2, 1];
-            //mda[0, 0] = 1;
-            //mda[1, 1] = 2;
-            //Console.WriteLine(mda.Length);
-            //int[,] mda = { { 1, 2, 3 }, { 4, 5, 6 } };
-            //Console.WriteLine(mda.Length);
-            //Console.WriteLine(mda.Rank);
-            //int[][] age = new int[4][];
-            //int[][] age = new int[2][] { new int[]{ 1, 2, 3 }, new int[]{ 5, 6, 7 } };
-            //string[][] password = new string[2][] { new string[] { "am", "is", "are" }, new string[] { "wu" };
-            //string[] names = new string[] { "火" };
-            //string[,] location = new string[2, 4];
-            //string[][] password = new string[2][] { new string[] { "qaq" }, new string[] { "qwq" } };
-            //int i = 0;
-            //while (i<5)
-            //{
-            //    i++;
-            //    Console.WriteLine("源栈欢迎你！");
-            //}
-            //int[] age ={ 1, 2, 3 ,4,5};
-            //int i = 0;
-            //while (i<age.Length)
-            //{
-            //    Console.WriteLine(age[i]);
-            //    i++;
-            //}
-            //int[] age = { 5, 6, 7, 12, 10 };
-            //int i = 0;
-            //do
-            //{
-            //    Console.WriteLine(age[i]);
-            //    i++;
-            //} while (i<age.Length);
-            //string[] name = { "alex", "bills", "cat" };
-            //int i = name.Length;
-            //do
-            //{
-            //    i--;
-            //    Console.WriteLine(name[i]);
-            //} while (i>0);
-            //for (int i = 0; i < 10; i++)
-            //{
-            //    Console.WriteLine("卢本伟牛逼");
-            //}
-            //int i = 0;
-            //for (
-            //    ; 
-            //    ;
-            //    i+=2)
-            //{
-            //    Console.WriteLine(i);
-            //}
-            //string[] name = { "卢本伟", "Pdd", "大司马" };
-            //for (int i = 0; i < name.Length; i++)
-            //{
-            //    Console.WriteLine(name[i]);
-            //}
-            //i++不在作用域内{ }
-            //int[] studentIds = { 8, 7, 9, 10, 2, 4, 5 };
-            //for (int i = 0; i < studentIds.Length; i++)
-            //{
-            //    if ((studentIds[i] == 10))
-            //    {
-            //        Console.WriteLine(studentIds[i]);
-            //    }
-            //string name = "源栈", greet = "欢迎您";
-            //Console.WriteLine(name+","+greet+"!");拼接
-            //Console.WriteLine($"{name},{greet}!");内插
-            //Console.WriteLine($"\"{name}\",{greet}!");转义
-            //Console.WriteLine($"\\{name}\\,{greet}!");
-            //Console.WriteLine(@"\\{name}\\,{greet}!");
-            //Console.WriteLine(@$"\\{name}\\,{greet}!");
-            //\r\n==》"+Environment NewLine+";\t
-            //Console.WriteLine(17+"bang"+true);
-
-
-
-
-
-
-
-
-
-
-
-
-
+            //Console.WriteLine(names.Length);}
 
 
 
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //二分查找 作业
-        /// <summary>
-        /// 利用二分查找target
-        /// </summary>
-        /// <param name="ids">一串数字</param>
-        /// <param name="target">目标数字</param>
-        /// <returns>寻找结果</returns>
-        static int FindNum(int[] ids,int target)
-        {
-            //int[]ids= { 2,7, 8, 9, 21, 43, 95 };
-            int left = 0, right = ids.Length - 1;
-            int result = -1;
-            //target = 7;
-            while (left <= right)
-            {
-                int middle = left + (right - left) / 2;
-                if (target == ids[middle])
-                {
-                    result=middle;
-                    break;
-                }
-
-                else if (target > ids[middle])
-                {
-                    left = middle + 1;
-                }
-                else
-                {
-                    right = middle - 1;
-                }
-            }
-            if (result != -1)
-            {
-               return(result);
-            }
-            else
-            {
-                return -1;
-            }
-
-        }
-
-
-
-        
-
 
     }
 
