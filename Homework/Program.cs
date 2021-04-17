@@ -16,6 +16,9 @@ namespace Homework
             //二分查找：调用
             //Console.WriteLine(FindNum(new int[] { 2, 7, 8, 9, 21, 43, 95 }, 7));
 
+            //快速排序
+            //quickSort(new int[] { 23, 15, 37, 89, 2, 21, 43, 9, 56 }, 0, 8);
+
 
             //C#：面向过程：方法进阶：值/引用传递
             //1.利用ref调用Swap()方法交换两个同学的床位号
@@ -377,8 +380,8 @@ namespace Homework
             {
                 return -1;
             }
-            
-            
+
+
 
 
 
@@ -396,12 +399,43 @@ namespace Homework
 
 
 
-        
+        static void quickSort(int[] array, int low, int high)
+        {
+            if (low >= high)
+            {
+                return;
+            }
+            int i = low, j = high, index = array[i];
+            while (i < j)
+            {
+                while (i < j && array[j] >= index)
+                { 
+                    j--;
+                }
+                if (i < j)
+                {
+                    array[i++] = array[j]; 
+                }
+                while (i < j && array[i] < index)
+                {
+                    i++;
+                }
+                if (i < j)
+                {
+                    array[j--] = array[i]; 
+                }
+            }
+            array[i] = index; 
+            quickSort(array, low, i - 1); 
+            quickSort(array, i + 1, high); 
+        }
+
+       
 
 
 
 
-        
+
 
 
 
