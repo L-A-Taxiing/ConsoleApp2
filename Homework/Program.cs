@@ -7,8 +7,6 @@ namespace Homework
     {
         static void Main(string[] args)
         {
-
-
             //函数作业：方法基础、声明、调用、返回值；第二题的调用
             //Double[] grade = new double[] { 59.9, 78.5, 82.68, 99.9, 56.5, 72.9 };
             //Console.WriteLine(Math.Round(GetAverage(grade), 2));
@@ -41,28 +39,12 @@ namespace Homework
             //  最小值min（默认为1）
             //  相邻两个元素之间的最大差值gap（默认为5）
             //  元素个数length（默认为10个）
-
-
-
-
-
-
+            Getarray();
             //2.实现二分查找，方法名BinarySeek(int[] numbers, int target)：
             //  传入一个有序（从大到小 / 从小到大）数组和数组中要查找的元素
             //  如果找到，返回该元素所在的下标；否则，返回 - 1
-
-
-
-
-
-
-
-
-
-
-
-
-
+            //int end=BinarySeek(new int[] { 1, 2, 3, 4, 5, 6, 7, 8,9 }, 7);
+            //Console.WriteLine(end);
         }
 
 
@@ -344,27 +326,82 @@ namespace Homework
         }
 
 
+        static int[] Getarray(int min=1,int gap=5,int length=10)
+        {
+            Random value = new Random();
+            int[] array = new int[length];
+            array[0] = min;
+            for (int i = 0; i <array.Length-1; i++)
+            {
+                array[i+1] = array[i] + value.Next(gap+1);
+                Console.Write(array[i]+",");
+            }
+            return array;
+        }
 
 
 
+        static int BinarySeek(int[] numbers, int target) 
+        {
+            int left = 0, right = numbers.Length - 1;
+            int result=-1;
+            while (left<=right)
+            {
+                int middle = left + (right - left) / 2;
+                if (target==numbers[middle])
+                {
+                    result = middle;
+                    break;
+                }
+                else if (target>numbers[middle])
+                {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                    left = middle + 1;
+                }
+                else
+                {
+                    right = middle -1;
+                }
+            }
+            if (result!=-1)
+            {
+                return result;
+            }
+            else
+            {
+                return -1;
+            }
             
+            
+
+
+
+
+
+
+
+
+
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
 
@@ -384,8 +421,7 @@ namespace Homework
 
 
 
-
-    }
+}
         
 
 
