@@ -39,7 +39,7 @@ namespace Homework
             //  最小值min（默认为1）
             //  相邻两个元素之间的最大差值gap（默认为5）
             //  元素个数length（默认为10个）
-            Getarray();
+            //Getarray();
             //2.实现二分查找，方法名BinarySeek(int[] numbers, int target)：
             //  传入一个有序（从大到小 / 从小到大）数组和数组中要查找的元素
             //  如果找到，返回该元素所在的下标；否则，返回 - 1
@@ -330,10 +330,16 @@ namespace Homework
         {
             Random value = new Random();
             int[] array = new int[length];
-            array[0] = min;
-            for (int i = 0; i <array.Length-1; i++)
+            for (int i = 0; i <array.Length; i++)
             {
-                array[i+1] = array[i] + value.Next(gap+1);
+                if (i==0)
+                {
+                    array[i] = min;
+                }
+                else
+                {
+                    array[i] = array[i-1] + value.Next(gap + 1);
+                }
                 Console.Write(array[i]+",");
             }
             return array;
@@ -390,12 +396,12 @@ namespace Homework
 
 
 
+        
 
 
 
 
-
-
+        
 
 
 
