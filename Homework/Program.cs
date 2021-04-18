@@ -19,7 +19,6 @@ namespace Homework
             //快速排序
             //quickSort(new int[] { 23, 15, 37, 89, 2, 21, 43, 9, 56 }, 0, 8);
 
-
             //C#：面向过程：方法进阶：值/引用传递
             //1.利用ref调用Swap()方法交换两个同学的床位号
             //int a = 201, b = 202;
@@ -42,12 +41,28 @@ namespace Homework
             //  最小值min（默认为1）
             //  相邻两个元素之间的最大差值gap（默认为5）
             //  元素个数length（默认为10个）
-            //Getarray();
+            //GetArray();
+            //var array = GetArray();
+            //for (int i = 0; i < array.Length; i++)
+            //{
+            //    Console.WriteLine(array[i]);
+            //}
             //2.实现二分查找，方法名BinarySeek(int[] numbers, int target)：
             //  传入一个有序（从大到小 / 从小到大）数组和数组中要查找的元素
             //  如果找到，返回该元素所在的下标；否则，返回 - 1
             //int end=BinarySeek(new int[] { 1, 2, 3, 4, 5, 6, 7, 8,9 }, 7);
             //Console.WriteLine(end);
+
+
+
+
+
+
+
+
+
+
+
         }
 
 
@@ -144,7 +159,6 @@ namespace Homework
             //}
 
             ////6.生成一个元素（值随机）从小到大排列的数组
-
             //int[] nums = new int[10];
             //Random elements = new Random();
             //for (int i = 0; i < 10; i++)
@@ -233,7 +247,6 @@ namespace Homework
             }
         }
 
-
         static double GetAverage(double[] grade)
         {
             //2.计算得到源栈同学的平均成绩(精确到两位小数)
@@ -246,7 +259,6 @@ namespace Homework
             double average = sum / grade.Length;
             return average;
         }
-
 
         static void GuessMe()
         {
@@ -328,10 +340,9 @@ namespace Homework
             }
         }
 
-
-        static int[] Getarray(int min=1,int gap=5,int length=10)
+        static int[] GetArray(int min=1,int gap=5,int length=10)
         {
-            Random value = new Random();
+            Random random = new Random();
             int[] array = new int[length];
             for (int i = 0; i <array.Length; i++)
             {
@@ -341,14 +352,11 @@ namespace Homework
                 }
                 else
                 {
-                    array[i] = array[i-1] + value.Next(gap + 1);
+                    array[i] = array[i-1] + random.Next(gap + 1);
                 }
-                Console.Write(array[i]+",");
             }
             return array;
         }
-
-
 
         static int BinarySeek(int[] numbers, int target) 
         {
@@ -396,47 +404,38 @@ namespace Homework
 
         }
 
-
-
-
-        static void quickSort(int[] array, int low, int high)
-        {
-            if (low >= high)
-            {
-                return;
-            }
-            int i = low, j = high, index = array[i];
-            while (i < j)
-            {
-                while (i < j && array[j] >= index)
-                { 
-                    j--;
-                }
-                if (i < j)
-                {
-                    array[i++] = array[j]; 
-                }
-                while (i < j && array[i] < index)
-                {
-                    i++;
-                }
-                if (i < j)
-                {
-                    array[j--] = array[i]; 
-                }
-            }
-            array[i] = index; 
-            quickSort(array, low, i - 1); 
-            quickSort(array, i + 1, high); 
-        }
+        //static void quickSort(int[] array, int low, int high)
+        //{
+        //    if (low >= high)
+        //    {
+        //        return;
+        //    }
+        //    int i = low, j = high, index = array[i];
+        //    while (i < j)
+        //    {
+        //        while (i < j && array[j] >= index)
+        //        { 
+        //            j--;
+        //        }
+        //        if (i < j)
+        //        {
+        //            array[i++] = array[j]; 
+        //        }
+        //        while (i < j && array[i] < index)
+        //        {
+        //            i++;
+        //        }
+        //        if (i < j)
+        //        {
+        //            array[j--] = array[i]; 
+        //        }
+        //    }
+        //    array[i] = index; 
+        //    quickSort(array, low, i - 1); 
+        //    quickSort(array, i + 1, high); 
+        //}
 
        
-
-
-
-
-
-
 
 
 
@@ -445,10 +444,11 @@ namespace Homework
     }
 
 
+  
 
 
 
-
+ 
 
 
 
@@ -462,7 +462,6 @@ namespace Homework
 
 
 }
-        
 
 
 
@@ -516,152 +515,152 @@ namespace Homework
 
 
 
-        //之前的作业
-        ////1+2+3+4
-        //累计求和
-        //int sum = 0;
-        //for (int i = 1; i < 5; i++)
-        //{
-        //    sum += i;
-        //}
-        //Console.WriteLine(sum);
 
-        //int[] studentids = { 8, 7, 9, 10, 2, 4, 5 };
-        //int sum = 0;
-        //for (int i = 0; i < studentids.Length; i++)
-        //{
-        //    sum += studentids[i];
-        //}
-        //Console.WriteLine(sum);
+//之前的作业
+////1+2+3+4
+//累计求和
+//int sum = 0;
+//for (int i = 1; i < 5; i++)
+//{
+//    sum += i;
+//}
+//Console.WriteLine(sum);
 
-        //求最大/小值
-        //int[] names = { 1, 2, 5, 7, 9, 11,-999 };
-        //int min = names[0];
-        //for (int i = 1; i < names.Length; i++)
-        //{
-        //    if (min>names[i])
-        //    {
-        //        min = names[i];
-        //    }/*else continue*/
-        //}
-        //Console.WriteLine(min);
+//int[] studentids = { 8, 7, 9, 10, 2, 4, 5 };
+//int sum = 0;
+//for (int i = 0; i < studentids.Length; i++)
+//{
+//    sum += studentids[i];
+//}
+//Console.WriteLine(sum);
 
-        //int[] studentids = { -88, 7, 9, 10, 2, 4, -500 };
-        //[2]--[4]
-        //int temp = studentids[4];
-        //studentids[4] = studentids[2];
-        //studentids[2] = temp;
-        //Console.WriteLine("studentids[2]:" + studentids[2] );
-        //Console.WriteLine("studentids[4]:" + studentids[4] );
-        //从大到小
+//求最大/小值
+//int[] names = { 1, 2, 5, 7, 9, 11,-999 };
+//int min = names[0];
+//for (int i = 1; i < names.Length; i++)
+//{
+//    if (min>names[i])
+//    {
+//        min = names[i];
+//    }/*else continue*/
+//}
+//Console.WriteLine(min);
 
-        //for (int i = 1; i < studentids.Length; i++)
-        //{
-        //    for (int j = 0; j < studentids.Length - i; j++)
-        //    {
-        //        if (studentids[j] < studentids[j + 1])
-        //        {
-        //            int temp = studentids[j];
-        //            studentids[j] = studentids[j + 1];
-        //            studentids[j + 1] = temp;
-        //        }
-        //    }
-        //}
-
-        //for (int i = 0; i < studentids.length; i++)
-        //{
-        //    Console.WriteLine (studentids[i]);
-        //}
-
-
-
-        //在数组中查找某个值，比如在int[]{ 1,2,8,4,5}; 找到8；
-        //找到了，输出：找到了，在数组中第几位；
-        //找不到，输出：没找到；
-        //int[] studentids = { 1, 2, 4, 4, 5 };
-        //bool found = false;
-        //for (int i = 0; i < studentids.Length; i++)
-        //{
-        //    if (studentids[i] == 4)
-        //    {
-        //        Console.WriteLine($"找到了，在数组中第{(i + 1)} 位");
-        //        found = true;
-        //    }/*else continue*/
-        //}
-        //if (!found)
-        //{
-        //    Console.WriteLine("没找到");
-        //}/*else nothing*/
-        //int[] studentids = { 1, 2, 8, 4, 5 };
-        //for (int i = 0; i < studentids.Length; i++)
-        //{
-        //    if (studentids[i] == 8)
-        //    {
-        //        Console.WriteLine($"找到了，在数组中第{(i + 1)} 位");
-        //        break; continue;
-        //    }
-        //    else
-        //    {
-        //        if (i == studentids.Length - 1)
-        //        {
-        //            Console.WriteLine("没找到");
-        //        }/*else nothing*/
-        //    }
-        //}
-
-
-        //观察一起帮登录页面，用if...else ...完成以下功能。
-        //用户依次由控制台输入：验证码、用户名和密码：
-        //如果验证码输入错误，直接输出：“*验证码错误”；
-        //如果用户名不存在，直接输出：“*用户名不存在”；
-        //如果用户名或密码错误，输出：“*用户名或密码错误”
-        //以上全部正确无误，输出：“恭喜！登录成功！”
-        //string captcha = "999";
-        //Console.WriteLine("请输入验证码");
-        //if (captcha != (Console.ReadLine()))
-        //{
-        //    Console.WriteLine("验证码错误");
-        //}
-        //else
-        //{
-        //    Console.WriteLine("Nothing");
-        //}
-        //string answer2 = Console.ReadLine();
-        //if (username != answer2)
-        //{
-        //    Console.WriteLine("用户名不存在");
-        //}
-        //else
-        //{
-        //    Console.WriteLine("请输入密码");
-        //    string answer3 = Console.ReadLine();
-        //    if (password != answer3)
-        //    {
-        //        Console.WriteLine("用户名或密码错误");
-        //    }
-        //    else
-        //    {
-        //        Console.WriteLine("恭喜！登陆成功!");
-        //    }
-
-        //作业：
-        //将源栈同学姓名 / 昵称分别：
-        //按进栈时间装入一维数组，
-        //按座位装入二维数组，
-        //并输出共有多少名同学。
-        //string[] students = new string[] { "阿泰", "母鸡","夏康平", "胡涛", "姜鹏", "周丁浩", "韩佳宝", "秦慧", "刘伟" };
-        //string[,] names = new string[4, 4];
-        //names[0, 0] = "阿泰";
-        //names[0, 1] = "母鸡";
-        //names[0, 2] = "夏康平";
-        //names[1, 1] = "胡涛";
-        //names[1, 2] = "姜鹏";
-        //names[1, 3] = "周丁浩";
-        //names[2, 0] = "韩佳宝";
-        //names[2, 2] = "秦慧";
-        //names[3, 3] = "刘伟";
-        //Console.WriteLine(students.Length);
-        //Console.WriteLine(names.Length);}
-
-
- 
+//int[] studentids = { -88, 7, 9, 10, 2, 4, -500 };
+//[2]--[4]
+//int temp = studentids[4];
+//studentids[4] = studentids[2];
+//studentids[2] = temp;
+//Console.WriteLine("studentids[2]:" + studentids[2] );
+//Console.WriteLine("studentids[4]:" + studentids[4] );
+//从大到小
+
+//for (int i = 1; i < studentids.Length; i++)
+//{
+//    for (int j = 0; j < studentids.Length - i; j++)
+//    {
+//        if (studentids[j] < studentids[j + 1])
+//        {
+//            int temp = studentids[j];
+//            studentids[j] = studentids[j + 1];
+//            studentids[j + 1] = temp;
+//        }
+//    }
+//}
+
+//for (int i = 0; i < studentids.length; i++)
+//{
+//    Console.WriteLine (studentids[i]);
+//}
+
+
+
+//在数组中查找某个值，比如在int[]{ 1,2,8,4,5}; 找到8；
+//找到了，输出：找到了，在数组中第几位；
+//找不到，输出：没找到；
+//int[] studentids = { 1, 2, 4, 4, 5 };
+//bool found = false;
+//for (int i = 0; i < studentids.Length; i++)
+//{
+//    if (studentids[i] == 4)
+//    {
+//        Console.WriteLine($"找到了，在数组中第{(i + 1)} 位");
+//        found = true;
+//    }/*else continue*/
+//}
+//if (!found)
+//{
+//    Console.WriteLine("没找到");
+//}/*else nothing*/
+//int[] studentids = { 1, 2, 8, 4, 5 };
+//for (int i = 0; i < studentids.Length; i++)
+//{
+//    if (studentids[i] == 8)
+//    {
+//        Console.WriteLine($"找到了，在数组中第{(i + 1)} 位");
+//        break; continue;
+//    }
+//    else
+//    {
+//        if (i == studentids.Length - 1)
+//        {
+//            Console.WriteLine("没找到");
+//        }/*else nothing*/
+//    }
+//}
+
+
+//观察一起帮登录页面，用if...else ...完成以下功能。
+//用户依次由控制台输入：验证码、用户名和密码：
+//如果验证码输入错误，直接输出：“*验证码错误”；
+//如果用户名不存在，直接输出：“*用户名不存在”；
+//如果用户名或密码错误，输出：“*用户名或密码错误”
+//以上全部正确无误，输出：“恭喜！登录成功！”
+//string captcha = "999";
+//Console.WriteLine("请输入验证码");
+//if (captcha != (Console.ReadLine()))
+//{
+//    Console.WriteLine("验证码错误");
+//}
+//else
+//{
+//    Console.WriteLine("Nothing");
+//}
+//string answer2 = Console.ReadLine();
+//if (username != answer2)
+//{
+//    Console.WriteLine("用户名不存在");
+//}
+//else
+//{
+//    Console.WriteLine("请输入密码");
+//    string answer3 = Console.ReadLine();
+//    if (password != answer3)
+//    {
+//        Console.WriteLine("用户名或密码错误");
+//    }
+//    else
+//    {
+//        Console.WriteLine("恭喜！登陆成功!");
+//    }
+
+//作业：
+//将源栈同学姓名 / 昵称分别：
+//按进栈时间装入一维数组，
+//按座位装入二维数组，
+//并输出共有多少名同学。
+//string[] students = new string[] { "阿泰", "母鸡","夏康平", "胡涛", "姜鹏", "周丁浩", "韩佳宝", "秦慧", "刘伟" };
+//string[,] names = new string[4, 4];
+//names[0, 0] = "阿泰";
+//names[0, 1] = "母鸡";
+//names[0, 2] = "夏康平";
+//names[1, 1] = "胡涛";
+//names[1, 2] = "姜鹏";
+//names[1, 3] = "周丁浩";
+//names[2, 0] = "韩佳宝";
+//names[2, 2] = "秦慧";
+//names[3, 3] = "刘伟";
+//Console.WriteLine(students.Length);
+//Console.WriteLine(names.Length);}
+
+
