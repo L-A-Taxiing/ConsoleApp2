@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using static Homework.Program;
 
 namespace Homework
 {
@@ -11,7 +12,7 @@ namespace Homework
         private DateTime _publishDateTime { get; set; }
         private User _auther { get; set; }
 
-        public static bool Publish() { }
+        //public static bool Publish() { }
 
         public Problem(string body) //每一个problem对象一定有body赋值
         {
@@ -40,6 +41,20 @@ namespace Homework
         }
         //调用:
         //Problem body = new Problem("");
+
+
+        static void Publish() { }    //发布一篇求助，并将其保存到数据库
+        internal void Load(int Id) { }  //根据Id从数据库获取一条求助
+        internal void Delete(int Id) { }  //根据Id删除某个求助
+
+        static Repoistory repoistory;    //可用于在底层实现上述方法和数据库的连接操作等
+
+
+
+
+
+
+
 
 
 

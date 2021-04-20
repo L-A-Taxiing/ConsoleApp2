@@ -77,7 +77,7 @@ namespace Homework
 
 
 
-        class Repoistory
+        public class Repoistory
         {
             const int VERSION = 1;
             static readonly string connection;
