@@ -7,6 +7,10 @@ namespace Homework
     {
         static void Main(string[] args)
         {
+            
+
+
+
             //函数作业：方法基础、声明、调用、返回值；第二题的调用
             //Double[] grade = new double[] { 59.9, 78.5, 82.68, 99.9, 56.5, 72.9 };
             //Console.WriteLine(Math.Round(GetAverage(grade), 2));
@@ -53,6 +57,16 @@ namespace Homework
             //int end=BinarySeek(new int[] { 1, 2, 3, 4, 5, 6, 7, 8,9 }, 7);
             //Console.WriteLine(end);
 
+            //C#面向过程:其他类成员:构造函数/属性/索引器/析构函数
+            //1.将之前User / Problem / HelpMoney类的字段封装成属性，其中：
+            //    1.user.Password在类的外部只能改不能读
+            //    2.如果user.Name为“admin”，输入时修改为“系统管理员”
+            //    3.problem.Reward不能为负数
+            //2.调用这些类的有参 / 无参构造函数，生成这些类的对象，调用他们的方法
+            //3.一起帮的求助可以有多个（最多10个）关键字，请为其设置索引器，以便于我们通过其整数下标进行读写。
+            //4.设计一种方式，保证：
+            //    1.每一个Problem对象一定有Body赋值
+            //    2.每一个User对象一定有Name和Password赋值
 
 
 
@@ -196,21 +210,21 @@ namespace Homework
 
 
 
-            ////7.设立并显示一个多维数组的值，元素值等于下标之和。Console.Write()
-            //int[,] names = new int[3, 4];
-            //for (int i = 0; i < names.GetLength(0); i++)
-            //{
-            //    for (int j = 0; j < names.GetLength(1); j++)
-            //    {
-            //        int a = i + j;
-            //        names[i, j] = a;
-            //        Console.Write(names[i, j] + " ");
-            //        if (j == 3)
-            //        {
-            //            Console.WriteLine();
-            //        }
-            //    }
-            //}
+            //7.设立并显示一个多维数组的值，元素值等于下标之和。Console.Write()
+            int[,] names = new int[3, 4];
+            for (int i = 0; i < names.GetLength(0); i++)
+            {
+                for (int j = 0; j < names.GetLength(1); j++)
+                {
+                    int a = i + j;
+                    names[i, j] = a;
+                    Console.Write(names[i, j] + " ");
+                    if (j == 3)
+                    {
+                        Console.WriteLine();
+                    }
+                }
+            }
         }
 
         static int FindNum(int[] ids, int target)

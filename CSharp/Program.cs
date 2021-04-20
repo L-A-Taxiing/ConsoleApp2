@@ -8,6 +8,13 @@ namespace CSharp
 
         {
 
+            //int i = 18;
+
+
+
+
+
+
             //3.getFibonacci(0, 1);
 
             //4.quickSort(new int[] { 23, 15, 37, 89, 2, 21, 43, 9, 56 }, 0, 8);
@@ -40,14 +47,14 @@ namespace CSharp
 
 
 
-            Console.WriteLine("Ceiling:" + Math.Ceiling(19.8));//向上取整 20;
-            Console.WriteLine("Floor:" + Math.Floor(19.8));//向下取整 19;
-            Console.WriteLine("Round:" + Math.Round(19.875, 2));
+            //Console.WriteLine("Ceiling:" + Math.Ceiling(19.8));//向上取整 20;
+            //Console.WriteLine("Floor:" + Math.Floor(19.8));//向下取整 19;
+            //Console.WriteLine("Round:" + Math.Round(19.875, 2));
 
             //Console.WriteLine(new Random().Next(1000));
             //Random names = new Random();
             //int output = names.Next(1, 1000);
-            int a = new Random().Next(1, 123);
+            //int a = new Random().Next(1, 123);
 
         }
 
@@ -62,63 +69,7 @@ namespace CSharp
             Console.WriteLine("回家");
         }
 
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+       
 
 
 
@@ -142,8 +93,64 @@ namespace CSharp
 
 
 
-        
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         //方法的重载，buy返回的不同，按F12；
         //可选参数放在必须(required)参数后面,可选参数的默认值必须是“编译时”确定的，
         //比如：常量、字面值、default()表达式、new ValueType……
@@ -160,15 +167,15 @@ namespace CSharp
 
 
 
-        
-        
+
+
         //static int Max(int a, int b)
         //{
         //    return (a > b) ? a : b;
         //}  条件运算符?    :
 
-        
-        
+
+
         //1.static void swap(ref int a, ref int b)
         //{
         //    int temp = a;
@@ -220,25 +227,13 @@ namespace CSharp
 
 
 
-       
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-       
-        
+
+
+
+
+
+
+
         //可以使用同一个方法名，配以不同的参数“组合”（个数/类型/次序/传递方式ref）。但注意：
         //仅是参数名不同
         //仅是返回值不同
@@ -246,10 +241,10 @@ namespace CSharp
 
 
 
-        
-        
-        
-        
+
+
+
+
         //static void swap(int a, int b)
         //{
         //    swap(a, b);

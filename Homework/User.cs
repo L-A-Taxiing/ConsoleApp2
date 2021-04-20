@@ -6,13 +6,44 @@ namespace Homework
 {
     class User
     {
-        private static string Name;
-        private static string Password;
         private static User InvitedBy;
-
-        public static bool Register(){ }
-        public static bool Login() { }
+        private string _password;
+        //public static bool Register(){ }
+        //public static bool Login() { }
         
+        public User(string name,string password)    //每一个User对象一定有name和password赋值;
+        {
+            _name = name;
+            _password = password;
+        }
+
+        private string _name;
+        public string Name
+        {
+            get {return _name;}
+            set 
+            {
+                if (value=="admin")
+                {
+                   _name = "系统管理员";
+                }
+                else
+                {
+                   _name = value;
+                }
+            }
+        }
+        //user.Password在类的外部只能改不能读
+        public string Password  
+        { 
+          set{ _password = value; }
+        }
+        //public string Password { set; private get; }
+        //调用:User dfg  =new User("大飞哥","1234")
+        
+
+
+
     }
 }
 //   观察“一起帮”的：
