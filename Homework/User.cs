@@ -40,9 +40,8 @@ namespace Homework
         }
         //public string Password { set; private get; }
         //调用:User dfg  =new User("大飞哥","1234")
+
         
-
-
 
     }
 }

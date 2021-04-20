@@ -7,10 +7,6 @@ namespace Homework
     {
         static void Main(string[] args)
         {
-            
-
-
-
             //函数作业：方法基础、声明、调用、返回值；第二题的调用
             //Double[] grade = new double[] { 59.9, 78.5, 82.68, 99.9, 56.5, 72.9 };
             //Console.WriteLine(Math.Round(GetAverage(grade), 2));
@@ -68,16 +64,40 @@ namespace Homework
             //    1.每一个Problem对象一定有Body赋值
             //    2.每一个User对象一定有Name和Password赋值
 
-
-
-
-
-
-
-
-
-
+            //C#-面向对象：静态和实例
+            //1.定义一个仓库（Repoistory）类，用于存取对象，其中包含：
+            //一个int类型的常量version;一个静态只读的字符串connection，以后可用于连接数据库;思考Respoitory应该是static类还是实例类更好
+            //2.考虑求助（Problem）的以下方法/属性，哪些适合实例，哪些适合静态，然后添加到类中：
+            //Publish()：发布一篇求助，并将其保存到数据库;Load(int Id)：根据Id从数据库获取一条求助;Delete(int Id)：根据Id删除某个求助;repoistory：可用于在底层实现上述方法和数据库的连接操作等
+            //3.设计一个类FactoryContext，保证整个程序运行过程中，无论如何，外部只能获得它的唯一的一个实例化对象。（提示：设计模式之单例）
+            //4.想一想，为什么Publish()方法不是放置在User类中呢？用户（user）发布（Publish）一篇文章（article），不正好是user.Publish(article)么？
+            //5.自己实现一个模拟栈（MimicStack）类，入栈出栈数据均为int类型，包含如下功能：
+            //出栈Pop();弹出栈顶数据;入栈Push();可以一次性压入多个数据;出/入栈检查，如果压入的数据已超过栈的深度（最大容量），提示“栈溢出”,如果已弹出所有数据，提示“栈已空”
         }
+
+
+
+        class Repoistory
+        {
+            const int VERSION = 1;
+            static readonly string connection;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
