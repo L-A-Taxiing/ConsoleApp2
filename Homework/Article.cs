@@ -7,12 +7,16 @@ namespace Homework
     internal class Article:Content
     {
 
-        public Article(string _kind)
-            : base(_kind)
+        //public Article(string _kind)
+        //    : base(_kind)
+        //{
+
+        //}
+
+        internal override void change()
         {
-
+            Console.WriteLine("需要消耗一个帮帮币");
         }
-
 
 
 

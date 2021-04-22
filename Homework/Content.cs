@@ -25,6 +25,23 @@ namespace Homework
 
         private string title { get; set; }                  //其他方法和属性请自行考虑，尽量贴近一起帮的功能实现     
         private User auther { get; set; }
+
+
+       internal virtual void change()
+        {
+        
+        }
+
+        public Content()
+        {
+
+        }
+
+
+
+
+
+
     }
 }
 //观察一起帮的求助（Problem）、文章（Article）和意见建议（Suggest），根据他们的特点，抽象出一个父类：内容（Content）

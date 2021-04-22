@@ -14,10 +14,14 @@ namespace Homework
 
         //public static bool Publish() { }
 
-        public Problem(string body,string _kind) 
-            :base(_kind)//每一个problem对象一定有body赋值
+        public Problem(string body) 
+            //每一个problem对象一定有body赋值
         {
             _body = body;
+        }
+
+        public Problem()
+        {
         }
 
         private int _reward;//problem.Reward不能为负数
@@ -49,6 +53,12 @@ namespace Homework
         internal void Delete(int Id) { }  //根据Id删除某个求助
 
         static Repoistory repoistory;    //可用于在底层实现上述方法和数据库的连接操作等
+
+
+        internal override void change()
+        {
+            Console.WriteLine("需要消耗其设置悬赏数量的帮帮币");
+        }
 
 
 

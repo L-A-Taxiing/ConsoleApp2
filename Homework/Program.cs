@@ -7,18 +7,8 @@ namespace Homework
     {
         static void Main(string[] args)
         {
-            Content zt = new Article ("编程开发语言");
-            Content sug = new Suggest("反馈");
-
-
-
-
-
-
-
-
-
-
+            //Content zt = new Article ("编程开发语言");
+            //Content sug = new Suggest("反馈");
             //函数作业：方法基础、声明、调用、返回值；第二题的调用
             //Double[] grade = new double[] { 59.9, 78.5, 82.68, 99.9, 56.5, 72.9 };
             //Console.WriteLine(Math.Round(GetAverage(grade), 2));
@@ -85,6 +75,29 @@ namespace Homework
             //4.想一想，为什么Publish()方法不是放置在User类中呢？用户（user）发布（Publish）一篇文章（article），不正好是user.Publish(article)么？
             //5.自己实现一个模拟栈（MimicStack）类，入栈出栈数据均为int类型，包含如下功能：
             //出栈Pop();弹出栈顶数据;入栈Push();可以一次性压入多个数据;出/入栈检查，如果压入的数据已超过栈的深度（最大容量），提示“栈溢出”,如果已弹出所有数据，提示“栈已空”
+
+
+
+            // C#面向对象 多态 
+            // 添加一个新类ContentService，其中有一个发布（Publish()）方法：
+            // 如果发布Article，需要消耗一个帮帮币
+            // 如果发布Problem，需要消耗其设置悬赏数量的帮帮币
+            // 如果发布Suggest，不需要消耗帮帮币
+            Content content = new Article();
+            content.change();
+            content = new Problem();
+            content.change();
+            content = new Suggest();
+            content.change();
+
+
+
+
+            
+
+
+
+
         }
 
 

@@ -236,14 +236,80 @@ namespace CSharp
         ///7.sealed（封闭的）: 标记某个类不能再被继承，比如：sealed class Student : Person {};
         ///8.允许多重继承只会进一步的鼓励继承的滥用;
         ///真正实现重用的：对行为而言，就是方法；对状态而言，应该是组合。即一个对象包含另外若干对象，或者若干对象组合成一个对象;
-        ///面向对象要映射现实,让代码更加容易被人理解;继承本质上体现的是一种“是”的关系;共同/类似的行为（会跑会叫有生命），而不是属性（有一个脑袋四条腿).
-
-
-
-
-
-
-
+        ///面向对象要映射现实,让代码更加容易被人理解;继承本质上体现的是一种“是”的关系;共同/类似的行为（会跑会叫有生命），而不是属性（有一个脑袋四条腿)
+        ///面向对象  ||  (七)多态
+        ///1.子类和父类可以有相同签名，但会收到一个warning，需要添加new关键字：
+        ///internal class Person
+        ///{
+        ///    internal void Eat()
+        ///    {
+        ///        Console.WriteLine("人吃饭");
+        ///    }
+        ///}                                                               //new Person().Eat();     //输出：人吃饭
+        ///++++++++++++++++++++++++++++++++                                
+        ///internal class Student : Person
+        ///{
+        ///    internal new void Eat()   //注意关键字new
+        ///    {
+        ///        Console.WriteLine("学生吃饭");
+        ///    }
+        ///}                                                              //new Student().Eat();    //输出：学生吃饭 
+        ///new还可以作用于静态方法;   父类装子类；
+        ///2.重写(Override)
+        ///internal class Person
+        ///{
+        ///    internal virtual void Eat()     //注意关键字 virtual 
+        ///    {
+        ///        Console.WriteLine("人吃饭");
+        ///    }
+        ///}
+        ///++++++++++++++++++++++++++++++++
+        ///internal class Student : Person
+        ///{
+        ///    internal override void Eat()   //注意关键字 override
+        ///    {
+        ///        Console.WriteLine("学生吃饭");
+        ///    }                                                          //Person ywq = new Student();
+        ///}                                                              //ywq.Eat();        //结果为：学生吃饭
+        ///实现多态:
+        ///将ywq值赋值给一个person对象;
+        ///Person ywq = new Student();
+        ///ywq.Eat();     //代码第2行，输出：学生吃饭
+        ///    ywq = new Person();
+        ///ywq.Eat();     //代码第4行，输出：人吃饭
+        ///子类可以使用base调用父类的方法。这在override虚方法中非常常见;其次，可以在多重virtual和override
+        ///internal class Student : Person
+        ///{
+        ///    internal override void Eat()   //这里已经是override了
+        ///    {
+        ///        Console.WriteLine("学生吃饭");
+        ///    }
+        ///}
+        ////+++++++++++++++++++++++++++++++                          //以在override方法前面使用sealed关键字，标识override到此为止，不能再被子类override了
+        ///internal class AgileStudent : Student
+        ///{
+        ///    internal override void Eat()  //继续override
+        ///    {
+        ///        base.Eat();     //base仅指Student，不包含父类的父类
+        ///    }
+        ///}
+        ///3.面向过程的思维:
+        ///static void ServeLunch(string role)
+        ///{
+        ///    Console.WriteLine("开饭啦……");                          
+        ///    if (role == "老师")                               static void ServeLunch(Person person)
+        ///    {                                                {
+        ///        new Teacher().Eat();                          Console.WriteLine("开饭啦……");
+        ///    }                                                 person.Eat();   //不同的Person对象自然会调用不同的方法
+        ///    else if (role == "学生")          ==>              其他代码……
+        ///    {                                                }
+        ///        new Student().Eat();
+        ///    }                                           调用: ServeLunch(new Teacher{Name="飞哥"});
+        ///    //else ignore                                    ServeLunch(new Student{Name="ppm"})
+        ///    //其他代码……
+        ///}
+        ///4.多态减少if...else嵌套；让面向对象的设计成为可能;
+        ///5.面向对象不考虑具体的实现细节，而是考虑对象的组织调用;
 
 
 
