@@ -6,5 +6,10 @@ namespace Homework
 {
     internal class Suggest:Content
     {
+        public Suggest(string _kind)
+            :base(_kind)
+        {
+
+        }
     }
 }

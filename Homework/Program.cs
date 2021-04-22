@@ -7,6 +7,18 @@ namespace Homework
     {
         static void Main(string[] args)
         {
+            Content zt = new Article ("编程开发语言");
+            Content sug = new Suggest("反馈");
+
+
+
+
+
+
+
+
+
+
             //函数作业：方法基础、声明、调用、返回值；第二题的调用
             //Double[] grade = new double[] { 59.9, 78.5, 82.68, 99.9, 56.5, 72.9 };
             //Console.WriteLine(Math.Round(GetAverage(grade), 2));
