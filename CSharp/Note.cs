@@ -181,6 +181,66 @@ namespace CSharp
         ////每一个具体的对象的（独有），所以它既不能属于其他对象，也不能属于类——因为属于类也就属于其他对象了;
         ///enroll;数组和方法前面加static;
         ///4.静态和实例:能实例不要静态
+        ///面向对象  ||    (六)继承
+        ///1.实现继承的语法很简单，关键就是冒号（:）。子类继承父类之后，就可以使用父类的成员；
+        ///2.注意事项: I.继承发生在类和类之间，而不是对象之间;  II.访问级别的一致性(可以更低); III.一个父类可以有多个子类,但一个子类只能有一个父类；
+        /////         IV.多层继承:一个子类可以作为其他子类的父类; V.静态类不能被继承，但实例类中的静态成员一样可以被继承;
+        ///3.实例化一个子类，需要调用它所有的（即包含祖先的）父类构造函数; 如果父类只有一个无参构造函数（隐式/显式的均可),默认调用这个无参构造函数,
+        /////没有无参构造函数，就需要在子类的构造函数中指定具体调用父类的哪一个构造函数;
+        ///internal class Person
+        ///{
+        ///    父类没有无参构造函数了
+        ///    public Person(string name) { }
+        ///    internal string Name { get; set; }
+        ///}
+        ///internal class Student : Person
+        ///{
+        ///    子类必须显式地指明调用父类的某一个构造函数
+        ///    public Student(string name)
+        ///    使用base关键字，将子类实例化获得的name传递给父类
+        ///    : base(name)
+        ///    : base("飞哥")    //也可以传一个固定值 
+        ///    { }
+        ///}
+        ///4.protected（受保护的):
+        ///I.  父类私有的（private）成员，子类就不能访问（也只有private的父类成员，子类不能访问）;
+        ///II. 父类的某个成员，除子类以外的其他地方都不能访问，或者说，只有在子类中才能访问——这时候，就需要使用protected访问修饰符;
+        ///protected internal联合使用，当父类和子类不在同一个项目时有用,添加了protected的internal成员，可以被在另外一个项目中的子类使用.
+        ///5.父类装子类
+        /// Person ywq  = new Student();       //父类变量引用（指向）了一个子类对象
+        /// 变量能够调用（.出来）什么，是由声明这个变量类型决定的，而不是变量所引用的对象类型决定的;
+        /// 父类变量ywq不能调用子类Student的属性Score，所以可以保证无论如何使用ywq变量，都不会出事。哪怕以后ywq指向其他对象，都没有问题;——安全;
+        ///6.is和as
+        ///is用来进行类型判断:
+        ///Person wx = new Person();
+        ///Console.WriteLine(wx is Person);      //true：是自己的类型
+        ///Console.WriteLine(wx is Student);     //false：不是子类型
+        ///注意:如果变量和类型之间没有继承关系，结果必然为false；或者变量必然是该类型（比如值类型），结果必然为true，VS提示警告;
+        ///    如果变量值为null（没有对象引用），总是返回false;
+        ///继承关系也可以用强制性转换:
+        ///Person wx = new Student();
+        ///Console.WriteLine(wx.Score);   //报错：Score不是Person的属性
+        ///但可以将wx强制转换成Student后当做Student对象使用
+        ///Console.WriteLine(((Student) wx).Score);
+        ///但强制类型转换不进行编译时检查,只在运行时报错,如果不想直接报错，就需要利用到is:
+        ///if (pzq is Student)
+        ///{
+        ///   Console.WriteLine(((Student) pzq).Score);
+        ///}
+        ///还有另一种方式——as;
+        ///Student converted = pzq as Student;
+        ///if (converted != null)
+        ///{
+        ///   Console.WriteLine(converted.Score);
+        ///}
+        ///7.sealed（封闭的）: 标记某个类不能再被继承，比如：sealed class Student : Person {};
+        ///8.允许多重继承只会进一步的鼓励继承的滥用;
+        ///真正实现重用的：对行为而言，就是方法；对状态而言，应该是组合。即一个对象包含另外若干对象，或者若干对象组合成一个对象;
+        ///面向对象要映射现实,让代码更加容易被人理解;继承本质上体现的是一种“是”的关系;共同/类似的行为（会跑会叫有生命），而不是属性（有一个脑袋四条腿).
+
+
+
+
 
 
 

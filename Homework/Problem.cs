@@ -5,7 +5,7 @@ using static Homework.Program;
 
 namespace Homework
 {
-    class Problem
+    internal class Problem:Content
     {
         private string _title { get; set; }
         private string _body  { get; set; }
@@ -53,14 +53,8 @@ namespace Homework
 
 
 
-
-
-
-
-
-
-
     }
 }
 //2. 求助版块，定义一个类Problem，包含字段：标题（Title）、正文（Body）、悬赏（Reward）、发布时间（PublishDateTime）和作者（Author），和方法Publish()
 
+。
