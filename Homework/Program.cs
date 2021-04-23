@@ -5,8 +5,13 @@ namespace Homework
 {
     class Program
     {
+      
+
+
+
         static void Main(string[] args)
         {
+            
             //Content zt = new Article ("编程开发语言");
             //Content sug = new Suggest("反馈");
             //函数作业：方法基础、声明、调用、返回值；第二题的调用

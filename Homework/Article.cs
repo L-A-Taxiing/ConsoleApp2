@@ -4,23 +4,45 @@ using System.Text;
 
 namespace Homework
 {
-    internal class Article:Content
+    internal class Article:Content,IAttitude
     {
+        //public User Author { get; set; }
 
-        //public Article(string _kind)
-        //    : base(_kind)
-        //{
+        public Article(string _kind)
+            : base(_kind)
+        {
 
-        //}
+        }
 
         internal override void change()
         {
             Console.WriteLine("需要消耗一个帮帮币");
         }
 
+        public Article()
+        {
 
+        }
 
+        public int Agreechange { get; set; }
+        public int Disagreechange { get; set; }
+        public void Agree(User Netfriend) 
+        {
+            Console.WriteLine("帮帮点增加");
+            Netfriend.HelpPoint++;
+            Author.HelpPoint++;
+            Agreechange++;
 
+        }
+
+        public void Disagree(User Netfriend) 
+        {
+            Console.WriteLine("帮帮点减少");
+            Netfriend.HelpPoint--;
+            Author.HelpPoint--;
+            Disagreechange--;
+        }
+        public User Author { get; set; }
 
     }
 }
