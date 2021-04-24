@@ -152,7 +152,7 @@ namespace CSharp
         ///   Age = 23,    //多个属性之间用逗号隔开
         ///};
         ///7.匿名类(即没有类名，也不需要声明，可以直接使用的类)
-        /// var zjq = new  /*注意：没有类名了*/                       语法及其特点:其变量类型只能用var，否则你也没法写;
+        /// var zjq = new  /*注意：没有类名了*/                                  语法及其特点:其变量类型只能用var，否则你也没法写;
         /// {                                                                   所有属性只能是只读的;只是"匿名"而已，本质上还是一个类;
         ///   Name = "曾俊清",                                                   拥有相同（名称+类型+次序）属性的匿名类会被当做同一个类(可以相互赋值);
         ///   Age = 23,
@@ -385,10 +385,79 @@ namespace CSharp
         ///所以，类名一般都是名词（比如Person、Animal、Major之类的），映射的是一个实体事物，其中既有方法（行为）也有字段（状态）
         ///而接口通常被认为是对行为（没有状态）的封装，所以接口名一般都是动词（比如IMove、ILearn），映射的是一些操作，其中只有方法（属性本质上也是一种方法）
         ///面向对象  ||  九(结构和日期)
+        ///1.结构(Struct)——结构类型是值类型。而值类型要求其所有成员必须有值
+        ///new一个结构实例，生成它的实例对象
+        ///int age = new Int32();
+        ///调用结构的实例方法
+        ///age.CompareTo(21);
+        ///能够实现接口，但不能继承其他结构和类，自然也不能被其他结构和类继承（这可能是结构较少使用的一大原因）；
+        ///默认有一个无参构造函数，但不能显式声明。有参构造函数可以显式声明，
+        ///声明的有参构造函数也不会“隐藏”默认的无参构造函数。但构造函数必须保证结构中的所有字段和自动属性被赋值
+        ///使用结构默认的无参构造函数，结构会自动的给所有成员赋默认值；否则，这些所有成员都必须在有参构造函数中被赋值
+        ///+结构是值类型，值类型的优势是直接存放在栈中，可以快速读取；但它的数据量不能太大，否则就会耗用栈空间，反而拖累性能
+        ///+引用类型的优势：只赋值地址不copy内容，传递时更快……
+        ///2.DateTime
+        ///ToString()方法：可以用于指定日期显示的格式。通常，我们使用字符串指定。用y代表year，用M（注意大写）代表month，用d代表day等，如下所示：
+        ///Console.WriteLine(DateTime.Now.ToString(
+        ///        "yyyy年MM月dd日 hh点mm分ss秒"));
+        ///显示：2019年12月01日 07点59分14秒
+        ///+++++++++++++++++++++++
+        ///string now = "2021/4/24";
+        ///Console.WriteLine(DateTime.Parse(now));     //parse转换字符串;
 
+        ///   //DateTime.TryParse(now, out DateTime result);
+        ///   //Console.WriteLine(result.Year);           tryparse运用;
+        ///    if (DateTime.TryParse(now, out DateTime result))
+        ///    {
+        ///        result = result.AddYears(20);   //有返回值不会改变属性;
+        ///        Console.WriteLine(result.Year);
+        ///    }
+        ///    else
+        ///    {
+        ///        Console.WriteLine("wrong format");
+        ///    }
 
+        ///Console.WriteLine(DateTime.Now.ToLongDateString());//2021年4月24日
+        ///Console.WriteLine(DateTime.Now.ToLongTimeString());//16:03:57
+        ///Console.WriteLine(DateTime.Now.ToShortDateString());//2021/4/24
+        ///Console.WriteLine(DateTime.Now.ToShortTimeString());//16:03
+        ///Console.WriteLine(DateTime.Now.ToString("yyyy年MM月dd日HH时mm分"));//2021年04月24日16时03分
 
+        ///DateTime.Now.CompareTo(new DateTime(1998, 3, 8));
+        ///DateTime.Now.Equals(new DateTime(2020, 4, 4));
 
+        ///DateTime created = DateTime.Now;
+        ///DateTime published = created; /*DateTime.Now;*//*二者有差异;*/
+        ///Console.WriteLine(created.CompareTo(published));/*结果为0，相等*/
+        ///++++++++++++++++++++++
+        ///3.运算符重载:本来加号是只能用于数值型类型的，DateTime显然不是数值，本是不应该能够使用加号的
+        ///public static DateTime operator +(DateTime d, TimeSpan t);      任何一个类都可以进行运算符重载
+        ///语法要求:
+        ///方法只能是public和static的
+        ///必须要有一个关键字operator
+        ///至少一个参数和返回值类型相匹配
+        ///某些运算符有要求“成套”，比如重载了==，就必须重载 !=
+        ///public double Score { get; set; }
+        ///public static double operator-(Student a,student b)
+        ///{ 
+        ///   return a.Score - b.Score;
+        ///}
+        ///double gap = new Student { Score = 98.5 } - new Student { Score = 89.5 };//调用
+        ///4.TimeSpan:表示的是一段时间，通常由两个日期相减获得;
+        ///TimeSpan span = DateTime.Now - new DateTime(2020, 4, 24);
+        ///Console.WriteLine(span.Days);//365
+        ///Console.WriteLine(span.TotalDays);//365.893690837
+        ///Console.WriteLine(span.Hours);//21
+        ///Console.WriteLine(span.TotalHours);//8781.4485689
+        ///Timespan计量的最大单位是天（Days），没有年和月
+        ///用Days/Hours/Minutes等取出的是Timespan中天/小时/分钟等部分的值
+        ///用TotalDays/TotalHours/TotalMinutes等取出的才是Timespan代表的时间间隔换算成天/小时/分钟等的值
+        ///5.类型转换重载:类与类的转换
+        //Teacher fg = (Teacher)new student();
+        //public static explicit operator Teacher(Student student)
+        //{
+        //    return new Teacher();
+        //}
 
 
 

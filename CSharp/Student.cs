@@ -6,7 +6,7 @@
 
 
 
-
+        Teacher fg = (Teacher)new Student();
 
 
 
@@ -19,7 +19,7 @@
         //    student = new Student();   //增加了一行代码
         //    student.age++;
         //}
-        
+
 
 
 

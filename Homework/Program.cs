@@ -5,13 +5,56 @@ namespace Homework
 {
     class Program
     {
-      
+        
 
+        static void grow(Student student)
+        {
+            student.age++;
+        }
+        //static void grow(int age)
+        //{
+        //    age++;
+
+        //}
 
 
         static void Main(string[] args)
+        
+        
+        
         {
-            
+            TimeSpan span = DateTime.Now - new DateTime(2020, 4, 24);
+            Console.WriteLine(span.Days);//365
+            Console.WriteLine(span.TotalDays);//365.893690837
+            Console.WriteLine(span.Hours);//21
+            Console.WriteLine(span.TotalHours);//8781.4485689
+
+
+
+            Console.WriteLine(DateTime.Now.Hour);
+            int i = 10;
+            //i++;
+            //Console.WriteLine(i++);
+            Console.WriteLine(++i);
+            DateTime MimicNow = new DateTime(2021,4,24,14,19,50);
+            Console.WriteLine(MimicNow);
+            Console.WriteLine(1 | 0);
+            Console.WriteLine(3| 5);
+            Console.WriteLine( int.Parse("23")  ); 
+            //int i = 18;
+            //int j = i;
+            //j = 20;
+            //Console.WriteLine(i);
+
+            //int age = 18;
+            //grow( age);
+            //Console.WriteLine(age);
+
+            Student qh = new Student();
+            qh.age = 20;
+            grow(qh);
+            Console.WriteLine(qh.age);
+
             //Content zt = new Article ("编程开发语言");
             //Content sug = new Suggest("反馈");
             //函数作业：方法基础、声明、调用、返回值；第二题的调用
@@ -88,17 +131,17 @@ namespace Homework
             // 如果发布Article，需要消耗一个帮帮币
             // 如果发布Problem，需要消耗其设置悬赏数量的帮帮币
             // 如果发布Suggest，不需要消耗帮帮币
-            Content content = new Article();
-            content.change();
-            content = new Problem();
-            content.change();
-            content = new Suggest();
-            content.change();
+            //Content content = new Article();
+            //content.change();
+            //content = new Problem();
+            //content.change();
+            //content = new Suggest();
+            //content.change();
 
 
 
 
-            
+
 
 
 
@@ -518,7 +561,7 @@ namespace Homework
 
 
 
-
+    
 
 
 
