@@ -5,42 +5,53 @@ namespace Homework
 {
     class Program
     {
-        
 
-        static void grow(Student student)
+
+        internal struct People
         {
-            student.age++;
+            public int _number;
+            public People(int number)
+            {
+                _number = number;//必须给_number赋值，不然会报错；
+            }
         }
-        //static void grow(int age)
-        //{
-        //    age++;
 
-        //}
 
 
         static void Main(string[] args)
-        
-        
-        
         {
-            TimeSpan span = DateTime.Now - new DateTime(2020, 4, 24);
-            Console.WriteLine(span.Days);//365
-            Console.WriteLine(span.TotalDays);//365.893690837
-            Console.WriteLine(span.Hours);//21
-            Console.WriteLine(span.TotalHours);//8781.4485689
+            // 用代码证明struct定义的类型是值类型
+            People people/*=new People()*/;
+            people._number = 10; /*此处设断点，展开会发现people被声明时已经有_number了*//*将struct改成class会直接报错*/
+            Console.WriteLine(people._number);//第二行注释掉会报错-未赋值;需要new一下，跑结果为默认值
+
+            //日/周/月的调用;
+            //Console.WriteLine(time.GetDate(new DateTime(2021, 4, 24), 7));
+            //Console.WriteLine(time.GetDate(new DateTime(2021, 2,29 ), 7));//不存在的日期会发生运行时错误;
+
+            //按周排列显示每周的起始日期的调用;
+            time.GetWeeks(time.GetFirstWeek(2019));
 
 
 
-            Console.WriteLine(DateTime.Now.Hour);
-            int i = 10;
-            //i++;
-            //Console.WriteLine(i++);
-            Console.WriteLine(++i);
-            DateTime MimicNow = new DateTime(2021,4,24,14,19,50);
-            Console.WriteLine(MimicNow);
-            Console.WriteLine(1 | 0);
-            Console.WriteLine(3| 5);
-            Console.WriteLine( int.Parse("23")  ); 
+            //TimeSpan span = DateTime.Now - new DateTime(2020, 4, 24);
+            //Console.WriteLine(span.Days);//365
+            //Console.WriteLine(span.TotalDays);//365.893690837
+            //Console.WriteLine(span.Hours);//21
+            //Console.WriteLine(span.TotalHours);//8781.4485689
+
+
+
+            //Console.WriteLine(DateTime.Now.Hour);
+            //int i = 10;
+            ////i++;
+            ////Console.WriteLine(i++);
+            //Console.WriteLine(++i);
+            //DateTime MimicNow = new DateTime(2021,4,24,14,19,50);
+            //Console.WriteLine(MimicNow);
+            //Console.WriteLine(1 | 0);
+            //Console.WriteLine(3| 5);
+            //Console.WriteLine( int.Parse("23")  ); 
             //int i = 18;
             //int j = i;
             //j = 20;
@@ -50,10 +61,10 @@ namespace Homework
             //grow( age);
             //Console.WriteLine(age);
 
-            Student qh = new Student();
-            qh.age = 20;
-            grow(qh);
-            Console.WriteLine(qh.age);
+            //Student qh = new Student();
+            //qh.age = 20;
+            //grow(qh);
+            //Console.WriteLine(qh.age);
 
             //Content zt = new Article ("编程开发语言");
             //Content sug = new Suggest("反馈");
