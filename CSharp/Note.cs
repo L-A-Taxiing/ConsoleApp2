@@ -453,16 +453,69 @@ namespace CSharp
         ///用Days/Hours/Minutes等取出的是Timespan中天/小时/分钟等部分的值
         ///用TotalDays/TotalHours/TotalMinutes等取出的才是Timespan代表的时间间隔换算成天/小时/分钟等的值
         ///5.类型转换重载:类与类的转换
-        //Teacher fg = (Teacher)new student();
-        //public static explicit operator Teacher(Student student)
-        //{
-        //    return new Teacher();
-        //}
-
-
-
-
-
+        ///Teacher fg = (Teacher)new student();
+        ///public static explicit operator Teacher(Student student)
+        ///{
+        ///    return new Teacher();
+        ///}
+        ///面向对象  ||  十(枚举和位运算)
+        ///1.枚举（Enum）  
+        ///成员又被称之为枚举值，枚举值不能有任何修饰符，只能包含两部分：名称+底层数据(默认为int类型，可以不写，不写默认从0开始，依次往下加1)
+        ///例：
+        ///enum Grade : short   //默认是int类型，现在是short类型
+        ///{
+        ///   Excellent;
+        ///   Passed;
+        ///   Failed=8;
+        ///}
+        ///枚举可以像类型一样使用：
+        ////声明Grade属性
+        //public Grade grade { get; set; }
+        ////作为方法的返回值
+        //static Grade GetBy(int score) { }
+        ////作为方法的参数
+        //static int GetBy(Grade score) { }
+        ///它的值直接枚举名点（.）出即可: Grade grade = Grade.Excellent;
+        ///可以在枚举和整型之间进行转换
+        ///Console.WriteLine((short) Grade.Excellent);
+        ///  int类型也行（可以和short转换）
+        ///  Console.WriteLine((int) Grade.Passed);
+        ///  Console.WriteLine((int) Grade.Failed);
+        ///  Console.WriteLine((Grade)0);    //Excellent
+        ///  Console.WriteLine((Grade)16);   //无法转换时也不会报错，直接输出16
+        ///0所对应的枚举值，或者如果找不到0所对应的枚举值，就直接为0
+        ///2.switch...case
+        ///Grade grade = Grade.Excellent;
+        ///    switch (grade)
+        ///    {
+        ///        case Grade.Excellent:
+        ///            Console.WriteLine("发10个红包");
+        ///            break;
+        ///        case Grade.Passed:
+        ///            Console.WriteLine("发5个红包");
+        ///            break;
+        ///        case Grade.Failed:
+        ///            Console.WriteLine("没有红包了");
+        ///            break;
+        ///        default:
+        ///            Console.WriteLine("怎么回事？");
+        ///            break;
+        ///    }
+        ///注意:
+        ///能进行“等值”运算，也就是说只能判断switch()中的值是否等于case后面的值，不能进行大于小于等其他运算
+        ///defau兜底，不能忘记break，因为:
+        ///如果两个case之间没有break只有业务逻辑语句，就会报编译错误；如果两（多）个case之间没有任何其他语句，这些case条件构成一种“或”的关系
+        ///3.位运算
+        /// &：读作“位与”，只要一个0才为0
+        /// |：读作“位或”，只要一个1就为1
+        /// ^：读作“异或”，两个值不同才为1
+        ///如果所有参与运算成员的数值都是：
+        ///2的整数次方，比如1、2、4、8、16……，或者
+        ///2的整数次方数之和，比如3（=1+2）、6（=2+4）、7（=1+2+4）……
+        ///他们就会有如下规律：
+        ///位或（|）相当于“加”，比如：2|4=6，2|4|1=7……，以下我们将位或（相加）的结果简称为“位或结果”，参与位或运算的成员简称为“成员”，未参与运算的称之为“非成员”
+        ///将位或结果和任一成员进行异或（^）运算，其效果就相当于“减”，比如：6^2=4，7^4=3，
+        ///将位或结果和任一成员进行位与（&）运算，其结果就等于该成员，比如：6&2=2，7&4=4；且与任何非成进行位与（&）运算，其结果不会等于该非成员，比如：6&1=0，7&8=0
 
 
 

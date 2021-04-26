@@ -11,7 +11,7 @@ namespace Homework
         //public static bool Register(){ }
         //public static bool Login() { }
 
-        public User(string name, string password)    //每一个User对象一定有name和password赋值;
+        public User(string name, string password) //每一个User对象一定有name和password赋值;
         {
             _name = name;
             _password = password;
@@ -53,6 +53,9 @@ namespace Homework
         public int HelpPoint { get; set; }
 
         public int HelpBean { get; set; }
+
+        public TokenManager Tokens { get; set; }
+        //User类中添加一个Tokens属性，类型为TokenManager
 
     }
 }

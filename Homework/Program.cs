@@ -3,23 +3,47 @@ using System.Linq;
 
 namespace Homework
 {
+    //enum Role
+    //{
+    //    Student = 1,
+    //    TeacherAssist = 2,
+    //    TeamLeader = 4,
+    //    DormitoryHead = 8,
+    //}
+    internal struct People
+    {
+        public int _number;
+        public People(int number)
+        {
+            _number = number;//必须给_number赋值，不然会报错；
+        }
+    }
+
+
     class Program
     {
-
-
-        internal struct People
-        {
-            public int _number;
-            public People(int number)
-            {
-                _number = number;//必须给_number赋值，不然会报错；
-            }
-        }
-
-
-
         static void Main(string[] args)
         {
+            //枚举调用
+            User qh = new User("", "");
+            qh.Tokens = new TokenManager();//没有这一行会报错;返回为null值
+            qh.Tokens.Add(Token.Admin);
+            qh.Tokens.Remove(Token.Newbie);
+            qh.Tokens.Has(Token.Registered);
+            
+
+
+            //Student tlzz = new Student
+            //{
+            //    Roles = (int)Role.Student | (int)Role.TeamLeader
+            //};
+            //tlzz.Roles = tlzz.Roles | (int)Role.DormitoryHead;
+            //tlzz.Roles = tlzz.Roles ^ (int)Role.Student;
+            //Console.WriteLine((tlzz.Roles & (int)Role.TeamLeader) == (int)Role.TeamLeader);
+
+
+
+
             // 用代码证明struct定义的类型是值类型
             People people/*=new People()*/;
             people._number = 10; /*此处设断点，展开会发现people被声明时已经有_number了*//*将struct改成class会直接报错*/
@@ -30,9 +54,9 @@ namespace Homework
             //Console.WriteLine(time.GetDate(new DateTime(2021, 2,29 ), 7));//不存在的日期会发生运行时错误;
 
             //按周排列显示每周的起始日期的调用;
-            time.GetWeeks(time.GetFirstWeek(2019));
+            //time.GetWeeks(time.GetFirstWeek(2019));
 
-
+            //Console.WriteLine(DateTime.Now.DayOfWeek);
 
             //TimeSpan span = DateTime.Now - new DateTime(2020, 4, 24);
             //Console.WriteLine(span.Days);//365
@@ -153,41 +177,10 @@ namespace Homework
 
 
 
-
-
-
-
         }
 
 
-
-        public class Repoistory
-        {
-            const int VERSION = 1;
-            static readonly string connection;
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        static void homework()
+            static void Homework()
         {
             //1.分别用for循环和while循环输出：1,2,3,4,5 和 1,3,5,7,9
             //    int[] names = { 1, 2, 3, 4, 5 };
@@ -331,229 +324,224 @@ namespace Homework
             }
         }
 
-        static int FindNum(int[] ids, int target)
-        {
-            //int[] ids = { 2, 7, 8, 9, 21, 43, 95 };
-            int left = 0, right = ids.Length - 1;
-            int result = -1;
-            //target = 7;
-            while (left <= right)
+            static int FindNum(int[] ids, int target)
             {
-                int middle = left + (right - left) / 2;
-                if (target == ids[middle])
+                //int[] ids = { 2, 7, 8, 9, 21, 43, 95 };
+                int left = 0, right = ids.Length - 1;
+                int result = -1;
+                //target = 7;
+                while (left <= right)
                 {
-                    result = middle;
-                    break;
+                    int middle = left + (right - left) / 2;
+                    if (target == ids[middle])
+                    {
+                        result = middle;
+                        break;
+                    }
+
+                    else if (target > ids[middle])
+                    {
+                        left = middle + 1;
+                    }
+                    else
+                    {
+                        right = middle - 1;
+                    }
                 }
-
-                else if (target > ids[middle])
+                if (result != -1)
                 {
-                    left = middle + 1;
-                }
-                else
-                {
-                    right = middle - 1;
-                }
-            }
-            if (result != -1)
-            {
-                return (result);
-            }
-            else
-            {
-                return -1;
-            }
-        }
-
-        static double GetAverage(double[] grade)
-        {
-            //2.计算得到源栈同学的平均成绩(精确到两位小数)
-
-            double sum = 0;
-            for (int i = 0; i < grade.Length; i++)
-            {
-                sum += grade[i];
-            }
-            double average = sum / grade.Length;
-            return average;
-        }
-
-        static void GuessMe()
-        {
-            //3.完成“猜数字”游戏，方法名GuessMe()：
-            //随机生成一个大于0小于1000的整数
-            //用户输入一个猜测值，系统进行判断，告知用户猜测的数是“大了”，还是“小了”
-            //没猜中可以继续猜，但最多不能超过10次
-            //如果5次之内猜中，输出：你真牛逼！
-            //如果8次之内猜中，输出：不错嘛！
-            //10次还没猜中，输出：(～￣(OO)￣)ブ
-
-            //Random nums = new Random();
-            //int random = nums.Next(1, 1000);
-            //Console.WriteLine("随机数是:"+random);
-            //Console.WriteLine("请输入一个不超过1000的自然数");
-            //for (int i = 1; i <= 10; i++)
-            //{
-
-            //    int Guessnum = Convert.ToInt32(Console.ReadLine());
-            //    if (Guessnum != random)
-            //    {
-            //        if (i == 10)
-            //        {
-            //            Console.WriteLine("(～￣(OO)￣)ブ");
-            //            return;
-            //        }
-            //        if (Guessnum > random)
-            //        {
-            //            Console.WriteLine($"太大了哟！(还剩{10 - i}次)");
-            //        }
-            //        else
-            //        {
-            //            Console.WriteLine($"太小了呢!（还剩{10 - i}次）");
-            //        }
-
-            //    }
-            //    else
-            //    {
-            //        if (i <= 5)
-            //        {
-            //            Console.WriteLine("你真牛逼！");
-            //            Console.WriteLine($"恭喜你，答对了！只用了{i}次呢，棒棒哒！");
-            //            return;
-            //        }
-            //        else if (i < 8)
-            //        {
-            //            Console.WriteLine("不错嘛！");
-            //            Console.WriteLine($"恭喜你，答对了！只用了{i}次呢，棒棒哒！");
-            //            return;
-
-            //        }
-            //        else
-            //        {
-            //            Console.WriteLine($"恭喜你，答对了！只用了{i}次呢，棒棒哒！");
-            //            return;
-            //        }
-            //    }
-
-            //}   
-        }
-
-        static void Swap(ref int a, ref int b)
-        {
-            int temp = a;
-            a = b;
-            b = temp;
-        }
-
-        static bool LogOn(string username, string password,out string reason)
-        {
-            reason = "用户名或者密码错误";
-            if (username=="姜鹏"&&password=="0000")
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        static int[] GetArray(int min=1,int gap=5,int length=10)
-        {
-            Random random = new Random();
-            int[] array = new int[length];
-            for (int i = 0; i <array.Length; i++)
-            {
-                if (i==0)
-                {
-                    array[i] = min;
+                    return (result);
                 }
                 else
                 {
-                    array[i] = array[i-1] + random.Next(gap + 1);
+                    return -1;
                 }
             }
-            return array;
-        }
 
-        static int BinarySeek(int[] numbers, int target) 
-        {
-            int left = 0, right = numbers.Length - 1;
-            int result=-1;
-            while (left<=right)
+            static double GetAverage(double[] grade)
             {
-                int middle = left + (right - left) / 2;
-                if (target==numbers[middle])
-                {
-                    result = middle;
-                    break;
-                }
-                else if (target>numbers[middle])
-                {
+                //2.计算得到源栈同学的平均成绩(精确到两位小数)
 
-                    left = middle + 1;
+                double sum = 0;
+                for (int i = 0; i < grade.Length; i++)
+                {
+                    sum += grade[i];
+                }
+                double average = sum / grade.Length;
+                return average;
+            }
+
+            static void GuessMe()
+            {
+                //3.完成“猜数字”游戏，方法名GuessMe()：
+                //随机生成一个大于0小于1000的整数
+                //用户输入一个猜测值，系统进行判断，告知用户猜测的数是“大了”，还是“小了”
+                //没猜中可以继续猜，但最多不能超过10次
+                //如果5次之内猜中，输出：你真牛逼！
+                //如果8次之内猜中，输出：不错嘛！
+                //10次还没猜中，输出：(～￣(OO)￣)ブ
+
+                //Random nums = new Random();
+                //int random = nums.Next(1, 1000);
+                //Console.WriteLine("随机数是:"+random);
+                //Console.WriteLine("请输入一个不超过1000的自然数");
+                //for (int i = 1; i <= 10; i++)
+                //{
+
+                //    int Guessnum = Convert.ToInt32(Console.ReadLine());
+                //    if (Guessnum != random)
+                //    {
+                //        if (i == 10)
+                //        {
+                //            Console.WriteLine("(～￣(OO)￣)ブ");
+                //            return;
+                //        }
+                //        if (Guessnum > random)
+                //        {
+                //            Console.WriteLine($"太大了哟！(还剩{10 - i}次)");
+                //        }
+                //        else
+                //        {
+                //            Console.WriteLine($"太小了呢!（还剩{10 - i}次）");
+                //        }
+
+                //    }
+                //    else
+                //    {
+                //        if (i <= 5)
+                //        {
+                //            Console.WriteLine("你真牛逼！");
+                //            Console.WriteLine($"恭喜你，答对了！只用了{i}次呢，棒棒哒！");
+                //            return;
+                //        }
+                //        else if (i < 8)
+                //        {
+                //            Console.WriteLine("不错嘛！");
+                //            Console.WriteLine($"恭喜你，答对了！只用了{i}次呢，棒棒哒！");
+                //            return;
+
+                //        }
+                //        else
+                //        {
+                //            Console.WriteLine($"恭喜你，答对了！只用了{i}次呢，棒棒哒！");
+                //            return;
+                //        }
+                //    }
+
+                //}   
+            }
+
+            static void Swap(ref int a, ref int b)
+            {
+                int temp = a;
+                a = b;
+                b = temp;
+            }
+
+            static bool LogOn(string username, string password, out string reason)
+            {
+                reason = "用户名或者密码错误";
+                if (username == "姜鹏" && password == "0000")
+                {
+                    return true;
                 }
                 else
                 {
-                    right = middle -1;
+                    return false;
                 }
             }
-            if (result!=-1)
+
+            static int[] GetArray(int min = 1, int gap = 5, int length = 10)
             {
-                return result;
+                Random random = new Random();
+                int[] array = new int[length];
+                for (int i = 0; i < array.Length; i++)
+                {
+                    if (i == 0)
+                    {
+                        array[i] = min;
+                    }
+                    else
+                    {
+                        array[i] = array[i - 1] + random.Next(gap + 1);
+                    }
+                }
+                return array;
             }
-            else
+
+            static int BinarySeek(int[] numbers, int target)
             {
-                return -1;
+                int left = 0, right = numbers.Length - 1;
+                int result = -1;
+                while (left <= right)
+                {
+                    int middle = left + (right - left) / 2;
+                    if (target == numbers[middle])
+                    {
+                        result = middle;
+                        break;
+                    }
+                    else if (target > numbers[middle])
+                    {
+
+                        left = middle + 1;
+                    }
+                    else
+                    {
+                        right = middle - 1;
+                    }
+                }
+                if (result != -1)
+                {
+                    return result;
+                }
+                else
+                {
+                    return -1;
+                }
+
+                //static void quickSort(int[] array, int low, int high)
+                //{
+                //    if (low >= high)
+                //    {
+                //        return;
+                //    }
+                //    int i = low, j = high, index = array[i];
+                //    while (i < j)
+                //    {
+                //        while (i < j && array[j] >= index)
+                //        { 
+                //            j--;
+                //        }
+                //        if (i < j)
+                //        {
+                //            array[i++] = array[j]; 
+                //        }
+                //        while (i < j && array[i] < index)
+                //        {
+                //            i++;
+                //        }
+                //        if (i < j)
+                //        {
+                //            array[j--] = array[i]; 
+                //        }
+                //    }
+                //    array[i] = index; 
+                //    quickSort(array, low, i - 1); 
+                //    quickSort(array, i + 1, high); 
+                //}
+
+
+
+
+
             }
 
+        
 
 
 
 
-
-
-
-
-
-
-
-
-
-        }
-
-        //static void quickSort(int[] array, int low, int high)
-        //{
-        //    if (low >= high)
-        //    {
-        //        return;
-        //    }
-        //    int i = low, j = high, index = array[i];
-        //    while (i < j)
-        //    {
-        //        while (i < j && array[j] >= index)
-        //        { 
-        //            j--;
-        //        }
-        //        if (i < j)
-        //        {
-        //            array[i++] = array[j]; 
-        //        }
-        //        while (i < j && array[i] < index)
-        //        {
-        //            i++;
-        //        }
-        //        if (i < j)
-        //        {
-        //            array[j--] = array[i]; 
-        //        }
-        //    }
-        //    array[i] = index; 
-        //    quickSort(array, low, i - 1); 
-        //    quickSort(array, i + 1, high); 
-        //}
-
-       
 
 
 
@@ -562,24 +550,19 @@ namespace Homework
     }
 
 
-  
-
-
-
- 
-
-
-
-
-
-    
-
-
+    public class Repoistory
+    {
+        const int VERSION = 1;
+        static readonly string connection;
+    }
 
 
 
 
 }
+
+
+
 
 
 
