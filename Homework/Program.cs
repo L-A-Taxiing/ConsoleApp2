@@ -19,19 +19,80 @@ namespace Homework
         }
     }
 
-
     class Program
     {
         static void Main(string[] args)
         {
-            //枚举调用
-            User qh = new User("", "");
-            qh.Tokens = new TokenManager();//没有这一行会报错;返回为null值
-            qh.Tokens.Add(Token.Admin);
-            qh.Tokens.Remove(Token.Newbie);
-            qh.Tokens.Has(Token.Registered);
+
+            //在https://source.dot.net/中找到 Console.WriteLine(new Student()); 输出Student类名的源代码
+            //Console.WriteLine(new Student());
+        //    [MethodImplAttribute(MethodImplOptions.NoInlining)]
+        //    public static void WriteLine(object? value)
+        //    {
+        //        Out.WriteLine(value);
+        //    }
+        //     public virtual void WriteLine(object? value)
+        //{
+        //    if (value == null)
+        //    {
+        //        WriteLine();
+        //    }
+        //    else
+        //    {
+        //        // Call WriteLine(value.ToString), not Write(Object), WriteLine().
+        //        // This makes calls to WriteLine(Object) atomic.
+        //        if (value is IFormattable f)
+        //        {
+        //            WriteLine(f.ToString(null, FormatProvider));
+        //        }
+        //        else
+        //        {
+        //            WriteLine(value.ToString());
+        //        }
+        //    }
+        //}
+        //public virtual string? ToString()
+        //{
+        //    return GetType().ToString();
+        //}
+        //public override string ToString() => "Type: " + Name;
+
+
+
+        //思考dynamic和var的区别，并用代码予以演示
+        dynamic fg = "665";               //编译时不知道类型;
+            /*Console.WriteLine(fg-665);*/    //编译时不报错，绕过了类型检查
+            Console.WriteLine(fg.GetType());  //注释掉第二行，输出时知道是string 类型;
+
+            var fd = 666;                   //编译时就已经确定类型;
+            Console.WriteLine(fd.GetType());//输出也是int类型
+
+            //构造一个能装任何数据的数组，并完成数据的读写
+            //object[] arraylist= {1,2,"叶子",98.7,true };
+            //for (int i = 0; i < arraylist.Length; i++)
+            //{
+            //    Console.WriteLine(arraylist[i]);
+            //}
+
+
+
             
 
+
+
+
+
+
+
+
+
+
+            //枚举调用
+            //User qh = new User("", "");
+            //qh.Tokens = new TokenManager();       //没有这一行会报错;返回为null值
+            //qh.Tokens.Add(Token.Admin);
+            //qh.Tokens.Remove(Token.Newbie);
+            //qh.Tokens.Has(Token.Registered);
 
             //Student tlzz = new Student
             //{
@@ -45,9 +106,9 @@ namespace Homework
 
 
             // 用代码证明struct定义的类型是值类型
-            People people/*=new People()*/;
-            people._number = 10; /*此处设断点，展开会发现people被声明时已经有_number了*//*将struct改成class会直接报错*/
-            Console.WriteLine(people._number);//第二行注释掉会报错-未赋值;需要new一下，跑结果为默认值
+            //People people/*=new People()*/;
+            //people._number = 10; /*此处设断点，展开会发现people被声明时已经有_number了*//*将struct改成class会直接报错*/
+            //Console.WriteLine(people._number);//第二行注释掉会报错-未赋值;需要new一下，跑结果为默认值
 
             //日/周/月的调用;
             //Console.WriteLine(time.GetDate(new DateTime(2021, 4, 24), 7));

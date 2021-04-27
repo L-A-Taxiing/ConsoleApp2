@@ -6,13 +6,14 @@ namespace Homework
 {
     class MimicStack
     {
-        static int[] database;
+        //使用object改造数据结构栈（MimicStack），并在出栈时获得出栈元素
+        public object[] database;
         static int top = 0;
         public MimicStack(int length)
         {
-            database =new int[length];
+            database =new object[length];
         }    
-        public static void Push(int data)
+        public void Push(object data)
         {
             if (top<=database.Length-1)
             {
@@ -21,20 +22,19 @@ namespace Homework
             }
             else
             {
-                Console.WriteLine("栈溢出");
+                Console.WriteLine("栈溢出"); 
             }
         }
-        public static int pop() 
+        public void Pop(object data) 
         {
             if (top!=0)
             {
                 top--;
-                return database[top];
+                Console.WriteLine(database[top]); 
             }
             else
             {
-                Console.WriteLine("栈已空");
-                return -1;
+                Console.WriteLine("栈已空"); 
             }
         }
     }
