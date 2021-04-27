@@ -547,9 +547,57 @@ namespace CSharp
         ///4.动态类型（dynamic）
         ///dynamic完全和object完全一致，任何类型对象都可以使用dynamic标记。使用dynamic标记的变量可以绕过C#的编译时（注意：仅仅是编译时）的类型检查;
         ///dynamic并不意味这变量类型可变，通过上述d.GetType()可以清楚的看到d的类型.
-
-
-
+        ///面向对象  ||  十二(反射和特性)
+        ///1.反射（Reflection）
+        ///.NET的反射只能应用于.NET程序。所以说，反射是一种正常的应用技术。如果.NET的反射可以引用于Java程序，就属于非正常技术了；
+        ///其次，反射发生是在.NET程序运行时(不是编译时)
+        ///2.元数据(Metadata)
+        ///当它把源代码编译成.dll文件的时候，它还同时生成了程序集的二进制描述性信息：元数据（metadata），并直接存放在.dll文件中;
+        ///程序集的所定义和引用的有成员信息都包括在内，包括程序集信息、类名、类成员和类的继承实现等等;
+        ///反射就是依靠读取metadata实现其功能的
+        ///3.MSIL(微软中间语言)
+        ///metadata中没有方法的具体实现。换言之，metadata里记录了某个类中有某个方法，方法名、参数、返回值啥的它都知道，
+        ///但它不知道这个方法具体是如何运行的。记录方法如何运行的代码以MSIL的格式存放在.dll文件中
+        ///4.ILDASM(反编译工具)可以阅读.dll文件;
+        ///5.反射不能直接读取方法中的源代码，也不能读取经过编译过后的以MSIL格式的代码，
+        ///唯一可以读取的是.dll文件中的方法对应的字节流（二进制文件内容）,反射就是利用这些字节流，来进行方法调用的.比如：
+        ///获取learn()方法
+        ///typeInfo.GetMethod("learn")
+        ///        //以对象zjq调用该方法，传入参数csharp
+        ///        .Invoke(zjq, new object[] { "csharp" });
+        ///6.特性(Attribute)
+        ///特性可以被使用于任何目标元素，包括：类、类成员、enum、delegate、assembly……但是，
+        ///具体某个特性，应被使用在那种目标元素，是由声明特性时的AttributeUsage指定的；
+        ///一个目标元素可以被附着多个Attribute；
+        ///可以像方法一样加圆括号，里面接受构造函数参数、给属性赋值等；
+        ///Flags本质上是一个继承了Attribute的类:
+        ///[AttributeUsage(AttributeTargets.Enum, Inherited = false)]
+        ///public class FlagsAttribute : Attribute
+        ///特性的声明——定义一个特殊类的的行为:
+        ///声明特性（类）的时候，我们通常以Attribute为后缀，但在使用的时候可以省略。
+        ///另外注意，在FlagsAttribute上也使用了特性AttributeUsage，和Flags不同的是，AttributeUsage后面跟了圆括号，其中：
+        ///AttributeTargets.Enum指定FlagsAttribute只能使用在枚举（Enum）上
+        ///Inherited = false说明该特性无法被子类继承
+        ///再F12转到AttributeUsage的定义：
+        ///AttributeTargets.Enum是其构造函数的参数;
+        ///Inherited是其属性.
+        ///Flags:
+        ///[Flags]
+        ///enum Role                       //Enum重写了Object的ToString()方法，在其中判断枚举上是否标记了FlagsAttribute：
+        ///{                               //if (!enumInfo.HasFlagsAttribute){
+        ///    Student = 1,                // return GetEnumName(enumInfo, value);}
+        ///    TeacherAssist = 2,
+        ///    TeamLeader = 4,
+        ///    DormitoryHead = 8
+        ///}
+        ///Console.WriteLine(Role.Student | Role.TeacherAssist);
+        ///没有Flag，输出：3
+        ///有Flag，  输出：Student, TeacherAssist
+        ///注意：Flags仅在ToString()时输出“更有意义”的字符串，不保证枚举值都是2的整数次方;
+        ///      如果枚举值不是2的整数次方，会出现一些“预期以外”的结果.
+        ///Obsolete:常用于需要更改的老旧代码，相较于直接删除或更改，这种方式给了调用者详细的通知，更加的友好，不至于让调用者莫名其妙.
+        ///默认情况下标记为过时的元素还可以使用，但是会在编译时给出警告;
+        ///但如果使用Obsolete的有参构造函数，可以指定该元素无法使用。强行使用该元素会导致编译错误;
 
 
 

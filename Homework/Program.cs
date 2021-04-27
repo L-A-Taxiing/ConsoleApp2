@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Reflection;
 
 namespace Homework
 {
@@ -18,49 +19,89 @@ namespace Homework
             _number = number;//必须给_number赋值，不然会报错；
         }
     }
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]//指定只能使用于类和方法;
+    internal class OnlineAttribute : Attribute
+    {
+        public OnlineAttribute()
+        {
 
+        }
+        public OnlineAttribute(int version)
+        {
+            Version = version;
+        }
+        public int Version{ get; set; }
+    }
+
+   [Online(Version=3)]
+    internal class animals 
+    {
+       [Online]
+       internal void learn (){ }
+       public string name{ get;set;}
+    
+    }
+
+    
+    //在Content之外封装一个方法，可以修改Content的CreateTime和PublishTime
+    //自定义一个特性HelpMoneyChanged（帮帮币变化）：
+    //该特性只能用于方法
+    //有一个构造函数，可以接受一个int类型的参数amount，表示帮帮币变化的数量
+    //有一个string类型的Message属性，记录帮帮币变化的原因
+    //将HelpMoneyChanged应用于Publish()方法
+    //用反射获取Publish()上的特性实例，输出其中包含的信息
     class Program
     {
         static void Main(string[] args)
         {
+            Student jp = new Student();
+            int weight =(int)jp.GetType().GetField("_weight",BindingFlags.NonPublic|BindingFlags.Instance).GetValue(jp);
+            Console.WriteLine(weight);//反射拿私有字段的值
+
+            Attribute attribute = OnlineAttribute.GetCustomAttribute(typeof(animals), typeof(OnlineAttribute));
+            Console.WriteLine(((OnlineAttribute)attribute).Version);//将基类的Attribute对象强转为子类
+
+            Article aaa = new Article("people", DateTime.Now);
+            DateTime bbb = aaa.PublishTime;
+            Console.WriteLine(bbb);
 
             //在https://source.dot.net/中找到 Console.WriteLine(new Student()); 输出Student类名的源代码
             //Console.WriteLine(new Student());
-        //    [MethodImplAttribute(MethodImplOptions.NoInlining)]
-        //    public static void WriteLine(object? value)
-        //    {
-        //        Out.WriteLine(value);
-        //    }
-        //     public virtual void WriteLine(object? value)
-        //{
-        //    if (value == null)
-        //    {
-        //        WriteLine();
-        //    }
-        //    else
-        //    {
-        //        // Call WriteLine(value.ToString), not Write(Object), WriteLine().
-        //        // This makes calls to WriteLine(Object) atomic.
-        //        if (value is IFormattable f)
-        //        {
-        //            WriteLine(f.ToString(null, FormatProvider));
-        //        }
-        //        else
-        //        {
-        //            WriteLine(value.ToString());
-        //        }
-        //    }
-        //}
-        //public virtual string? ToString()
-        //{
-        //    return GetType().ToString();
-        //}
-        //public override string ToString() => "Type: " + Name;
+            //    [MethodImplAttribute(MethodImplOptions.NoInlining)]
+            //    public static void WriteLine(object? value)
+            //    {
+            //        Out.WriteLine(value);
+            //    }
+            //     public virtual void WriteLine(object? value)
+            //{
+            //    if (value == null)
+            //    {
+            //        WriteLine();
+            //    }
+            //    else
+            //    {
+            //        // Call WriteLine(value.ToString), not Write(Object), WriteLine().
+            //        // This makes calls to WriteLine(Object) atomic.
+            //        if (value is IFormattable f)
+            //        {
+            //            WriteLine(f.ToString(null, FormatProvider));
+            //        }
+            //        else
+            //        {
+            //            WriteLine(value.ToString());
+            //        }
+            //    }
+            //}
+            //public virtual string? ToString()
+            //{
+            //    return GetType().ToString();
+            //}
+            //public override string ToString() => "Type: " + Name;
 
 
 
-        //思考dynamic和var的区别，并用代码予以演示
-        dynamic fg = "665";               //编译时不知道类型;
+            //思考dynamic和var的区别，并用代码予以演示
+            dynamic fg = "665";               //编译时不知道类型;
             /*Console.WriteLine(fg-665);*/    //编译时不报错，绕过了类型检查
             Console.WriteLine(fg.GetType());  //注释掉第二行，输出时知道是string 类型;
 
