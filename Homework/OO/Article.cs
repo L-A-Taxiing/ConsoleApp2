@@ -9,7 +9,7 @@ namespace Homework
         //public User Author { get; set; }
 
         public Article(string _kind,DateTime CreateTime)
-            : base(_kind,CreateTime)
+            : base(_kind)
         {
 
         }
@@ -19,10 +19,7 @@ namespace Homework
             Console.WriteLine("需要消耗一个帮帮币");
         }
 
-        public Article()
-        {
-
-        }
+        
 
         public int Agreechange { get; set; }
         public int Disagreechange { get; set; }

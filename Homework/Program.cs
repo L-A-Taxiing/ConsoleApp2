@@ -42,28 +42,65 @@ namespace Homework
     
     }
 
+
     
-    //在Content之外封装一个方法，可以修改Content的CreateTime和PublishTime
-    //自定义一个特性HelpMoneyChanged（帮帮币变化）：
-    //该特性只能用于方法
-    //有一个构造函数，可以接受一个int类型的参数amount，表示帮帮币变化的数量
-    //有一个string类型的Message属性，记录帮帮币变化的原因
-    //将HelpMoneyChanged应用于Publish()方法
-    //用反射获取Publish()上的特性实例，输出其中包含的信息
+    
+   
+
+
+
     class Program
     {
+        //在Content之外封装一个方法，可以修改Content的CreateTime和PublishTime
+        public static void SetCreateTime(Content content, DateTime datetime)
+        {
+            typeof(Content).GetProperty("CreateTime",
+            BindingFlags.Public | BindingFlags.Instance).SetValue(content, datetime);
+        }
+
+        public static void SetPublishTime(Content content, DateTime datetime)
+        {
+            typeof(Content).GetProperty("CreateTime",
+            BindingFlags.Public | BindingFlags.Instance).SetValue(content, datetime);
+        }
+
+        
+
         static void Main(string[] args)
         {
-            Student jp = new Student();
-            int weight =(int)jp.GetType().GetField("_weight",BindingFlags.NonPublic|BindingFlags.Instance).GetValue(jp);
-            Console.WriteLine(weight);//反射拿私有字段的值
+            //在Content之外封装一个方法，可以修改Content的CreateTime和PublishTime
+            //Content paper = new Content("阿Q正传");
+            //DateTime datetime = new DateTime(2020, 1, 1);
 
-            Attribute attribute = OnlineAttribute.GetCustomAttribute(typeof(animals), typeof(OnlineAttribute));
-            Console.WriteLine(((OnlineAttribute)attribute).Version);//将基类的Attribute对象强转为子类
+            //SetCreateTime (paper, datetime);
+            //SetPublishTime(paper, datetime);
 
-            Article aaa = new Article("people", DateTime.Now);
-            DateTime bbb = aaa.PublishTime;
-            Console.WriteLine(bbb);
+            //将HelpMoneyChanged应用于Publish()方法,用反射获取Publish()上的特性实例，输出其中包含的信息
+            Attribute attribute = HelpMoneyChangedAttribute.GetCustomAttribute
+            (typeof(Problem).GetMethod("Publish"), typeof(HelpMoneyChangedAttribute));
+            Console.WriteLine(((HelpMoneyChangedAttribute)attribute).Amount);
+
+
+
+
+
+
+
+
+
+
+
+
+            //Student jp = new Student();
+            //int weight =(int)jp.GetType().GetField("_weight",BindingFlags.NonPublic|BindingFlags.Instance).GetValue(jp);
+            //Console.WriteLine(weight);//反射拿私有字段的值
+
+            //Attribute attribute = OnlineAttribute.GetCustomAttribute(typeof(animals), typeof(OnlineAttribute));
+            //Console.WriteLine(((OnlineAttribute)attribute).Version);//将基类的Attribute对象强转为子类
+
+            //Article aaa = new Article("people", DateTime.Now);
+            //DateTime bbb = aaa.PublishTime;
+            //Console.WriteLine(bbb);
 
             //在https://source.dot.net/中找到 Console.WriteLine(new Student()); 输出Student类名的源代码
             //Console.WriteLine(new Student());

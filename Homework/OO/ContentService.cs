@@ -6,11 +6,11 @@ namespace Homework
 {
     class ContentService
     {
-        void Publish(Content content)
+        public void Publish(Content content)
         {
+            
             content.change();
             Console.WriteLine("存入数据库");
-
         }
 
 

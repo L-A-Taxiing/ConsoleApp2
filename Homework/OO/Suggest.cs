@@ -7,14 +7,11 @@ namespace Homework
     internal class Suggest:Content,IAttitude
     {
         public Suggest(string _kind,DateTime CreateTime)
-            : base(_kind,CreateTime)
+            : base(_kind)
         {
 
         }
-        public Suggest()
-        {
-
-        }
+        
 
         internal override void change()
         {

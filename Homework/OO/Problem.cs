@@ -12,17 +12,16 @@ namespace Homework
         private DateTime _publishDateTime { get; set; }
         private User _auther { get; set; }
 
-        //public static bool Publish() { }
+        //public void Publish() { }
 
-        public Problem(string body) 
+        public Problem(string body, string _kind, DateTime CreateTime) 
+            :base("")
             //每一个problem对象一定有body赋值
         {
             _body = body;
         }
+       
 
-        public Problem()
-        {
-        }
 
         private int _reward;//problem.Reward不能为负数
         public int Reward 
@@ -44,11 +43,14 @@ namespace Homework
             get { return _keywords[index - 1]; }
             set {_keywords[index - 1] = value; }
         }
-        //调用:
-        //Problem body = new Problem("");
+        
 
-
-        static void Publish() { }    //发布一篇求助，并将其保存到数据库
+        [HelpMoneyChanged(100)]
+        public void Publish()     //发布一篇求助，并将其保存到数据库
+        {
+            _auther.HelpMoney--;
+        
+        }    
         internal void Load(int Id) { }  //根据Id从数据库获取一条求助
         internal void Delete(int Id) { }  //根据Id删除某个求助
 
@@ -64,6 +66,3 @@ namespace Homework
 
     }
 }
-//2. 求助版块，定义一个类Problem，包含字段：标题（Title）、正文（Body）、悬赏（Reward）、发布时间（PublishDateTime）和作者（Author），和方法Publish()
-
-
