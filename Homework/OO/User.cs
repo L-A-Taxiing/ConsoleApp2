@@ -42,13 +42,13 @@ namespace Homework
         //调用:User dfg  =new User("大飞哥","1234")
 
          void IChat.Send()
-        {
+         {
             Console.WriteLine("传入数据库");
-        }
+         }
          void ISendMessage.Send()
-        {
+         {
             Console.WriteLine("传入数据库");
-        }
+         }
         public int HelpMoney { get; set; }
         public int HelpPoint { get; set; }
 

@@ -90,7 +90,6 @@ namespace Homework
 
 
 
-
             //Student jp = new Student();
             //int weight =(int)jp.GetType().GetField("_weight",BindingFlags.NonPublic|BindingFlags.Instance).GetValue(jp);
             //Console.WriteLine(weight);//反射拿私有字段的值
