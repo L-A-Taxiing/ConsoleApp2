@@ -6,16 +6,21 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    class Program
+    public static class Program
     {
-        static void Main(string[] args)
+        static void Main(string[] args) { }
+    }
+
+    public static class MyClass
+    {
+        public static int GetMax(int[] array)
         {
-            Console.WriteLine(new MyClass().GetType().ToString());
+            return -1;
         }
     }
 
-    class MyClass
-    {
+    
 
-    }
+
+
 }
