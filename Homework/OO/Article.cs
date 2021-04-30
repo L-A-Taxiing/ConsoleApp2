@@ -19,7 +19,7 @@ namespace Homework
             Console.WriteLine("需要消耗一个帮帮币");
         }
 
-        
+
 
         public int Agreechange { get; set; }
         public int Disagreechange { get; set; }
@@ -40,6 +40,14 @@ namespace Homework
             Disagreechange--;
         }
         public User Author { get; set; }
+
+
+
+
+
+
+
+
 
     }
 }

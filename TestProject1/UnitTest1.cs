@@ -21,13 +21,13 @@ namespace TestProject1
         {
         
         }
-        [Test]
-        public void GetMax()
-        {
-            int Max = MyClass.GetMax(new int[] { 1, 2, 3, 4, 111, 999 });
-            Assert.AreEqual(999, Max);//比较相等
+        //[Test]
+        //public void GetMaxTest()
+        //{
+        //    int Max = MyClass.GetMax(new int[] { 1, 2, 3, 4, 111, 999 });
+        //    Assert.AreEqual(999, Max);//比较相等
         
-        }
+        //}
 
     }
 }

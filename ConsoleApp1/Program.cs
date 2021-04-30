@@ -16,6 +16,8 @@ namespace ConsoleApp1
         public static int GetMax(int[] array)
         {
             return -1;
+            //throw new NotImplementedException();
+            //扔一个异常
         }
     }
 

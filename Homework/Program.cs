@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 
 namespace Homework
 {
@@ -43,9 +44,12 @@ namespace Homework
     }
 
 
-    
-    
-   
+
+
+
+
+
+
 
 
 
@@ -63,8 +67,59 @@ namespace Homework
             typeof(Content).GetProperty("CreateTime",
             BindingFlags.Public | BindingFlags.Instance).SetValue(content, datetime);
         }
+        static void say(string words)
+        {
+            words += "oh，yeah！";
+        }
+        //4.实现GetCount(string container, string target)方法，可以统计出container中有多少个target
+        public static int GetCount(string container, string target) 
+        {
+            int hastarget = -1;   //如果container没有找到target，则标记为-1;
+            int count = 0;
+            if (container.Length < target.Length)  
+            {
+                Console.WriteLine("target不在container范围之内!");
+                return -1;
+            }
+            for (int i = 0; i < container.Length; )
+            {
+                hastarget = container.IndexOf(target);
+                if (hastarget!= -1) 
+                {
+                    container = container.Substring(hastarget + 1);
+                    count++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            Console.WriteLine($"container中一共有{count}个target");
+            return -1;
+        }
 
-        
+        //5.不使用string自带的Join()方法，定义一个mimicJoin()方法，能将若干字符串用指定的分隔符连接起来，
+        //比如：mimicJoin("-","a","b","c","d")，其运行结果为：a-b-c-d
+        public static string MimicJoin(string separator, string input)
+        {
+            StringBuilder Str = new StringBuilder();
+            for (int i = 0; i < input.Length; i++)
+            {
+                Str = Str.Append(input[i]);
+            }
+            for (int j = 1; j < Str.Length; j++)
+            {
+                Str.Insert(j, separator);
+                j += separator.Length;
+
+            }
+            Console.WriteLine(Str);
+            return Str.ToString();
+        }
+
+
+
+
 
         static void Main(string[] args)
         {
@@ -76,9 +131,43 @@ namespace Homework
             //SetPublishTime(paper, datetime);
 
             //将HelpMoneyChanged应用于Publish()方法,用反射获取Publish()上的特性实例，输出其中包含的信息
-            Attribute attribute = HelpMoneyChangedAttribute.GetCustomAttribute
-            (typeof(Problem).GetMethod("Publish"), typeof(HelpMoneyChangedAttribute));
-            Console.WriteLine(((HelpMoneyChangedAttribute)attribute).Amount);
+            //Attribute attribute = HelpMoneyChangedAttribute.GetCustomAttribute
+            //(typeof(Problem).GetMethod("Publish"), typeof(HelpMoneyChangedAttribute));
+            //Console.WriteLine(((HelpMoneyChangedAttribute)attribute).Amount);
+
+
+            //1.确保文章（Article）的标题不能为null值，也不能为一个或多个空字符组成的字符串，而且如果标题前后有空格，也予以删除
+            //Article lw = new Article("1234",new DateTime { });
+            //lw.Title = "折腾";
+            //lw.Title = null;
+            //lw.Title ="     ";
+            //lw.Title = "  折腾   ";
+
+            //2.设计一个适用的机制，能确保用户（User）的昵称（Name）不能含有admin、17bang、管理员等敏感词。
+            //User qh = new User("", "");
+            //qh.Name = "admin";
+            //qh.Name = "17bang";
+            //qh.Name = "管理员";
+            //qh.Name = "飞弟";
+
+            //3.确保用户（User）的密码（Password）：
+            //   长度不低于6
+            //   必须由大小写英语单词、数字和特殊符号（~!@#$%^&*()_+）组成
+            //User lw = new User("","1234");
+            //lw.PassWordTrue("1234");
+            //lw.PassWordTrue("1234A122");
+            //lw.PassWordTrue("1234Ab122");
+            //lw.PassWordTrue("1234Ab~!");
+
+            //4.实现GetCount(string container, string target)方法，可以统计出container中有多少个target
+            //GetCount("青葡萄,紫葡萄, 青葡萄没紫葡萄紫, 紫葡萄不吐葡萄皮, 不吃葡萄倒吐葡萄皮。", "葡萄");
+            //GetCount("12344532446140014", "4");
+            //GetCount("1", "1234");
+
+            //5.不使用string自带的Join()方法，定义一个mimicJoin()方法，能将若干字符串用指定的分隔符连接起来，
+            //比如：mimicJoin("-","a","b","c","d")，其运行结果为：a-b-c-d
+            //MimicJoin("--", "编程改变命运励志照亮人生");
+            //MimicJoin("-", "abcd");
 
 
 
@@ -137,12 +226,12 @@ namespace Homework
 
 
             //思考dynamic和var的区别，并用代码予以演示
-            dynamic fg = "665";               //编译时不知道类型;
-            /*Console.WriteLine(fg-665);*/    //编译时不报错，绕过了类型检查
-            Console.WriteLine(fg.GetType());  //注释掉第二行，输出时知道是string 类型;
+            //dynamic fg = "665";               //编译时不知道类型;
+            ///*Console.WriteLine(fg-665);*/    //编译时不报错，绕过了类型检查
+            //Console.WriteLine(fg.GetType());  //注释掉第二行，输出时知道是string 类型;
 
-            var fd = 666;                   //编译时就已经确定类型;
-            Console.WriteLine(fd.GetType());//输出也是int类型
+            //var fd = 666;                   //编译时就已经确定类型;
+            //Console.WriteLine(fd.GetType());//输出也是int类型
 
             //构造一个能装任何数据的数组，并完成数据的读写
             //object[] arraylist= {1,2,"叶子",98.7,true };
@@ -153,7 +242,7 @@ namespace Homework
 
 
 
-            
+
 
 
 
@@ -318,7 +407,7 @@ namespace Homework
         }
 
 
-            static void Homework()
+        static void Homework()
         {
             //1.分别用for循环和while循环输出：1,2,3,4,5 和 1,3,5,7,9
             //    int[] names = { 1, 2, 3, 4, 5 };

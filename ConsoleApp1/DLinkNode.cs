@@ -11,11 +11,28 @@ namespace ConsoleApp1
         public DLinkNode Previous{get;set;}
         public DLinkNode Next { get; set; }
 
-        public void Add(DLinkNode node)
+        public void AddAfter(DLinkNode node)
+        {
+            if (this.Next==null)
+            {
+                node.Previous = this;
+                this.Next = node;
+            }
+            else
+            {
+
+                node.Next = this.Next;
+                node.Previous = this;
+                this.Next.Previous = node;
+                this.Next = node;
+
+            }
+
+        }
+        public void Addbefore(DLinkNode node) 
         {
         
         }
-
         public void Delete() { }
         public void Swap() { }
 

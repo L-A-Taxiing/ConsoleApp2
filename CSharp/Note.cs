@@ -606,13 +606,152 @@ namespace CSharp
         ///SetUp：被标记的方法将会在每一个测试方法被调用前调用
         ///Test：被标记的方法会被依次调用
         ///2.Assert:最常用的是Assert.AreEqual()，比较传入的两个参数
-
-
-
-
-
-
-
+        ///3.TDD,开发流程:
+        ///写一个未实现的开发代码。比如定义一个方法，但没有方法实现
+        ///为其编写单元测试。确定方法应该实现的功能
+        ///测试，无法通过。^_^，因为没有方法实现嘛。但这一步必不可少，以免单元测试的代码有误，无论是否正确实现方法功能测试都可以通过
+        ///实现开发代码。比如在方法中完成方法体。
+        ///再次测试。如果通过，Over；否则，查找原因，修复，直到通过.
+        ///再次测试。如果通过，Over；否则，查找原因，修复，直到通过.
+        ///单元测试的价值:
+        ///正确性。理论上，TDD的代码bug率非常低——那得你单元测试和开发代码都有疏漏，且双方的疏漏“相兼容”才行
+        ///否则，开发代码的bug会被单元测试暴露出来；单元测试的bug也会被开发代码暴露出来
+        ///可维护性。这其实才是TDD最重要的价值
+        ///成本和收益:
+        ///能够单元测试的代码，一定是（高质量的）非常容易解耦的代码;能写出高质量代码的程序员，工资一定是不低的;
+        ///面向对象  ||  十四(string还是StringBuilder？)
+        ///1.immutable(不可变的):string定义的字符串，一旦设定，就不能改变
+        ///    string slagon = "@大神小班，拎包入住@";
+        ///    //删除
+        ///    Console.WriteLine(slagon.Remove(1));             //结果：@                          删除此字符串中从指定位置到最后位置的所有字符;
+        ///    Console.WriteLine(slagon.Remove(1,1));           //结果：@神小班，拎包入住@          从此实例中的指定位置开始删除指定数目的字符;
+        ///    //插入
+        ///    Console.WriteLine(slagon.Insert(2, "@"));        //结果：@大@神小班，拎包入住@        在指定位置处插入字符;
+        ///    //替换
+        ///    Console.WriteLine(slagon.Replace('大', '小'));   //结果：@小神小班，拎包入住@         替换char或者string;
+        ///    //截取
+        ///    Console.WriteLine(slagon.Substring(1, 3));       //结果：大神小                      截取字符串；
+        ///    
+        ///    //trim  修改字符串前后空白字符
+        ///    string fg = "   大 飞 哥   ";
+        ///    使用一个@后缀显示效果
+        ///    Console.WriteLine(fg.Trim() + "@");           //删除前后空白：大 飞 哥@
+        ///    Console.WriteLine(fg.TrimStart() + "@");      //删除前面的空白：大 飞 哥   @
+        ///    Console.WriteLine(fg.TrimEnd() + "@");        //删除后面的空白：   大 飞 哥@
+        ///    fg本身不会改变
+        ///    Console.WriteLine(fg + "@");                  //   大 飞 哥   @
+        ///    
+        ///    //ToLower/ToUpper   转换大小写
+        ///    string sql = "SQL";
+        ///    Console.WriteLine(sql.ToLower());             //变成小写：sql
+        ///    Console.WriteLine(sql);                       //不变：SQL
+        ///    string csharp = "CSharp";
+        ///    Console.WriteLine(csharp.ToUpper());         //变成大写：CSHARP
+        ///    Console.WriteLine(csharp);                   //不变：CSharp
+        ///    
+        ///    string是引用类型，但它是一个非常特殊的引用类型，因为它在太多方面表现得和值类型一样（实质原因是imutable）
+        ///    string是一个类，类就是引用类型啊。注意它是sealed的，因为.NET不希望string被继承，以免破坏它的immutable特征;
+        ///2.一般来说，如果是引用类型，==运算符会比较两个对象的堆地址；但值类型，==运算符直接比较两个对象的值  ：
+        ///    string center = "源栈", greet = "欢迎您";
+        ///    string a = center + greet;
+        ///    string b = $"{center}{greet}";
+        ///    Console.WriteLine(a == b);      //结果为true
+        ///    比较的是a和b里面存储的值,a和b的所存放的堆地址也不一样:
+        ///通过运算符重载实现: public static bool operator ==(String a, String b);
+        ///    string a = "源栈";
+        ///    string b = "源栈";
+        ///    Console.WriteLine(a == b)
+        ///结果仍然是true，但是a和b存储的是相同的堆地址;a和b变量中存储还是堆地址而不是字符串的值
+        ///3.字符串池(string pool)
+        ///在编译的时候（注意：是编译的时候，不是运行的时候），编译器会设置一个字符串“池（pool）”。每次要实例化一个新字符串的时候，首先在池中进行检查：
+        ///如果池中已经有完全相同的字符串，直接将这个字符串的堆地址赋值给新变量；否则实例化这个字符串，然后放到字符串池里
+        ///为什么不把string直接改成struct呢?——因为string有可能非常非常大，像我们之前讲过的，太大的对象就不适合放在栈中，以免占用宝贵的栈资源.
+        ///4.其他的一些方法:
+        ///    判断是否为空
+        ///    string a = null;
+        ///    string b = "";
+        ///    string c = "       ";
+        ///    IsNullOrEmpty() ：是不是为Null值或者为空
+        ///    IsNullOrWhiteSpace()：是不是为Null或者空白字符串
+        ///    Console.WriteLine(string.IsNullOrEmpty(a));         //True
+        ///    Console.WriteLine(string.IsNullOrWhiteSpace(a));    //True
+        ///    Console.WriteLine(string.IsNullOrEmpty(b));         //True
+        ///    Console.WriteLine(string.IsNullOrWhiteSpace(b));    //True
+        ///    Console.WriteLine(string.IsNullOrEmpty(c));         //False
+        ///    Console.WriteLine(string.IsNullOrWhiteSpace(c));    //True
+        ///    
+        ///    其他返回bool值的判断，包含（Contain）和开始（Starts）/结束（Ends）
+        ///    string slagon = "飞哥，还有源栈欢迎您！";
+        ///    包含"源栈"
+        ///    Console.WriteLine(slagon.Contains("源栈"));         //True
+        ///    以"飞哥"开始/"欢迎您！"结尾 
+        ///    Console.WriteLine(slagon.StartsWith("飞哥"));       //True
+        ///    Console.WriteLine(slagon.EndsWith("欢迎您！"));     //True   
+        ///
+        ///    还有返回int类型下标的IndexOf()和LastIndexOf()：
+        ///    string slagon = "源栈欢迎您！！！";
+        ///    Console.WriteLine(slagon.IndexOf("！"));            //5
+        ///    Console.WriteLine(slagon.LastIndexOf("！"));        //7
+        ///    
+        ///    连接和拆分——Contact()可以直接将字符串连接起来，Join()用指定字符（分隔符）将字符串连接起来；
+        ///    Contact()可以直接将字符串连接起来
+        ///    Join()用指定字符（分隔符）将字符串连接起来
+        ///    string a = "源栈";
+        ///    string b = "，";
+        ///    string c = "欢迎您!";
+        ///    直接把abc连接起来
+        ///    Console.WriteLine(string.Concat(a, b, c));
+        ///    把abc用' '连接起来
+        ///    string joined = string.Join(' ', a, b, c);
+        ///    Console.WriteLine(joined);   //注意空格：源栈 ， 欢迎您!
+        ///++  被Join()用分隔符连接起来的的字符串还可以再使用Split()拆分，获得一个string数组：
+        ///    string[] splitted = joined.Split(' ');   //用' '分隔
+        ///    for (int i = 0; i<splitted.Length; i++)
+        ///    {
+        ///        Console.WriteLine(splitted[i]);
+        ///    }
+        ///    被' '分隔之后，splitted共三个元素：
+        ///    源栈
+        ///    ，
+        ///    欢迎您!
+        ///    
+        ///    把字符串转换成字符数组的：
+        ///    char[] ofA = a.ToCharArray();  //结果：'源'和'栈',转换之后，就可以对字符串的每个字符进行过滤筛选
+        ///5.StringBuilder
+        ///    实例化一个StringBuilder对象
+        ///    StringBuilder sb = new StringBuilder();
+        //     一直往StringBuilder对象上添加（Append）字符串
+        ///    sb.Append("源栈");
+        ///    sb.Append("，");
+        ///    sb.Append("欢迎您！");
+        ///    //不要忘了使用ToString()将StringBuilder对象转换成字符串
+        ///    string slagon = sb.ToString();
+        ///如果用+的话就一行: string slagon = "源栈" + "，" + "欢迎您！";
+        ///StringBuilder是一个可以实例化的类,还有其他方法:
+        ///    Insert()：插入，需要指定插入的位置index
+        ///    Replace()：替换
+        ///    Remove()：删除指定位置index，一定长度length的内容
+        ///    Clear()：清除全部内容
+        ///    sb.Remove(0, 1);             //删除了从下标为0开始的一个字符
+        ///    sb.Replace("!", "……");       //将！替换成……
+        ///    sb.Insert(0, "○");          //在下标为0的地方插入一个○
+        ///    sb.Clear();                 //全部清除
+        ///两个重要的构造函数:
+        ///    public StringBuilder(int capacity);
+        ///    public StringBuilder(string value);
+        ///    value：指定StringBuilder最开始“装”着的字符串
+        ///    capacity：指定StringBuilder最初的“容量”。这实际上就是的StringBuilder所谓“性能提升”的关键.
+        ///6.加号（+）拼接和StringBuilder.Append()的区别:
+        ///两个字符串a和b加好拼接的过程：
+        ///    计算出a和b的长度，然后相加达到总长度
+        ///    按总长度新生成一个新的char[]数组
+        ///    将a和b的内容依次复制到新的char[]数组
+        ///    将新的char[]数组合成字符串
+        ///StringBuilder，其工作原理(减少性能的损耗,大规模字符串拼接):
+        ///    在StringBuilder实例化的时候，生成一个长度（capacity）或者由构造函数参数指定，或者默认为16的char[] 数组
+        ///    将a、b、c、d……等字符串依次往char[] 数组里装，如果
+        ///    char[] 数组的长度不够了，StringBuilder自动扩充其capacity，生成一个双倍长度的新数组继续装
+        ///    直到调用ToString()，将char[] 数组转换成字符串
 
 
 
