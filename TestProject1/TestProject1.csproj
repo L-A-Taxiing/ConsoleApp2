@@ -14,6 +14,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ConsoleApp1\ConsoleApp1.csproj" />
+    <ProjectReference Include="..\CSharp\CSharp.csproj" />
+    <ProjectReference Include="..\Homework\Homework.csproj" />
   </ItemGroup>
 
 </Project>

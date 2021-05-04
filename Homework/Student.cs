@@ -7,5 +7,7 @@
         public int Roles { get; set; }
 
         private int _weight = 100;
+
+
     }
 }

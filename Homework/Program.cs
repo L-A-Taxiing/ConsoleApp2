@@ -42,6 +42,18 @@ namespace Homework
        public string name{ get;set;}
     
     }
+   
+
+            //2.找到100以内的所有质数
+            //3.猜数字游戏
+            //4.二分查找
+            //5.栈的压入弹出
+         //继续完成双向链表的测试和开发，实现：
+            //1.node3.InsertAfter(node1); 场景
+            //2.InerstBefore()：在某个节点前插入
+            //3.Delete()：删除某个节点
+            //4.[选] Swap()：交互某两个节点
+            //5.[选] FindBy()：根据节点值查找到某个节点
 
 
 
@@ -52,8 +64,7 @@ namespace Homework
 
 
 
-
-    class Program
+     class Program
     {
         //在Content之外封装一个方法，可以修改Content的CreateTime和PublishTime
         public static void SetCreateTime(Content content, DateTime datetime)
@@ -117,12 +128,14 @@ namespace Homework
             return Str.ToString();
         }
 
-
+      
 
 
 
         static void Main(string[] args)
         {
+
+
             //在Content之外封装一个方法，可以修改Content的CreateTime和PublishTime
             //Content paper = new Content("阿Q正传");
             //DateTime datetime = new DateTime(2020, 1, 1);
@@ -479,7 +492,7 @@ namespace Homework
 
 
             //5.找到100以内的所有质数（只能被1和它自己整除的数）
-            //    for (int j = 2; j <= 100; j++)
+            //for (int j = 2; j <= 100; j++)
             //{
             //    bool found = true;
             //    for (int i = 2; i < j; i++)
