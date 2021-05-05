@@ -781,4 +781,97 @@ namespace CSharp
 
 
     }
+  
+   
+
+
+
+    class Note2
+    {
+        
+
+
+        //C# 高级进阶 ||  (一)泛型：声明/使用/约束/继承
+        //1.用object数组存在弊端: 装箱拆箱性能+不知道取出来的对象究竟是什么类型 => 泛型;
+        //泛型(Generic)
+        //在普通类上加一个<T>就诞生了泛型类
+        //public class Generic<T>
+        //{
+        //    //注意T[]，不是int[]或者string[]
+        //    internal T[] array;
+        //}
+        //语法点:
+        //T：类型参数（Type parameter）/占位符（placeholder）;
+        //I. 定义构造函数时不需要加上泛型参数;
+        //II. 可以有多个类型参数，用，分开，但最好不要太多;
+        //III. 对于泛型对象而言，一旦T被“具象化”（变量声明/new），就不能再更改;
+        //IV. 泛型可以用于方法/接口/委托，没有泛型enum;
+        //2.为什么需要泛型?
+        //I. 重用;
+        //II. 类型安全(相较于Object),编译时检查尽早暴露问题;
+        //III. 提高性能,编译时生成,避免装箱/拆箱;
+        //类型确定——泛型类还不是一个类;
+        //Console.WriteLine(typeof(Generic<int>) == new Generic<Student>().GetType());false
+        //默认值:array[0] = default(T);
+        //3.类型约束where
+        //internal class Generic<T> where T : struct  /*只能是值类型，由struct定义*/
+        //internal class Generic<T> where T : class   /*只能是引用类型，由class定义*/
+        //internal class Generic<T> where T : new()   /*必须包含一个公共的无参构造函数，可以new()*/
+        //internal class Generic<T> where T : Person  /*只能是Person及其子类*/
+        //internal class Generic<T> where T : ISort   /*只能是ISort及其实现*/
+        //用法:I.可以为多个Type parameter定义不同的约束;II.可以为同一个Type parameter定义多个（不冲突的）约束
+        // class MimicStack<T, TKey>
+        ////where T : class, struct  冲突了，不行
+        //where T : ILearn, new()
+        //where TKey : new()
+        //4.泛型的继承
+        //I. 一个非泛型类不能继承一个还没有具象化的泛型类;
+        //II. 可以继承具象化的泛型类;
+        //III. 泛型类可以继承一个泛型类;
+        //IV. 泛型类可以继承一个非泛型类;
+        //internal class Major { }
+        //internal class SQL : Major { }
+        //internal class Person<T> where T : Major { }
+        //当一个泛型类作为父类（被使用）的时候，一定要指明具体的类型参数
+        //internal class Teacher : Person<Major> { }
+        //internal class Teacher : Person<T> { }
+        //除非子类和父类都是泛型类，且共用一个泛型参数
+        //internal class Teacher<T> : Person<T> where T : Major { }
+        //Teacher<T>和Teacher有没有什么关系？
+        //++++++++++++++++++++++
+        //其他的都和普通类没有区别
+        //interface ICode { }
+        //internal class Student : Person<Major>, ICode { }
+        //internal class GoodStudent : Teacher { }
+        //当泛型类变得冗长:     //名称空间
+        //using Teacher = Junior.Person<Junior.Major>;
+        //Console.WriteLine(typeof(Teacher) == typeof(Person<Major>));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
 }

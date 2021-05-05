@@ -87,6 +87,6 @@ namespace TestProject1
             Assert.AreEqual("0000", zl.Pop());
 
         }
-
+        
     }
 }

@@ -4,16 +4,16 @@ using System.Text;
 
 namespace Homework
 {
-    public class MimicStack
+    public class MimicStack<T>
     {
         //使用object改造数据结构栈（MimicStack），并在出栈时获得出栈元素
-        public static object[] database;           //声明一个用来装的数组
+        public static T[] database;           //声明一个用来装的数组
         static int top = 0;             
         public MimicStack(int length)
         {
-            database =new object[length];         //数组长度
+            database =new T [length];         //数组长度
         }    
-        public int Push(object data)              //单个数据压入
+        public int Push(T data)              //单个数据压入
         {
             if (top<=database.Length-1)
             {
@@ -27,7 +27,7 @@ namespace Homework
                 return -1; 
             }
         }
-        public void Push(Object[] Array)          //多个数据压入
+        public void Push(T[] Array)          //多个数据压入
         {
             for (int i = 0; i < Array.Length; i++)
             {

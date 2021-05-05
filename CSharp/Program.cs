@@ -2,16 +2,50 @@
 
 namespace CSharp
 {
+
+
+    public class Animals<M>
+    {
+        public M Kind { get; set; }
+
+    }
+    public class Foods 
+    { 
+       public double Price { get; set; }
+
+    }
     public class Program
     {
-        static void Main(string[] args)
 
+        static void Main(string[] args)
         {
+
+            Animals<string> lw= new Animals<string>();
+            lw.Kind = "青龙";
+
+            Animals<Foods> my = new Animals<Foods>();
+            my.Kind = new Foods();
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             //int i = 18;
 
 
-            
+
 
 
 
@@ -393,7 +427,7 @@ namespace CSharp
 
 
 
-
+    
 
 
 
