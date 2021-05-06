@@ -6,5 +6,11 @@ namespace Homework.OO
 {
     class Appraise
     {
+        public void Agree() { }
+        public void Disagree() { }
+
+
+
+
     }
 }

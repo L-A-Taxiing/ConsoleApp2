@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Homework.OO;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -41,13 +42,15 @@ namespace Homework
         }
         public User Author { get; set; }
 
+        //一篇文章可以有多个评论
+        public IList<Comment> Comment { get; set; }
 
 
+        //每个文章和评论都有一个评价
+        public Appraise Appraise { get; set; }
 
-
-
-
-
+        //一篇文章可以有多个关键字
+        public IList<Keyword> Keywords { get; set; }
 
     }
 }
