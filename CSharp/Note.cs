@@ -781,14 +781,14 @@ namespace CSharp
 
 
     }
-  
-   
+
+
 
 
 
     class Note2
     {
-        
+
 
 
         //C# 高级进阶 ||  (一)泛型：声明/使用/约束/继承
@@ -847,6 +847,64 @@ namespace CSharp
         //using Teacher = Junior.Person<Junior.Major>;
         //Console.WriteLine(typeof(Teacher) == typeof(Person<Major>));
 
+        //C# 高级进阶 ||  (二)泛型应用：Nullable / ?? / ?.
+        //1.可空类型(Nullable)——方便和数据库交互;比如性别（IsMale），通常用bool值，但可以有三个值：男、女和“没填写”
+        //在值类型后面加一个问号（?），就可以声明一个该值类型相对象的可空类型。可空类型可以为null值
+        //  int? i = 18;
+        //  int j = i.Value;
+        //  i = null;
+        //  Console.WriteLine(i.HasValue);
+        //2.null运算
+        //null值替代运算符 ??    不为null值时，返回原值；为null值时，返回 ?? 后替代值
+        //SQL.Teacher = SQL.Teacher ?? new Teacher();
+        //null条件运算符?. 和?[] 只有.或者 [] 前面的变量不为null值的时候，才进行取值；否则返回null值
+        //Console.WriteLine(SQL.Teacher?.Name ?? "course SQL has no teacher");
+
+        //C# 高级进阶 ||  (三)集合：List / Dictionary / ER模型 ……
+        //student.Add("xm");   //添加到最后
+        //student.Insert(3, "xm");   //插入到指定位置
+        //
+        //student.Remove("xr");
+        //student.RemoveAt(0);
+        //student.clear();
+        //
+        //student[0] = "dfg";
+        //
+        //Console.WriteLine(student.BinarySearch("dfg"));
+        //Console.WriteLine(student.IndexOf("jym"));
+        //Console.WriteLine(student.Contains("jym")); 返回布尔值
+        //其他集合:
+        //Dictionary<string, int> scores = new Dictionary<string, int>();     //键值对集合
+        //scores["atai"] = 85;
+        //scores["zm"] = 95;
+        //scores["wpz"] = 90;
+        //+++++++++++++++++++
+        //scores = new Dictionary<string, int>
+        //{
+        //    {"atai", 85 },
+        //    {"zm", 95 }
+        //};
+        //+++++++++++++++++++
+        //scores.Add("wpz", 90);
+        //scores.Remove("wpz");
+        //scores.ContainsKey("zm");
+        //+++++++++++++++++++
+        //Console.WriteLine(scores["atai"]);
+        //LinkedList<T>：单向链表
+        //Queue<T>：队列
+        //SortedSet<T>：有序Set
+        //ER模型:Entity-Releationship Model
+        //+
+        //单向/双向引用
+        //++
+        //一对一（1:1），1个老师只有1个学生 且 1个学生也只有1个老师
+        //一对多（1:n），1个老师教多个学生 且 1个学生只能有1个老师
+        //多对多（n:n），1个老师教多个学生 且 1个学生可以有多个老师
+        //+++
+        //内容决定对象间的关系本质;形式推定(单向/双向)
+
+        //C# 高级进阶 ||  (四)集合：foreach背后
+        //
 
 
 

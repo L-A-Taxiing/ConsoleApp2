@@ -181,7 +181,7 @@ namespace Homework
             Console.WriteLine(FindMax<int>(new int[] {-1,99,98,56,42,87,666,233,234,100}));
 
 
-
+            
 
 
 

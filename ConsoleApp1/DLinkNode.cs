@@ -72,18 +72,8 @@ namespace ConsoleApp1
         }
         public void Swap(DLinkNode node) 
         {
-            //if (this.Previous==null&&node.Next!=null)
-            //{
-            //    //node.Previous.Next = this;
-            //    //this.Previous = node.Previous;
-            //    //this.Next = node.Next;
-            //    //node.Next.Previous = this;
-
-            //    //node = this.Previous.Previous;
-            //    //node.Previous = null;
-            //    //node.Next = this;
-
-            //}
+            
+           
 
         }
         public void FindBy() 
