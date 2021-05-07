@@ -43,7 +43,7 @@ namespace Homework
         public User Author { get; set; }
 
         //一篇文章可以有多个评论
-        public IList<Comment> Comment { get; set; }
+        public IList<Comment> Comments { get; set; }
 
 
         //每个文章和评论都有一个评价
@@ -51,7 +51,7 @@ namespace Homework
 
         //一篇文章可以有多个关键字
         public IList<Keyword> Keywords { get; set; }
-
+        public string Name { get; internal set; }
     }
 }
 //3.实例化文章和意见建议，调用他们:继承自父类的属性和方法;自己的属性和方法

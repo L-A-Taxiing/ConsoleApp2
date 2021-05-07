@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Homework.OO;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -164,16 +166,68 @@ namespace Homework
         static void Main(string[] args)
         {
 
+            Article lw = new Article("", new DateTime { }) { Name = "Csharp" };
+            Article zl = new Article("", new DateTime { }) { Name = "Sql" };
+            Article lzb = new Article("",new DateTime { }) { Name = "JavaScript" };
+
+            Keyword i = new Keyword { Name = "编程基础" };
+            Keyword j = new Keyword { Name = "后台开发" };
+            Keyword k = new Keyword { Name = "编程基础" };
+
+            Comment zdh = new Comment { Name = "好" };
+            Comment xkp = new Comment { Name = "还行" };
+            Comment ht = new Comment { Name = "很不错" };
+
+            Appraise ag = new Appraise { Name = "Agree" };
+            Appraise dag = new Appraise { Name = "Disagree" };
+
+            //一篇文章可以有多个评论
+            lw.Comments = new List<Comment> { zdh, xkp, ht };
+            zdh.Article = lw;
+            xkp.Article = lw;
+            ht.Article = lw;
+
+            //一个评论必须有一个它所评论的文章
+            xkp.Article = zl;
+            zl.Comments = new List<Comment> { xkp };
+
+            //每个文章和评论都有一个评价
+            lw.Appraise = ag;
+            zdh.Appraise = dag;
+
+
+            //一篇文章可以有多个关键字，一个关键字可以对应多篇文章
+            lw.Keywords = new List<Keyword> { i, j, k };
+            zl.Keywords = new List<Keyword> { j,k };
+            lzb.Keywords = new List<Keyword> { i, k };
+
+            i.Articles = new List<Article> {lw,lzb };
+            j.Articles = new List<Article> { lw, zl};
+            k.Articles = new List<Article> {lw,zl,lzb };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             //用泛型改造二分查找
             Console.WriteLine(BinarySeek<int>(new int[] { 1, 2, 3, 4, 5, 6, 7, 8 }, 9));
 
             //用泛型改造堆栈
-            MimicStack<object> lw = new MimicStack<object>(5);
-            Console.WriteLine(lw.Push("自"));
-            Console.WriteLine(lw.Push("由"));
-            Console.WriteLine(lw.Push("跑"));
-            lw.Push(new object[] { true, 98,"Go" });
-            Console.WriteLine(lw.Pop());
+            //MimicStack<object> lw = new MimicStack<object>(5);
+            //Console.WriteLine(lw.Push("自"));
+            //Console.WriteLine(lw.Push("由"));
+            //Console.WriteLine(lw.Push("跑"));
+            //lw.Push(new object[] { true, 98,"Go" });
+            //Console.WriteLine(lw.Pop());
 
             //用泛型改造双向链表
 
