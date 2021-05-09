@@ -27,24 +27,25 @@ namespace Homework
                 return -1; 
             }
         }
-        public void Push(T[] Array)          //多个数据压入
+        public void Push(T[] Array)               //多个数据压入
         {
             for (int i = 0; i < Array.Length; i++)
             {
                 Push(Array[i]);
             }
         }
-        public object Pop(/*object data*/)             //压出
+        public bool Pop( out T element)             //压出
         {
             if (top>0)
             {
                 top--;
-                return database[top];
+                element= database[top];
+                return true;
             }
             else
             {
-                //Console.WriteLine("栈已空");
-                return "栈已空";
+                element = default(T);
+                return false;
             }
         }
     }

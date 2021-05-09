@@ -4,9 +4,8 @@ using NUnit.Framework;
 
 namespace TestProject1
 {
-    public class StudentTests
+    public class  Testproject1
     {
-        
         [SetUp]
         public void Setup()//每一个测试之前都会跑一边setup
         {
@@ -68,7 +67,7 @@ namespace TestProject1
         [Test]//5.栈的压入弹出
         public void PushTest1() //压入测试
         {
-            MimicStack lw = new MimicStack(3);
+            MimicStack<string> lw = new MimicStack<string>(3);
             Assert.AreEqual(1, lw.Push("0000"));
             Assert.AreEqual(2, lw.Push("0001"));
             Assert.AreEqual(3, lw.Push("0002"));
@@ -77,14 +76,25 @@ namespace TestProject1
 
         }
         [Test]
-        public void PopTest() //弹出测试 (◞‸◟ )
+        public void PopTest() 
         {
-            MimicStack zl = new MimicStack(3);
-            Assert.AreEqual("栈已空", zl.Pop());
-            MimicStack lw = new MimicStack(3);
+            int element = 0;
+            MimicStack<int> zl = new MimicStack<int> (3);
+            bool hasEmpty = zl.Pop(out element);
+            Assert.AreEqual(false, hasEmpty);
+            Assert.AreEqual(0, element);
 
-            zl.Push("0000");
-            Assert.AreEqual("0000", zl.Pop());
+            zl.Push(3);
+            zl.Push(5);
+            hasEmpty = zl.Pop(out element);
+            Assert.IsTrue(hasEmpty);
+            Assert.AreEqual(5, element);
+
+            hasEmpty = zl.Pop(out element);
+            Assert.IsTrue(hasEmpty);
+            Assert.AreEqual(3, element);
+
+
 
         }
         

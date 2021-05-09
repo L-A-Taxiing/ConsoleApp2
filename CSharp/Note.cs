@@ -904,8 +904,37 @@ namespace CSharp
         //内容决定对象间的关系本质;形式推定(单向/双向)
 
         //C# 高级进阶 ||  (四)集合：foreach背后
-        //
-
+        //foreach (var item in collection)
+        //{
+        //   Console.WriteLine(item);
+        //}
+        //1.foreach和for循环的区别:
+        //for循环的迭代基础是累加器和下标（i++）;foreach循环的基础是迭代器的MoveNext();foreach里的item不能被赋值（assign）  
+        //2.底层实现:实现IEnumerable：该接口能返回IEnumerator：具有MoveNext()方法;
+        //3.yield(关键字):让自定义集合实现foreach遍历的方法
+        //一般来说当我们创建自定义集合的时候为了让其能支持foreach遍历，就只能让其实现IEnumerable接口（可能还要实现IEnumerator接口),
+        //但是我们也可以通过使用yield关键字构建的迭代器方法来实现foreach的遍历，且自定义的集合不用实现IEnumerable接口;
+        //注意--虽然不用实现IEnumerable接口 ，但是迭代器的方法必须命名为GetEnumerator()，返回值也必须是IEnumerator类型
+        //public IEnumerable<int> GetSingleDigitNumbers()
+        //{
+        //    yield return 0;
+        //    yield return 1;
+        //    yield return 2;
+        //    yield return 3;
+        //    yield return 4;
+        //}
+        //简单的迭代器方法
+        //public IEnumerator GetEnumerator()
+        //{
+        //    foreach (Person item in pers)
+        //    {
+        //        //yield return 作用就是返回集合的一个元素,并移动到下一个元素上
+        //        yield return item;
+        //    }
+        //}
+        //方法返回的是一个匿名的（系统生成的）IEnumerable<int> 实例，实例中按顺序存储上述数据
+        //方法体中多个yield return不会冲突，但不能同时有return和yield return
+        //还可以使用 yield break; 中断循环
 
 
 
