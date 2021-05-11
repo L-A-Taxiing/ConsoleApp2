@@ -11,13 +11,13 @@ namespace DLinkNodeTests
         private DLinkNode<int> node1, node2, node3, node4, node5 ;
         //1,2,4,3
         [SetUp]//每次测试自动调用，就不需要调用了
-        public void SetUp() 
+        public void SetUp()
         {
-            node1 = new DLinkNode<int>();
-            node2 = new DLinkNode<int>();
-            node3 = new DLinkNode<int>();
-            node4 = new DLinkNode<int>();
-            node5 = new DLinkNode<int>();
+            node1 = new DLinkNode<int>() { value = 1 };
+            node2 = new DLinkNode<int>() { value = 2 };
+            node3 = new DLinkNode<int>() { value = 3 };
+            node4 = new DLinkNode<int>() { value = 4 };
+            node5 = new DLinkNode<int>() { value = 5 };
         }
 
         [Test]
@@ -51,7 +51,7 @@ namespace DLinkNodeTests
         public void AddAfterTest2()
         {
             //1.node3.InsertAfter(node1); 场景
-            //[1] 3
+            //1 [3]
             node1.AddAfter(node3);
             Assert.IsNull(node3.Next);
             Assert.IsNull(node1.Previous);
@@ -147,8 +147,19 @@ namespace DLinkNodeTests
         [Test]
         public void ForeachTest() 
         {
+            node1.Next = node2;
+            node2.Next = node3;
+            node3.Next = node4;
+            node4.Next = node5;
+            node5.Next = null;
+
+            node5.Previous = node4;
+            node4.Previous = node3;
+            node3.Previous = node2;
+            node2.Previous = node1;
+            node1.Previous = null;
             IList<DLinkNode<int>> nodes = new List<DLinkNode<int>>();
-            foreach (var item in node2)
+            foreach (var item in node1)
             {
                 nodes.Add(item);
             }

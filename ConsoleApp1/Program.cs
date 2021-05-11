@@ -10,7 +10,8 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-
+            DLinkNode<int> age = new DLinkNode<int>();
+            Console.WriteLine(age.Max()); 
             Console.WriteLine(MyClass.FindPrimeNum(1, 100));
 
         }
