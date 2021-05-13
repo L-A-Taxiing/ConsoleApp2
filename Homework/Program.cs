@@ -45,126 +45,37 @@ namespace Homework
 
     }
 
-
+  
     class Program
     {
-        //在Content之外封装一个方法，可以修改Content的CreateTime和PublishTime
-        public static void SetCreateTime(Content content, DateTime datetime)
-        {
-            typeof(Content).GetProperty("CreateTime",
-            BindingFlags.Public | BindingFlags.Instance).SetValue(content, datetime);
-        }
-
-        public static void SetPublishTime(Content content, DateTime datetime)
-        {
-            typeof(Content).GetProperty("CreateTime",
-            BindingFlags.Public | BindingFlags.Instance).SetValue(content, datetime);
-        }
-        static void say(string words)
-        {
-            words += "oh，yeah！";
-        }
-        //4.实现GetCount(string container, string target)方法，可以统计出container中有多少个target
-        public static int GetCount(string container, string target)
-        {
-            int hastarget = -1;   //如果container没有找到target，则标记为-1;
-            int count = 0;
-            if (container.Length < target.Length)
-            {
-                Console.WriteLine("target不在container范围之内!");
-                return -1;
-            }
-            for (int i = 0; i < container.Length;)
-            {
-                hastarget = container.IndexOf(target);
-                if (hastarget != -1)
-                {
-                    container = container.Substring(hastarget + 1);
-                    count++;
-                }
-                else
-                {
-                    break;
-                }
-            }
-            Console.WriteLine($"container中一共有{count}个target");
-            return -1;
-        }
-
-        //5.不使用string自带的Join()方法，定义一个mimicJoin()方法，能将若干字符串用指定的分隔符连接起来，
-        //比如：mimicJoin("-","a","b","c","d")，其运行结果为：a-b-c-d
-        public static string MimicJoin(string separator, string input)
-        {
-            StringBuilder Str = new StringBuilder();
-            for (int i = 0; i < input.Length; i++)
-            {
-                Str = Str.Append(input[i]);
-            }
-            for (int j = 1; j < Str.Length; j++)
-            {
-                Str.Insert(j, separator);
-                j += separator.Length;
-
-            }
-            Console.WriteLine(Str);
-            return Str.ToString();
-        }
-        
-        //用泛型改造二分查找
-        public static int BinarySeek<T>(T[] numbers, T target) where T : IComparable   
-        {
-            int left = 0, right = numbers.Length - 1;
-            int result = -1;
-            while (left <= right)
-            {
-                int middle = left + (right - left) / 2;
-                if (target.CompareTo(numbers[middle]) == 0)
-                {
-                    result = middle;
-                    break;
-                }
-                else if (target.CompareTo(numbers[middle]) > 0)
-                {
-
-                    left = middle + 1;
-                }
-                else
-                {
-                    right = middle - 1;
-                }
-            }
-            if (result != -1)
-            {
-                return result;
-            }
-            else
-            {
-                return -1;
-            }
-        }
-
-        //用泛型改造"取数组中的最大值"
-        public static T FindMax<T>(T[] Array) where T:IComparable
-        {
-            T Max = Array[0];
-            for (int i = 1; i < Array.Length; i++)
-            {
-                
-                if (Max.CompareTo(Array[i])<0)
-                {
-                    Max = Array[i];
-                }
-                //else continue
-            }
-            return Max;
-        
-        
-        
-        
-        
-        }
+       
         static void Main(string[] args)
         {
+
+            Person.InvokeDelegate();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            Student zb = new Student();
+            zb.age = 18;
+            grow(zb);
+            
 
             Article lw = new Article("", new DateTime { }) { Name = "Csharp" };
             Article zl = new Article("", new DateTime { }) { Name = "Sql" };
@@ -517,7 +428,121 @@ namespace Homework
 
 
         }
+        //在Content之外封装一个方法，可以修改Content的CreateTime和PublishTime
+        public static void SetCreateTime(Content content, DateTime datetime)
+        {
+            typeof(Content).GetProperty("CreateTime",
+            BindingFlags.Public | BindingFlags.Instance).SetValue(content, datetime);
+        }
 
+        public static void SetPublishTime(Content content, DateTime datetime)
+        {
+            typeof(Content).GetProperty("CreateTime",
+            BindingFlags.Public | BindingFlags.Instance).SetValue(content, datetime);
+        }
+        static void say(string words)
+        {
+            words += "oh，yeah！";
+        }
+        //4.实现GetCount(string container, string target)方法，可以统计出container中有多少个target
+        public static int GetCount(string container, string target)
+        {
+            int hastarget = -1;   //如果container没有找到target，则标记为-1;
+            int count = 0;
+            if (container.Length < target.Length)
+            {
+                Console.WriteLine("target不在container范围之内!");
+                return -1;
+            }
+            for (int i = 0; i < container.Length;)
+            {
+                hastarget = container.IndexOf(target);
+                if (hastarget != -1)
+                {
+                    container = container.Substring(hastarget + 1);
+                    count++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            Console.WriteLine($"container中一共有{count}个target");
+            return -1;
+        }
+
+        //5.不使用string自带的Join()方法，定义一个mimicJoin()方法，能将若干字符串用指定的分隔符连接起来，
+        //比如：mimicJoin("-","a","b","c","d")，其运行结果为：a-b-c-d
+        public static string MimicJoin(string separator, string input)
+        {
+            StringBuilder Str = new StringBuilder();
+            for (int i = 0; i < input.Length; i++)
+            {
+                Str = Str.Append(input[i]);
+            }
+            for (int j = 1; j < Str.Length; j++)
+            {
+                Str.Insert(j, separator);
+                j += separator.Length;
+
+            }
+            Console.WriteLine(Str);
+            return Str.ToString();
+        }
+
+        //用泛型改造二分查找
+        public static int BinarySeek<T>(T[] numbers, T target) where T : IComparable
+        {
+            int left = 0, right = numbers.Length - 1;
+            int result = -1;
+            while (left <= right)
+            {
+                int middle = left + (right - left) / 2;
+                if (target.CompareTo(numbers[middle]) == 0)
+                {
+                    result = middle;
+                    break;
+                }
+                else if (target.CompareTo(numbers[middle]) > 0)
+                {
+
+                    left = middle + 1;
+                }
+                else
+                {
+                    right = middle - 1;
+                }
+            }
+            if (result != -1)
+            {
+                return result;
+            }
+            else
+            {
+                return -1;
+            }
+        }
+
+        //用泛型改造"取数组中的最大值"
+        public static T FindMax<T>(T[] Array) where T : IComparable
+        {
+            T Max = Array[0];
+            for (int i = 1; i < Array.Length; i++)
+            {
+
+                if (Max.CompareTo(Array[i]) < 0)
+                {
+                    Max = Array[i];
+                }
+                //else continue
+            }
+            return Max;
+        }
+        static void grow(Student student)
+        {
+            student = new Student();   //仍然使用增加的这一行代码
+            student.age++;
+        }
 
         static void Homework()
         {

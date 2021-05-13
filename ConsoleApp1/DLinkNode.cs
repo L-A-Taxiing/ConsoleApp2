@@ -178,7 +178,7 @@ namespace ConsoleApp1
                     {
                         Previous = _current
                     };
-                    end= true;
+                    end=true;
                 }
                 _current = _current.Next;
                 return true;

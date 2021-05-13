@@ -8,6 +8,6 @@
 
         private int _weight = 100;
 
-
+        public  void grow(Student student) { student.age++; }
     }
 }

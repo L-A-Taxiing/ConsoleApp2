@@ -941,12 +941,121 @@ namespace CSharp
         //IV. 扩展方法仅在扩展类没有相应的实例方法时才会被调用
         //    即：如果扩展类中本身就有一个和扩展方法签名相同的方法，会直接调用实例方法而不是扩展方法
 
+        //C# 高级进阶 ||  (五)委托和事件
+        //1.委托（delegate）
+        //public delegate void Action<in T1, in T2>(T1 arg1, T2 arg2);
+        //委托是一种（特殊的）类型;代表的是方法（的引用），所以需要指定参数和返回值;代表的是方法（的引用），所以需要指定参数和返回值
+        //2.Func和Action
+        //Func：有返回值的方法。使用泛型参数依次表示方法参数，最后一个表示方法返回值;
+        //Action：没有返回值的方法。使用泛型参数依次表示方法参数;
+        //3.事件(event):委托是事件的基础，事件又对委托进行了封装
+        //public class Button
+        //{
+        //    //定义事件，用于发布
+        //    public event EventHandler OnClick;    //注意：EventHnadler是一个委托
+        //    public void click()
+        //    {
+        //        if (OnClick != null)
+        //        {
+        //            OnClick(this, new EventArgs());
+        //        }
+        //    }
+        //}
+        //     实例化一个发布了OnClick事件的button
+        //     Button btn = new Button();
+        //     事件被btn_click订阅，即：当这个btn被click时调用btn_click()方法
+        //     btn.OnClick += btn_click;
+        //
+        //private static void btn_click(object sender, EventArgs e)
+        //{
+        //    Console.WriteLine("点我干啥呢？");
+        //}
+        //     事件被触发
+        //     btn.click();
 
+        //C#高级进阶  || (六)匿名方法 / Lambda / 闭包
+        //1.匿名委托
+        //Calculate ai = delegate (int x, int y)
+        //{
+        //    Console.WriteLine($"just a piece of cake: {x}/{y}={x / y}");
+        //};
+        //ai(8, 3);
+        //2.Lambda表达式
+        //将匿名方法的delegate去掉，使用箭头（=>）替代，就是Lambda表达式了
+        //Calculate ai = /*delegate*/ (int x, int y) =>  /*添加=>*/
+        //{
+        //    Console.WriteLine($"just a piece of cake: {x}/{y}={x / y}");
+        //};
+        //Lambda还提供了很多简写方式（语法规则）：
+        //可以不指定参数类型
+        //Action<string, string> d = (x, y) => { Console.WriteLine(x + "欢迎您，" + y); };
+        //
+        //一行方法体实现，可以不用{ }
+        //省略掉花括号
+        //Action d = () => Console.WriteLine("源栈欢迎您");
+        //
+        //一个参数，可以不用（）；没有参数，还是要有一个空括号
+        //Action<string> d = x => Console.WriteLine(x + "欢迎您");
+        //
+        //而且不能写return
+        // //要return就必须要花括号{}
+        // //Func<int, int> square = a => { return a * a; }; 
+        //Func<int, int> square = a => a * a;
+        //3.闭包:一种语法现象
+        //外部方法不能使用匿名函数中的变量;匿名方法能够使用（并改变）其外部方法的变量/参数
+        //class Closure
+        //{
+        //    public static Calculate GetAI()
+        //    {
+        //        int a = 10, b = 20;
+        //        Calculate ai = delegate/* (int x, int y)*/
+        //        {
+        //            return a + b /*+ x + y*/;
+        //        };
+        //        return ai;
+        //    }
+        //}
+        //4.自定义myAny()
+        //student.Any(s=>s.age>20)
+        //statc void Main(string[] args)
+        //{
+        //    IList<Student> students = new List<Student>
+        //    {
+        //       new Student{age=18},
+        //       new Student{age=20},
+        //       new Student{age=18},
+        //       new Student{age=18},
+        //    };
+        //    students.myAny(s=>s.age>20);
+        //}
+        //
+        //public static class MyExtension 
+        //{
+        //    public static bool myAny<T>(this IList<T> source, Func<T, bool> predicate) 
+        //    {
+        //        foreach (T item in source)
+        //        {
+        //            if (predicate(item))
+        //            {
+        //                return true;
+        //            }
+        //        }
+        //        return false;
+        //    }
+        //}
 
+        //C#高级进阶  || (七)（泛型）变体：协变和逆变
+        //协变（Covariance）：out，子类可以替父类，代表：IEnumerable<T>, IEnumerator<T>, IQueryable<T>, and IGrouping<TKey, TElement>
+        //逆变（Contravariance）：in，父类可以替子类，代表： IComparer<T>, IComparable<T>, and IEqualityComparer<T>
+        //不变（Invariance）：无指示。只能使用同一个类型
+        //准确描述：一个类型参数声明了协变out（或逆变in）的泛型接口，用父类（或子类）做类型参数时，可以接受子类（或父类）做类型参数的实例
+        //变体:变体不能用于泛型类和泛型方法和值类型，仅仅支持于引用转换
+        //为什么需要变体？——主要是为了让被定义的泛型接口和委托，可以有更广泛的应用
+        //参数都是in，输出都是out：——当使用Action/Func时，传入的参数都是调用方提供的，可以比预期的“大”（父类对象），但不能小；反之亦然
+        //委托:
+        //委托可以接受比它的方法目标更加具体的参数类型——逆变; 委托的目标方法可以返回比委托描述更加具体的类型的返回结果——协变
 
-
-
-
+        //C#高级进阶  || (八)Linq-1：where/order/group/select
 
 
 
