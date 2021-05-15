@@ -9,8 +9,7 @@ namespace Homework
     {
         //public User Author { get; set; }
 
-        public Article(string _kind,DateTime CreateTime)
-            : base(_kind)
+        public Article()
         {
 
         }
@@ -43,14 +42,14 @@ namespace Homework
         public User Author { get; set; }
 
         //一篇文章可以有多个评论
-        public IList<Comment> Comments { get; set; }
+        public IList<Comment<Article>> Comments { get; set; }
 
 
         //每个文章和评论都有一个评价
         public Appraise Appraise { get; set; }
 
         //一篇文章可以有多个关键字
-        public IList<Keyword> Keywords { get; set; }
+        public IList<KeyWord> KeyWords { get; set; }
         public string Name { get; internal set; }
     }
 }

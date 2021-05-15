@@ -23,13 +23,16 @@ namespace Homework
         {
             this.CreateTime = DateTime.Now;
         }
-        public DateTime CreateTime  { get; private set; }//Content中的createTime，不能被子类使用，但只读属性PublishTime使用它为外部提供内容的发布时间
-        public DateTime PublishTime { get; private set; }
+        public DateTime CreateTime  { get; set; }//Content中的createTime，不能被子类使用，但只读属性PublishTime使用它为外部提供内容的发布时间
+        public DateTime PublishTime { get; set; }
 
         private string _Title { get; set; }       //其他方法和属性请自行考虑，尽量贴近一起帮的功能实现     
         private User auther { get; set; }
 
+        public Content()
+        {
 
+        }
        internal virtual void change()
         {
         
@@ -38,22 +41,22 @@ namespace Homework
         //1.确保文章（Article）的标题不能为null值，也不能为一个或多个空字符组成的字符串，而且如果标题前后有空格，也予以删除
         public string Title 
         {
-            get { return _Title; }
-            set
-            {
-                _Title = value;
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    Console.WriteLine("标题不能为null值或者空字符串！");
-                    return;
-                }
-                else 
-                {
-                    Console.WriteLine(value.Trim());
-                }
+            //get { return _Title; }
+            //set
+            //{
+            //    _Title = value;
+            //    if (string.IsNullOrWhiteSpace(value))
+            //    {
+            //        Console.WriteLine("标题不能为null值或者空字符串！");
+            //        return;
+            //    }
+            //    else 
+            //    {
+            //        Console.WriteLine(value.Trim());
+            //    }
 
-            }
-        
+            //}
+            get;set;
         }
 
 

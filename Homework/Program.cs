@@ -51,14 +51,133 @@ namespace Homework
        
         static void Main(string[] args)
         {
-
-            Person.InvokeDelegate();
-
-
-
-
+            //在之前“文章 / 评价 / 评论 / 用户 / 关键字”对象模型的基础上，添加相应的数据，然后完成以下操作：
+            User fg = new User() { Name = "飞哥" };
+            User fish = new User() { Name = "小鱼" };
+            IEnumerable<User> users = new List<User> { fg, fish };
 
 
+            KeyWord key1 = new KeyWord { Name = "C#" };
+            KeyWord key2 = new KeyWord { Name = "SQL" };
+            KeyWord key3 = new KeyWord { Name = ".Net" };
+            IEnumerable<KeyWord> keyWords = new List<KeyWord> { key1, key2, key3 };
+
+            IList<Article> articles = new List<Article>()
+            {
+                new Article()
+                {
+                    Title = "人人都不是程序员",
+                    Author = fg,
+                    PublishTime = new DateTime(1999,12,31),
+                    KeyWords = new List<KeyWord>() { key1 },
+                    Comments = new List<Comment<Article>>(){ new Comment<Article> { },new Comment<Article> { } }
+                },
+                new Article()
+                {
+                    Title = "不折腾",
+                    Author = fg,
+                    PublishTime = new DateTime(2019,1,1),
+                    KeyWords = new List<KeyWord>() { key2},
+                    Comments = new List<Comment<Article>>() { new Comment<Article> { } }
+                },
+                new Article()
+                {
+                    Title = "小鱼吐泡泡",
+                    Author = fish,
+                    PublishTime = new DateTime(2020,01,01),
+                    KeyWords = new List<KeyWord>() { key3 },
+                    Comments = new List<Comment<Article>>() { new Comment<Article> { }, new Comment<Article> { } }
+                },
+                new Article()
+                {
+                    Title = "小鱼吃大鱼",
+                    Author = fish,
+                    PublishTime = new DateTime(2099,12,31),
+                    KeyWords = new List<KeyWord>() { key1,key3 },
+                    Comments = new List<Comment<Article>>() { new Comment<Article> { } }
+                }
+            };
+            //1.找出“飞哥”发布的文章
+            //var result = from a in articles
+            //             where a.Author.Name == "飞哥"
+            //             select a;
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine(item.Title);
+            //}
+
+            ////2.找出2019年1月1日以后“小鱼”发布的文章
+            //var result = from a in articles
+            //             where a.PublishTime > new DateTime(2019 / 01 / 01) && a.Author.Name == "小鱼"
+            //             select a;
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine(item.Title);
+            //}
+
+            ////3.按发布时间升序 / 降序排列显示文章
+            //var ascend = from a in articles
+            //             orderby a.PublishTime ascending
+            //             select a;
+            //foreach (var item in ascend)
+            //{
+            //    Console.WriteLine(item.Title);
+            //}
+
+            //var descend = from a in articles
+            //             orderby a.PublishTime descending
+            //             select a;
+            //foreach (var item in descend)
+            //{
+            //    Console.WriteLine(item.Title);
+            //}
+
+            //4.统计每个用户各发布了多少篇文章
+            //var result = from a in articles
+            //             group a by a.Author;
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine(item.Key.Name + item.Count());
+            //    foreach (var i in item)
+            //    {
+            //        Console.WriteLine($"{item.Key.Name}:{i.Title}");
+            //    }
+            //}
+
+            //5.找出包含关键字“C#”或“.NET”的文章
+            //var akeywords = from a in articles
+            //                from k in new List<KeyWord> { key1, key3 }
+            //                where a.KeyWords.Contains(k)
+            //                select a;
+            //foreach (var item in akeywords)
+            //{
+            //    Console.WriteLine(item.Title);
+            //}
+            //var result = from a in articles
+            //             where a.KeyWords.Any(k => k.Name == "C#" || k.Name == ".Net")
+            //             select a;
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine(item.Title);
+            //}
+
+            //6.找出评论数量最多的文章
+            //var result = from a in articles
+            //             orderby a.Comments.Count descending
+            //             select a;
+            //foreach (var item in result)
+            //{
+            //    if (result.First().Comments.Count!=item.Comments.Count)
+            //    {
+            //        return;
+            //    }
+            //    Console.WriteLine(item.Title);
+            //}
+
+            //7.找出每个作者评论数最多的文章
+            //var result = from a in articles
+            //             group a by a.Author into ga
+            //             select ga.OrderByDescending(am => am?.Comments?.Count).FirstOrDefault();
 
 
 
@@ -72,49 +191,99 @@ namespace Homework
 
 
 
-            Student zb = new Student();
-            zb.age = 18;
-            grow(zb);
-            
 
-            Article lw = new Article("", new DateTime { }) { Name = "Csharp" };
-            Article zl = new Article("", new DateTime { }) { Name = "Sql" };
-            Article lzb = new Article("",new DateTime { }) { Name = "JavaScript" };
 
-            Keyword i = new Keyword { Name = "编程基础" };
-            Keyword j = new Keyword { Name = "后台开发" };
-            Keyword k = new Keyword { Name = "编程基础" };
 
-            Comment zdh = new Comment { Name = "好" };
-            Comment xkp = new Comment { Name = "还行" };
-            Comment ht = new Comment { Name = "很不错" };
 
-            Appraise ag = new Appraise { Name = "Agree" };
-            Appraise dag = new Appraise { Name = "Disagree" };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            //Person.InvokeDelegate();
+
+            //Student zb = new Student();
+            //zb.age = 18;
+            //grow(zb);
+
+
+            //Article lw = new Article() { Name = "Csharp" };
+            //Article zl = new Article() { Name = "Sql" };
+            //Article lzb = new Article() { Name = "JavaScript" };
+
+            //KeyWord i = new KeyWord { Name = "编程基础" };
+            //KeyWord j = new KeyWord { Name = "后台开发" };
+            //KeyWord k = new KeyWord { Name = "编程基础" };
+
+            //Comment<Article> zdh = new Comment<Article> { Name = "好" };
+            //Comment<Article> xkp = new Comment<Article> { Name = "还行" };
+            //Comment<Article> ht = new Comment<Article> { Name = "很不错" };
+
+            //Appraise ag = new Appraise { Name = "Agree" };
+            //Appraise dag = new Appraise { Name = "Disagree" };
 
             //一篇文章可以有多个评论
-            lw.Comments = new List<Comment> { zdh, xkp, ht };
-            zdh.Article = lw;
-            xkp.Article = lw;
-            ht.Article = lw;
+            //lw.Comments = new List<Comment<Article>> { zdh, xkp, ht };
+            //zdh.Article = lw;
+            //xkp.Article = lw;
+            //ht.Article = lw;
 
-            //一个评论必须有一个它所评论的文章
-            xkp.Article = zl;
-            zl.Comments = new List<Comment> { xkp };
+            ////一个评论必须有一个它所评论的文章
+            //xkp.Article = zl;
+            //zl.Comments = new List<Comment<Article>> { xkp };
 
-            //每个文章和评论都有一个评价
-            lw.Appraise = ag;
-            zdh.Appraise = dag;
+            ////每个文章和评论都有一个评价
+            //lw.Appraise = ag;
+            //zdh.Appraise = dag;
 
 
-            //一篇文章可以有多个关键字，一个关键字可以对应多篇文章
-            lw.Keywords = new List<Keyword> { i, j, k };
-            zl.Keywords = new List<Keyword> { j,k };
-            lzb.Keywords = new List<Keyword> { i, k };
+            ////一篇文章可以有多个关键字，一个关键字可以对应多篇文章
+            //lw.KeyWords = new List<KeyWord> { i, j, k };
+            //zl.KeyWords = new List<KeyWord> { j,k };
+            //lzb.KeyWords = new List<KeyWord> { i, k };
 
-            i.Articles = new List<Article> {lw,lzb };
-            j.Articles = new List<Article> { lw, zl};
-            k.Articles = new List<Article> {lw,zl,lzb };
+            //i.Articles = new List<Article> {lw,lzb };
+            //j.Articles = new List<Article> { lw, zl};
+            //k.Articles = new List<Article> {lw,zl,lzb };
 
 
 
@@ -130,7 +299,7 @@ namespace Homework
 
 
             //用泛型改造二分查找
-            Console.WriteLine(BinarySeek<int>(new int[] { 1, 2, 3, 4, 5, 6, 7, 8 }, 9));
+            //Console.WriteLine(BinarySeek<int>(new int[] { 1, 2, 3, 4, 5, 6, 7, 8 }, 9));
 
             //用泛型改造堆栈
             //MimicStack<object> lw = new MimicStack<object>(5);
@@ -143,10 +312,10 @@ namespace Homework
             //用泛型改造双向链表
 
             //用泛型改造"取数组中的最大值"
-            Console.WriteLine(FindMax<int>(new int[] {-1,99,98,56,42,87,666,233,234,100}));
+            //Console.WriteLine(FindMax<int>(new int[] {-1,99,98,56,42,87,666,233,234,100}));
 
 
-            
+
 
 
 

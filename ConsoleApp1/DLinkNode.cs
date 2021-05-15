@@ -23,7 +23,7 @@ namespace ConsoleApp1
 
         public DLinkNode<T> Previous { get; set; }
         public DLinkNode<T> Next { get; set; }
-        public T value { get; set; }
+        public T Value { get; set; }
 
         public void AddAfter(DLinkNode<T> node)//1 2 3 4 5
         {
@@ -203,10 +203,10 @@ namespace ConsoleApp1
         public static DLinkNode<int> Max(this DLinkNode<int> node)
         {
             DLinkNode<int> max = new DLinkNode<int>();
-            max.value = -1;
+            max.Value = -1;
             foreach (var item in node)
             {
-                if (item.value > max.value)
+                if (item.Value > max.Value)
                 {
                     max = item;
                 }

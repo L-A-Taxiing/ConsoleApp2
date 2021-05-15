@@ -1045,6 +1045,9 @@ namespace CSharp
         //}
 
         //C#高级进阶  || (七)（泛型）变体：协变和逆变
+        //在声明（不是使用）
+        //泛型接口和委托（也只能是接口和委托）时
+        //可以在类型参数添加（in或out）“变体”的指示
         //协变（Covariance）：out，子类可以替父类，代表：IEnumerable<T>, IEnumerator<T>, IQueryable<T>, and IGrouping<TKey, TElement>
         //逆变（Contravariance）：in，父类可以替子类，代表： IComparer<T>, IComparable<T>, and IEqualityComparer<T>
         //不变（Invariance）：无指示。只能使用同一个类型
@@ -1056,6 +1059,186 @@ namespace CSharp
         //委托可以接受比它的方法目标更加具体的参数类型——逆变; 委托的目标方法可以返回比委托描述更加具体的类型的返回结果——协变
 
         //C#高级进阶  || (八)Linq-1：where/order/group/select
+        //1.Linq（Language-Integrated Query）针对于集合的操作属于Linq to Object。但所有的Linq使用统一的查询表达式（query expression）
+        //var excellent = from s in students
+        //                where s.Score > 90
+        //                select s;
+        //说明:   以 from 开头;    数据源（source data）必须是IEnumerable或它的子类;     以select 或 group 结尾
+        //强类型:无论是表达式内部，还是表达式结果,如果数据源为非泛型集合：需要在from之后指定类型
+        //2.where(过滤条件)
+        //可选。如果不要，就会返回全部集合元素
+        //所有能返回bool值的表达式都可以用作where条件（Linq to Object）:
+        //                  大于（>）小于（<）等于（==）  不等于（!=）
+        //                  包含（Contains）、StartWith()
+        //                  数量（Count）、Length...
+        //可以使用多个条件（||、&&或多个where）进行组合:
+        //var excellent = from s in students
+        //                    //where s.Majors.Count > 2
+        //                    //where s.Majors.Contains(csharp)
+        //                    //where !s.Majors.Contains(Javascript)
+        //                where s.Name.StartsWith('王') && s.Score > 80
+        //                select s;
+        //3.order(排序)   关键字:orderby
+        //var excellent = from s in students
+        //                    //orderby s.Score ascending  //按Score升序（默认）
+        //                orderby s.Name descending    //按Name降序
+        //                select s;
+        //4.group(分组)   将具有相同属性的元素归为一组
+        //var groupedMajor = from m in majors
+        //                   group m by m.Teacher;
+        //分组后的结果:IEnumerable<IGrouping<Teacher, Major>>,关键：
+        //   IGrouping<Teacher, Major> 里的Key（Teacher：分组依据）
+        //   迭代IGrouping<Teacher, Major> 获得（iterate）的值（Major）
+        //   foreach (var item in groupedMajor)
+        //   {
+        //      Console.WriteLine(item.Key.GetType() + ":" + item.Key.Name);
+        //      foreach (var i in item)
+        //      {
+        //          Console.WriteLine(i.GetType() + ":" + i.Name);
+        //      }
+        //      Console.WriteLine();
+        //   }
+        //5.select(投影)
+        //从原有结果集中取出或增加若干属性重新组合成新的集合
+        //var excellent = from s in students
+        //                select s.Name;
+        //还可以用匿名对象:
+        //var excellent = from s in students
+        //                select new /*ShortStudentInfo*/
+        //                {
+        //                    /*Name = */
+        //                    s.Name,
+        //                    /*Score = */
+        //                    s.Score
+        //                };
+        //常见面试题:select与where的区别:
+        //where是“横向”的操作（一个学生一行），比如从10个学生中取出3个年龄大于20岁的学生，取出来的还是学生；
+        //select是“纵向”的操作（学生的一个属性算一列），比如取出学生的姓名和年龄，取出来的就不是学生了，而是一个属性或者多个属性的组合
+        //var groupedMajor = from m in majors
+        //                   group m by m.Teacher //到此为止，得到分组结果集
+        //                                        //接下来对分组结果集再运算（统计）
+        //           into gm              //into类似于命名，将之前的结果集命名为：gm
+        //                   select new          //利用投影
+        //                   {
+        //                       gm.Key.Name, //老师的名字
+        //                       gm.Count()   //统计结果
+        //                   };
+        //可以用自定义类型:
+        //public class Result
+        //{
+        //    public string teacher { get; set; }
+        //    public int count { get; set; }
+        //}
+        //然后select
+        //select new Result           //利用投影
+        //{
+        //    teacher = gm.Key.Name,  //老师的名字
+        //    count = gm.Count()      //统计结果
+        //};
+        //直接使用匿名类
+        //select new           //没有类名了
+        //{
+        //    teacher = gm.Key.Name, 
+        //    count = gm.Count()
+        //};
+        //转化为Dictionary
+        //var 1staic=stat.ToDictionary(s=>s.key,s=>s.count);然后foreach...
+        //6.实现泛型比较的三种方法：
+        //public static void Prompt<T>(T a, T b, Func<T, T, bool> func)
+        //{
+        //    if (func(a, b))
+        //    {
+
+        //    }
+        //}
+        //++
+        //public static void Prompt<T>(T a, T b) where T : IComparable
+        //{
+        //    if (a.CompareTo(b) > 0)
+        //    {
+        //
+        //    }
+        //}
+        //++
+        //public static void Prompt<T>(T a, T b, IMyCompare<T> compare)
+        //{
+        //    if (compare.Compare(a, b))
+        //    {
+        //
+        //    }
+        //}
+        //+
+        //public interface IMyCompare<T>
+        //{
+        //    bool Compare(T a,T b)
+        //}
+
+        //C#高级进阶  || (九)Linq-2：join和let
+        //1.join(连接)——将多个集合连接起来进行查询，以获得额外的条件或结果集
+        //例子：Teacher中添加一个Id属性，Major中不再记录Teacher对象，而是TeacherId--内连接
+        //var majors = from m in majors
+        //             join t in teachers
+        //             on m.Teacher equals t      //equals非常重要，不能使用 == 替代
+        //             where t.Name == "小鱼"
+        //             select m;
+        //利用投影
+        //             var result = from m in majors
+        //                 join t in teachers
+        //                    on m.TeacherId equals t.Id
+        //                 select new 
+        //                 { 
+        //                    t.Id,
+        //                    teacherName = t.Name, 
+        //                    majorName = m.Name
+        //                 };
+        //然后foreach
+        //外连接：所有左边的（第一个）集合元素都必须返回，哪怕在右边的（第二个）集合无法匹配到（无法匹配就显示为null）。需要使用DefaultIfEmpty
+        //var majors = from t in teachers    //List<Teacher>放在第一位
+        //             join m in majors
+        //             on t equals m.Teacher into mt            //又见into，mt是IEnumerable<Major>
+        //             from result in mt.DefaultIfEmpty()       //调用了DefaultIfEmpty()并再次from
+        //             select new { teacher = t.Name, major = result?.Name ?? "没有课程" };
+        //交叉连接(cross join)--左右两边的集合进行无条件的多对多交叉连接（执行笛卡尔乘积），使用多个from实现
+        //var result = from t in teachers
+        //             from m in majors
+        //             select new { teacher = t.Name, major = m.Name };
+        //多个字段——使用匿名类进行比较
+        //var majors = from t in new List<Teacher> { fg, fish }
+        //             join m in new List<Major> { csharp, SQL, Javascript, UI }
+        //             //使用组合关键字的匿名类进行比较
+        //             on new { name = t.Name, age = t.Age } equals new { name = m.TeacherName, age = m.TeacherAge }
+        //             select new { teacher = t.Name, major = m.Name };
+        //2.let子句——将查询过程切分为若干个过程，每一个过程存储一个子结果集，以供之后的查询使用
+        //var majors = from s in students
+        //             let ms = s.Majors   //把所有的 Major 先暴露出来
+        //             from m in ms        //后面就可以使用 let 指定的 ms
+        //             select new { student = s.Name, major = m };
+        //另一种写法:
+        //var studentsMajors = from s in students
+        //                     from m in majors
+        //                     where s.Majors.Contains(m)
+        //                     select new { student = s.Name, major = m };
+        //3.延迟加载（deferred）——Linq的查询表达式只是一个表达式，并不存储查询结果，直到被foreach调用
+        // 或者，使用ToList()，ToArray()等方法强制立即执行（Forcing Immediate Execution）：
+        //     var result = from t in teachers
+        //                  select t;
+        // ((List<Teacher>) teachers).Add(new Teacher { Name = "new" });
+        //teachers.ToList().Add(new Teacher { Name = "new" });   //比较这两种方式Console.WriteLine(teachers.Count());
+        //foreach (var item in result)
+        //{
+        //   Console.WriteLine(item.Name);
+        //}
+        //作用:在进行多条件查询拼接时提高性能，使用最终表达式进行查询
+        //var result = from t in teachers
+        //             select t;
+
+        //    if (true)
+        //    {
+        //        result = from r in result
+        //                 where r.Age > 20
+        //                 select r;
+        //    }
+        //获得up-to-data
 
 
 
@@ -1074,5 +1257,17 @@ namespace CSharp
 
 
 
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+}
 }
