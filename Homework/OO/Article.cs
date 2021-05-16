@@ -39,7 +39,6 @@ namespace Homework
             Author.HelpPoint--;
             Disagreechange--;
         }
-        public User Author { get; set; }
 
         //一篇文章可以有多个评论
         public IList<Comment<Article>> Comments { get; set; }

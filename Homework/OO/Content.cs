@@ -27,7 +27,7 @@ namespace Homework
         public DateTime PublishTime { get; set; }
 
         private string _Title { get; set; }       //其他方法和属性请自行考虑，尽量贴近一起帮的功能实现     
-        private User auther { get; set; }
+        public User Author { get; set; }
 
         public Content()
         {

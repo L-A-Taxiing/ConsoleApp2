@@ -14,12 +14,7 @@ namespace Homework
 
         //public void Publish() { }
 
-        public Problem(string body, string _kind, DateTime CreateTime) 
-            :base("")
-            //每一个problem对象一定有body赋值
-        {
-            _body = body;
-        }
+       
        
 
 
@@ -29,10 +24,13 @@ namespace Homework
             get { return _reward; }
             set 
             {
-                if (value<0)
+                if (_reward < 0)
                 {
-                    Console.WriteLine("悬赏不能为负数");
-                    return;
+                    throw new ArgumentOutOfRangeException("悬赏不能为负");
+                }
+                else
+                {
+                    _reward = value;
                 }
             }
         }

@@ -1240,6 +1240,35 @@ namespace CSharp
         //    }
         //获得up-to-data
 
+        //C#高级进阶  || (十)Linq方法
+        //1.where:
+        //var excellent = students.Where(s => s.Score > 90);
+        //2.orderby
+        //var excellent = students
+        //     //.OrderBy(s => s.Name)
+        // .OrderByDescending(s => s.Score);
+        //3.Group
+        // var groupedMajor = majors.GroupBy(m => m.Teacher);
+        //4.Select
+        //var excellent = students.Select(s => s.Name);
+        //5.Join
+        //var mj = majors.Join(teachers, m => m.TeacherName, t => t.Name,
+        //     (m, t) => new
+        //     {
+        //         major = m.Name,
+        //         teacher = t.Name
+        //     });
+        //6.SelectMany
+        //var sm = students.SelectMany(
+        //           s => s.Majors,              //指示取出students里的所有Major
+        //           (s, m) => new { s, m.Name }      //组合student和major
+        //       )
+        //       .Where(s => s.Name.ToLower().Contains("s"))  //在上述结果集中筛选
+        //       ;
+        //7.其他方法:
+        //取单个：First/Single/Last(OrDefault)
+        //聚合函数：Sum/Count/Min/Max/Average
+        //顺序相关：Reverse，一定要非常慎重的使用
 
 
 
@@ -1269,5 +1298,5 @@ namespace CSharp
 
 
 
-}
+    }
 }

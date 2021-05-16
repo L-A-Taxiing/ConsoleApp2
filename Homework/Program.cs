@@ -45,13 +45,16 @@ namespace Homework
 
     }
 
-  
+
     class Program
     {
-       
+
         static void Main(string[] args)
         {
             //在之前“文章 / 评价 / 评论 / 用户 / 关键字”对象模型的基础上，添加相应的数据，然后完成以下操作：
+            //将之前作业的Linq查询表达式用Linq方法实现
+            //找出每个作者最近发布的一篇文章
+            //为求助（Problem）添加悬赏（Reward）属性，并找出每一篇求助的悬赏都大于5个帮帮币的求助作者
             User fg = new User() { Name = "飞哥" };
             User fish = new User() { Name = "小鱼" };
             IEnumerable<User> users = new List<User> { fg, fish };
@@ -101,6 +104,7 @@ namespace Homework
             //var result = from a in articles
             //             where a.Author.Name == "飞哥"
             //             select a;
+            //var result = articles.Where(a => a.Author.Name == "飞哥");
             //foreach (var item in result)
             //{
             //    Console.WriteLine(item.Title);
@@ -110,6 +114,7 @@ namespace Homework
             //var result = from a in articles
             //             where a.PublishTime > new DateTime(2019 / 01 / 01) && a.Author.Name == "小鱼"
             //             select a;
+            //var result = articles.Where(a => a.PublishTime > new DateTime(2019 / 01 / 01) && a.Author.Name == "小鱼");
             //foreach (var item in result)
             //{
             //    Console.WriteLine(item.Title);
@@ -119,6 +124,7 @@ namespace Homework
             //var ascend = from a in articles
             //             orderby a.PublishTime ascending
             //             select a;
+            //var ascend = articles.OrderBy(a => a.PublishTime);
             //foreach (var item in ascend)
             //{
             //    Console.WriteLine(item.Title);
@@ -127,6 +133,7 @@ namespace Homework
             //var descend = from a in articles
             //             orderby a.PublishTime descending
             //             select a;
+            //var descend = articles.OrderByDescending(a => a.PublishTime);
             //foreach (var item in descend)
             //{
             //    Console.WriteLine(item.Title);
@@ -135,6 +142,7 @@ namespace Homework
             //4.统计每个用户各发布了多少篇文章
             //var result = from a in articles
             //             group a by a.Author;
+            //var result = articles.GroupBy(a => a.Author);
             //foreach (var item in result)
             //{
             //    Console.WriteLine(item.Key.Name + item.Count());
@@ -145,17 +153,10 @@ namespace Homework
             //}
 
             //5.找出包含关键字“C#”或“.NET”的文章
-            //var akeywords = from a in articles
-            //                from k in new List<KeyWord> { key1, key3 }
-            //                where a.KeyWords.Contains(k)
-            //                select a;
-            //foreach (var item in akeywords)
-            //{
-            //    Console.WriteLine(item.Title);
-            //}
             //var result = from a in articles
             //             where a.KeyWords.Any(k => k.Name == "C#" || k.Name == ".Net")
             //             select a;
+            //var result = articles.Where(a => a.KeyWords.Any(k => k.Name == "C#" || k.Name == ".Net"));
             //foreach (var item in result)
             //{
             //    Console.WriteLine(item.Title);
@@ -165,9 +166,10 @@ namespace Homework
             //var result = from a in articles
             //             orderby a.Comments.Count descending
             //             select a;
+            //var result = articles.OrderByDescending(a => a.Comments.Count);
             //foreach (var item in result)
             //{
-            //    if (result.First().Comments.Count!=item.Comments.Count)
+            //    if (result.First().Comments.Count != item.Comments.Count)
             //    {
             //        return;
             //    }
@@ -177,9 +179,31 @@ namespace Homework
             //7.找出每个作者评论数最多的文章
             //var result = from a in articles
             //             group a by a.Author into ga
-            //             select ga.OrderByDescending(am => am?.Comments?.Count).FirstOrDefault();
+            //             select ga.OrderByDescending(ga => ga?.Comments?.Count).FirstOrDefault();
+            //Linq方法怎么写?
+
+            //找出每个作者最近发布的一篇文章
+            //var result = from a in articles
+            //             group a by a.Author into ga
+            //             select ga.OrderByDescending(ga => ga.PublishTime).FirstOrDefault();
 
 
+            //为求助（Problem）添加悬赏（Reward）属性，并找出每一篇求助的悬赏都大于5个帮帮币的求助作者
+            //IList<Problem> problems = new List<Problem>()
+            //{
+            //    new Problem(){ Reward=1, Author=fg},
+            //    new Problem(){ Reward=6, Author=fg},
+            //    new Problem(){ Reward=6, Author=fish},
+            //    new Problem(){ Reward=10, Author=fish},
+            //};
+            //var result = from p in problems
+            //             group p by p.Author into pa
+            //             where pa.All(pa => pa.Reward > 5)
+            //             select pa.Key.Name;
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine(item);
+            //}
 
 
 
