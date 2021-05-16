@@ -1270,6 +1270,37 @@ namespace CSharp
         //聚合函数：Sum/Count/Min/Max/Average
         //顺序相关：Reverse，一定要非常慎重的使用
 
+        //C#高级进阶  || (十一)异常处理
+        //1.什么是异常:本来就是那些“正常情况下不会出现”、且“出现了之后‘我’也无法处理”的问题，并且程序不应该继续执行（应该中断）
+        //2.抛出异常:throw new Exception("成绩只能在0-100分之间");自定义异常需要继承Excepetion
+        //3.try...catch...finally:
+        //被抛出的异常，（如果没有被处理/捕获）会直接传递给它的调用者，再由调用者传递给它的调用者，...，直到程序最顶层调用，程序崩溃
+        // try   //尝试
+        //{
+        //    SLevel level = Map(101);
+        //}
+        //catch (FileNotFoundException)  //捕获
+        //{
+        //    //如果是FileNotFoundException
+        //    //记录到日志，不再抛出
+        //}
+        //catch (IndexOutOfRangeException)
+        //{
+        // //如果是IndexOutOfRangeException
+        // //发送Email给维护人员，不再抛出
+        //}
+        //    catch (Exception)
+        //{
+        //   //其他异常处理
+        //    throw;      //将异常再次抛出
+        //}
+        //注意：越是具体（子类）的异常，越是要放在前面，否则编译无法通过；
+        //     finally：无论有无异常（即使有return）都要执行的代码（比如关闭文件流）——配合catch：没有catch就无法正常使用，断点不会被击中
+        //4.使用注意:
+        //异常会带来较大的资源开销（性能损耗），所以要尽可能避免异常被抛出（不是不写throw exception的代码）
+        //不要使用exception做为分支判断条件
+        //尽可能的使用具体的、.NET现有的异常
+
 
 
 

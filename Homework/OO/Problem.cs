@@ -19,6 +19,8 @@ namespace Homework
 
 
         private int _reward;//problem.Reward不能为负数
+
+        //1.修改之前的属性验证：problem.Reward为负数时直接抛出“参数越界”异常
         public int Reward 
         {
             get { return _reward; }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Homework
-{    internal /*abstract*/ class Content         //思考之前的Content类，该将其抽象成抽象类还是接口？为什么？并按你的想法实现。
+{    internal /*abstract*/ class Content :Entity<int>      //思考之前的Content类，该将其抽象成抽象类还是接口？为什么？并按你的想法实现。
     {
         protected string kind { get; set; }  //Content中有一个字段：kind，记录内容的种类（problem/article/suggest等），只能被子类使用
         public Content(string _kind)         // 确保每个Content对象都有kind的非空值
@@ -58,6 +58,16 @@ namespace Homework
             //}
             get;set;
         }
+        //内容（Content）发布（Publish）的时候检查其作者（Author）是否为空，如果为空抛出“参数为空”异常
+        public virtual void Publish()
+        {
+            if (this.Author.Name == null)
+            {
+                throw new ArgumentNullException("作者不能为空");
+            }
+        }
+
+
 
 
     }

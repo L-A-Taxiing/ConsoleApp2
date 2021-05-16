@@ -51,6 +51,24 @@ namespace Homework
 
         static void Main(string[] args)
         {
+
+            //5.在Main()函数调用ContentService时，捕获一切异常，并记录异常的消息和堆栈信息
+            try
+            {
+                ContentService contentService = new ContentService();
+                contentService.Publish(new Problem {Author=new User(),Reward=-100,Id=81194});
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("发现错误:"+e.ToString());
+            }
+
+
+
+
+
+
+
             //在之前“文章 / 评价 / 评论 / 用户 / 关键字”对象模型的基础上，添加相应的数据，然后完成以下操作：
             //将之前作业的Linq查询表达式用Linq方法实现
             //找出每个作者最近发布的一篇文章
@@ -204,7 +222,6 @@ namespace Homework
             //{
             //    Console.WriteLine(item);
             //}
-
 
 
 
