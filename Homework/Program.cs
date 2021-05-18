@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Homework
 {
@@ -52,6 +53,8 @@ namespace Homework
         static void Main(string[] args)
         {
 
+            
+
             //5.在Main()函数调用ContentService时，捕获一切异常，并记录异常的消息和堆栈信息
             try
             {
@@ -62,7 +65,6 @@ namespace Homework
             {
                 Console.WriteLine("发现错误:"+e.ToString());
             }
-
 
 
 

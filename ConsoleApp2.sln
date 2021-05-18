@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Homework", "Homework\Homewo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{7801A290-9F6A-444B-9D0B-417CF32DFAAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject1", "TestProject1\TestProject1.csproj", "{D3F616FC-B031-4AD1-BC37-D783B34B1A3C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProject1", "TestProject1\TestProject1.csproj", "{D3F616FC-B031-4AD1-BC37-D783B34B1A3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Captcha", "Captcha\Captcha.csproj", "{FD7FDBA1-6FF8-4CEC-B5FD-376FAC5F17AE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{D3F616FC-B031-4AD1-BC37-D783B34B1A3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3F616FC-B031-4AD1-BC37-D783B34B1A3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3F616FC-B031-4AD1-BC37-D783B34B1A3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD7FDBA1-6FF8-4CEC-B5FD-376FAC5F17AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD7FDBA1-6FF8-4CEC-B5FD-376FAC5F17AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD7FDBA1-6FF8-4CEC-B5FD-376FAC5F17AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD7FDBA1-6FF8-4CEC-B5FD-376FAC5F17AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

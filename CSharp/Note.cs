@@ -1301,14 +1301,131 @@ namespace CSharp
         //不要使用exception做为分支判断条件
         //尽可能的使用具体的、.NET现有的异常
 
+        //C#高级进阶  || (十二)澄清概念： 进程vs线程 / 同步vs异步 / 并行（并发）vs串行
+        //1.计算机所有的工作都由CPU完成，以前电脑只有一个cpu一次只能做一件事
+        //2.cpu空闲:CPU一定要等着内存提供数据，才能完成工作——CPU的运算速度大幅提升（摩尔定律），远超内存的“供给”速度
+        //++++++++++
+        //3.进程:进程是操作系统分配给应用程序（复习：操作系统上运行的软件）独享的一块资源
+        //4.线程:线程可以看成是一个“更轻量级”的进程，一个进程中有可以有多个线程
+        //      线程不具备独立完成一个任务的资源，它需要进程的支持;多个线程可共享进程资源
+        //++++++++++
+        //5.同步(sync):代码是会按固定顺序，依次执行的。前面的代码没有执行完毕，后面的代码就无法执行,A-B-C-D
+        //6.异步(async):代码可以/可能会“不”按书写顺序依次执行,A-D-B-C
+        //++++++++++
+        //7.并行:在同一时间点，任务被多个处理器处理执行(只能在多（核）处理器上实现)
+        //  串行:任务被同一个处理器处理执行，不会出现同一个时间点上多个处理器处理执行的情况
+        //  并发(CPU有闲置，并发有用):对并行的一种模拟——如何实现?
+        //  CPU的运行被分成很多的“时间片”,时间片持续的时间通常都非常短，所以用户察觉不到
+        //8.为什么要设计多线程:(被迫+提高性能)——cpu idle
+        //  满足应用本身的要求,比如操作系统多进程;
+        //  在计算机资源充足的情况下（注意这个前提），压榨系统性能;
+        //  提高用户响应。完成任务的总时间不变，但减少用户等待时间.
 
+        //C#高级进阶  || (十三)线程和任务：Thread / Task
+        //A.Thread类:
+        //I.单线程——代码都是运行在一个线程中，这被称之为“单线程编程”,
+        //默认使用的这个线程被称为主（primary）线程，或者启动线程。使用Thread.CurrentThread可以获取:
+        //Thread current = Thread.CurrentThread;然后，可以获取线程的相关信息：
+        //Console.WriteLine(Thread.GetDomain().FriendlyName);  //当前线程所在进程
+        //Console.WriteLine(current.ManagedThreadId);          //托管线程Id
+        //Console.WriteLine(current.Priority);                 //优先级
+        //Console.WriteLine(current.ThreadState);              //线程状态
+        //优先级：当出现多个线程进行资源争夺时，操作系统按其优先级从高到低进行分配;
+        //线程状态：因为线程中的任务无法在一个CPU时钟周期内完成，当CPU被分配去处理其他线程时，
+        //         当前线程也不能被“销毁”，只需要改变其状态即可
+        //Thread.Sleep(1000);
+        //II.多线程——让代码运行在多个线程中，就被称之为“多线程编程”，通常是并发
+        //可以new一个工作线程：Thread current = new Thread(Process); 
+        //public static void Process()
+        //{
+        //    Console.WriteLine($"ThreadId:{Thread.CurrentThread.ManagedThreadId}");
+        //}
+        //new出来的Thread需要调用Start()来启动
+        //for (int i = 0; i< 20; i++)
+        //{
+        //    //同步：Console.WriteLine($"{i}：ThreadId-{Thread.CurrentThread.ManagedThreadId}"); 
+        //     new Thread(() =>
+        //     {
+        //        Console.WriteLine($"{i}：ThreadId-{Thread.CurrentThread.ManagedThreadId}");
+        //     }).Start();
+        //}
+        //不同的ThreadId;i的值飘忽不定
+        //B.Task——从逻辑层面上讲，Task代表一份工作/任务，该工作/任务会被异步的执行;
+        //从代码层面上讲，是一个实现了IAsyncResult的类，Task<T> 继承了Task.
+        //Task要完成的任务由Action和Func体现，对应着两个Task类:
+        //    Task：使用Action，该Task没有返回;Task<T>：使用Func，该Task还要返回一个T类型对象
+        //异步运行:得到一个Task之后，还需要显式调用Start()才开始运行
+        //线程池:如果Task需要一个线程，默认它会利用线程池来获取
+        //池（pool）的概念：一个线程使用完成后并不销毁，而是放回池中；所以池中可以存放多个线程；下次使用时直接从池中取出未使用的线程
+        //  一个进程只有一个线程池，池中的线程都是后台进程
+        //  前/后台线程的区别:如果前台线程终止，后台线程也会被结束；反之不成立;之前的（主线程和工作线程）都是前台（foreground）线程
+        //  可以查看/改变线程的前后台状态：current.IsBackground = true;
+        //  使用默认的priority：Normal;使用相同的栈大小
+        //可以用IsThreadPoolThread检查：Console.WriteLine(current.IsThreadPoolThread);  //是否线程池线程;使用默认的priority：Normal;使用相同的栈大小
+        //TaskScheduler:.NET中还有一个专门的TaskSchedular负责线程池中线程的调度:
+        //      使用队列，先进先出;使用算法防止某些线程偷懒（work stealing）;处理一些长运行（long-running）线程
+        //其他属性和方法:
+        //获得Task实例： Task t1 = Task.Run(getup);    //t1被创建的同时立即执行
+        //              Task t1 = Task.Factory.StartNew(getup);  //适合于精确控制task实例的生成
+        //推荐顺序：Task.Run() =>Task.Factory.StartNew() =>new Task()
+        //会延迟执行的Task（注意： 不是Thread.Sleep()，当前线程不会停下来等）: Task t1 = Task.Delay(1000);    //Delay()获得的Task不能Start()  
+        //阻塞：会等着t1停下来
+        //      t1.Wait();    //当前（主）线程等着t1完成之后才继续运行   Wait()：用于Task
+        //      Console.WriteLine("t1.Result:" + t1.Result);    //使用Result属性获得返回值
+        //t1.RunSynchronously(); 等同于同步
+        //C.Task和thread
+        //从逻辑上讲，Task是比线程“更高层的抽象”，它是对任务（work）的封装，而不是线程（thread）的封装;
+        //从实现上讲，异步并不一定需要一个线程。是否开启一个新线程，是由scheduler决定的，目前来说：
 
+        //C#高级进阶  || (十四)IO和文件操作
+        //IO(输入输出)
+        //I.Path(路径)——静态类，主要是针对文件路径进行操作，不涉及文件夹或文件本身
+        //常用方法:Combine：组合成一个路径;Extension：文件扩展名相关;Directory：文件夹相关，如：GetDirectoryName
+        //                 Path：路径化操作，如：GetFullPath/GetPathRoot;Temp：创建临时文件
+        //II.文件夹（Directory）——静态类
+        //增：CreateDirectory()
+        //删：Delete()
+        //改: SetXXX()
+        //查：EnumerateDirectories() / EnumerateFiles() / Exists() / GetXXX()
+        //III.文件(File)——静态类
+        //增：Create()
+        //删：Delete()
+        //改：Append() / Copy() / Decrypt() / Encrypt() / SetXXX()  / WriteXXX()
+        //查：Exists() / GetXXX() / Open() / Read() 
+        //IV.stream（流）——文件的本质是一个有序的命名的字节组合
+        //FileStream：实例对象一般不会通过new获得，而是通过File.Create(path) ： 创建一个文件
+        //File.OpenWrite(path)：打开文件然后写;File.OpenRead() ：打开文件读
+        //可以使用using(){}自动释放资源
+        //V.表达式树
 
-
-
-
-
-
+        //C#高级进阶  || (十五)异步方法和TPL： async / await / Parallel
+        //封装:
+        //Task.Run(() =>
+        //{
+        //   Thread.Sleep(500);    //模拟耗时
+        //   int random = new Random().Next();
+        //});
+        //把Task封装成方法
+        //public static Task<int> getRandom()
+        //{
+        //    return Task<int>.Run(() =>
+        //    {
+        //        Thread.Sleep(500);    //模拟耗时
+        //        return new Random().Next();
+        //    });
+        //}
+        //异步方法:async和await(被async标记的方法被称为异步方法)
+        //        async不一定（没有强制力保证）异步,同步的方法一样可以标记async;
+        //        async的作用:告诉编译器方法中可以出现await,如果只有async没有await，报编译时警告;只有await没有async，报编译错误
+        //await，可以理解为：异步（async）等待，后接 awaitable 实例
+        //非阻塞等待:异步方法一直同步运行，直到 await,从 await 开始异步（分叉）：
+        //          执行 awatable 中的内容，同时返回方法的调用处，执行其后内容,直到 awaitable 中内容执行完毕，才暂停方法调用处内容，继续执行await之后的代码
+        //实质上，await采用的是Task的ContinueWith()机制：await 之后的方法内代码，被 await Task 执行完毕后调用
+        //非异步方法：只有Task异步执行;调用Wait()的非异步方法：Wait()会阻塞当前线程进行等待
+        //任务并行库(Task Parallel Library)——.NET中System.Threading 和System.Threading.Tasks名称空间下的类库
+        //      简化异步/并行开发，在底层实现：动态调整并行规模;处理分区;线程（池）调度（器）等
+        //Parallel.Invoke();      Parallel.For(0, 10, x => { Console.WriteLine(x); });     Parallel.ForEach(Enumerable.Range(1,10), x => Console.WriteLine(x));
+        
 
 
 
