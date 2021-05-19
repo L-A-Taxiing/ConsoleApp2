@@ -15,11 +15,11 @@ namespace ConsoleApp1
             Console.WriteLine(MyClass.FindPrimeNum(1, 100));
 
 
-            DLinkNode<int> node1 = new DLinkNode<int> { value = 1 };
-            DLinkNode<int> node2 = new DLinkNode<int> { value = 2 };
-            DLinkNode<int> node3 = new DLinkNode<int> { value = 3 };
-            DLinkNode<int> node4 = new DLinkNode<int> { value = 4 };
-            DLinkNode<int> node5 = new DLinkNode<int> { value = 5 };
+            DLinkNode<int> node1 = new DLinkNode<int> { Value = 1 };
+            DLinkNode<int> node2 = new DLinkNode<int> { Value = 2 };
+            DLinkNode<int> node3 = new DLinkNode<int> { Value = 3 };
+            DLinkNode<int> node4 = new DLinkNode<int> { Value = 4 };
+            DLinkNode<int> node5 = new DLinkNode<int> { Value = 5 };
             node1.Next = node2;
             node2.Next = node3;
             node3.Next = node4;

@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProject1", "TestProject
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Captcha", "Captcha\Captcha.csproj", "{FD7FDBA1-6FF8-4CEC-B5FD-376FAC5F17AE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SourceStack", "SourceStack\SourceStack.csproj", "{09B674EF-50B2-4069-B60F-AAF007FC8B09}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{FD7FDBA1-6FF8-4CEC-B5FD-376FAC5F17AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD7FDBA1-6FF8-4CEC-B5FD-376FAC5F17AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD7FDBA1-6FF8-4CEC-B5FD-376FAC5F17AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09B674EF-50B2-4069-B60F-AAF007FC8B09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09B674EF-50B2-4069-B60F-AAF007FC8B09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09B674EF-50B2-4069-B60F-AAF007FC8B09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09B674EF-50B2-4069-B60F-AAF007FC8B09}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
