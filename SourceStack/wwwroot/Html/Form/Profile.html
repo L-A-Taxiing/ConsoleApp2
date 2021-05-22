@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>个人资料·一起帮</title>
+    <link rel="shortcut icon" type="image/ico" href="/Image/logo-big.ico" media="screen" />
+</head>
+<body>
+    <header>
+        <h1><img src="/image/logo-big.ico" alt="一起帮·网络互助平台" />一起帮·网络互助平台</h1>
+        <h1>个人资料</h1>
+        <hr />
+    </header>
+    <form action="/" method="post" enctype="multipart/form-data">
+        <div>
+            <label>头像：（* 仅限jpg/png/gif）</label><br />
+            <input type="file" name="头像" placeholder="页面提交时上传文件" />
+        </div>
+        <div>
+            <label>性别：</label>
+            <label><input type="radio" name="gender" value="male" /> 男</label>
+            <label><input type="radio" name="gender" value="female" />女 </label>
+        </div>
+        <div>
+            <label>生日：</label>
+            <select name="birthday">
+                <option value="1998">年</option>
+            </select>
+            <select>
+                <option value="3">月</option>
+            </select>
+            <select>
+                <option value="constellation">星座</option>
+            </select>
+        </div>
+        <div>
+            <label>关键字：（* 使用空格分隔）</label>
+            <select>
+                <option value="value">---1级---</option>
+            </select>
+            <select>
+                <option value="value">---2级---</option>
+            </select>
+            <input type="text" placeholder="自定义关键字">
+        </div>
+        <div>
+            <label>自我介绍：</label><br />
+            <textarea name="selfDescription" placeholder="简单地介绍下自己吧，不超过255字"></textarea><br />
+            <button type="submit">提交</button>
+        </div>
+    </form>
+    <aside>
+        <h2>说明</h2>
+        <ol>
+            <li>头像仅接受jpg/png/gif格式，大小不超过256KB。</li>
+            <li>头像图片的建议宽度为300像素左右，过宽或过窄都有可能失真。</li>
+            <li>自我介绍的字数不要超过255字。</li>
+        </ol>
+    </aside>
+    <footer>
+        <div>
+            <a href="#">关于我们</a>|
+            <a href="#">源栈课堂</a>|
+            <a href="#">常见问题</a>|
+            <a href="#">意见建议</a>|
+            <a href="#">历史通知</a>|
+            <a href="#">友情捐赠</a>|
+            <a href="#">诚邀合伙人</a>
+        </div>
+        <div>
+            <a href="#">渝ICP备18007191号（备案）</a>
+            <span>©2021 - 自由</span>
+        </div>
+    </footer>
+
+
+
+
+
+</body>
+</html>
