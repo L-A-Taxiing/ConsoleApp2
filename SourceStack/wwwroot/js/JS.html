@@ -4,17 +4,48 @@
     <meta charset="utf-8" />
     <title></title>
     <script>
-        var problem = {
-            title = "编程开发基础",
-            body = "'编程改变命运，励志照亮人生'",
-            reward = 100,
-            needremote = true
-        };
-        problem.body;
-       
+        //var pBody = " < a href='http://17bang.ren' target='_blank' > 源栈·一起帮</a>，助你实现<span style = 'font-size:16px;'> 编程</span > 梦想!"
+        //alert(pBody);
+
+        //var pDoby = "职业";
+        //alert(`助你实现${pDoby}梦想`);
+
+        //var pDoby = "人生";
+        //alert(`助你实现${pDoby}梦想`);
+        
     </script>
 </head>
 <body>
+
+    <!--设计一段代码，实现以下逻辑：
+    某用户有一定数量的帮帮豆（sum）
+    每点赞一次就会消耗若干帮帮豆（consume）
+    现在用户点赞若干次（count）
+    计算用户剩余了多少帮帮豆（banlance）并用bool值显示他是否还有帮帮豆（isAvailable）
+    以上皆需设置变量（变量名见圆括号），并代入计算-->
+    <script>
+        var sum, consume, count, balance, isAvailable;
+        sum = 100;
+        count = 10;
+        consume = count;
+        balance = sum - consume;
+        isAvailable = balance > 0;
+        alert(`现在剩余${balance}豆`);
+        alert(`还有帮帮豆吗:${isAvailable}`);
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
