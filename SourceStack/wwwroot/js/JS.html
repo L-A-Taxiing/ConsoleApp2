@@ -4,49 +4,135 @@
     <meta charset="utf-8" />
     <title></title>
     <script>
-        //写一段代码，能根据一起帮用户的帮帮点（bCredit）输出他对应的等级（可适度精简）
-        var bCredit;
-        if (bCredit < 30) {
-            console.log('你现在还没有等级，快去水帖吧(#^.^#)');
-        } else if (bCredit < 100) {
-            console.log('你现在为等级0:入门');
-        } else if (bCredit < 200) {
-            console.log('你现在为等级1:聚气');
-        } else if (bCredit < 700) {
-            console.log('你现在为等级2:凝水');
-        } else if (bCredit < 1500) {
-            console.log('你现在为等级3:萌芽');
-        } else {
-            console.log('恭喜你达到满级!');
-        }
 
-        //一起帮用户被分为5种，每种都有一个整数代号：
-        //0：访客
-        //1：注册用户
-        //2：文章发布者
-        //3：管理员
-        //4：超级管理员
-        //写一段代码，用switch...case将代号转换成文字输出，但3和4统称为管理员即可
+        //声明一个数组odds，利用循环把100以内的奇数按从小到大的顺序存入其中
+        //计算从odds数组中所有元素的和
+        //var odds = [],
+        //    index = 0,
+        //    sum = 0;
+        //for (var i = 1; i < 100; i++) {
+        //    if (i % 2 != 0) {
+        //        odds[index] = i;
+        //        console.log(odds[index]);
+        //        sum += odds[index];
+        //        index++;
+        //    }
+        //}
+        //console.log(`100以内的奇数和为${sum}`);
 
-        var codename=100;
-        switch (codename) {
-            case 0:
-                console.log('访客');
-                break;
-            case 1:
-                console.log('注册用户');
-                break;
-            case 2:
-                console.log('文章发布者');
-                break; c
-            case 3:
-            case 4:
-                console.log('管理员');
-                break;
-            default:
-                console.log('无法匹配的证书代号' + codename);
-                break;
-        }
+        ////找到数组中的最小值
+        //var min = odds[0];
+        //for (var i = 0; i < odds.length - 1; i++) {
+        //    if (odds[i] > odds[i + 1]) {
+        //        min = odds[i + 1];
+        //    }
+        //}
+        //console.log(`数组中最小值为${min}`);
+
+        //去除一个数组中重复的值（提示：仔细思考需求）
+        //1.删除重复的元素(不删除原来的)
+        //var nums = [5, 2, 3, 2, 2, 4, 5, 6, 4, 1];
+        //for (var i = 0; i < nums.length; i++) {
+        //    for (var j =i+1;j < nums.length; j++) {
+        //        if (nums[i] == nums[j]) {
+        //            nums.splice(j, 1);
+        //            j--;
+        //        }
+        //    }
+        //    console.log(nums[i]);
+        //}
+        //不用函数
+        //var nums = [2, 3, 2, 3, 2, 4, 1, 0, 1, 5]
+        //for (var i = 0; i < nums.length; i++) {
+        //    var found = true;
+        //    for (var j = i + 1; j < nums.length; j++) {
+        //        if (nums[i] == nums[j]) {
+        //            found = false;
+        //            break;
+        //        }
+        //    }
+        //    if (found) {
+        //        console.log(nums[i]);
+        //    }
+        //}
+        //2.删除重复的元素(全部删除)
+        //var nums = [2, 3, 2, 3, 2, 4, 1, 0, 1, 5],
+        //    temp = [],
+        //    index = 0;
+        //for (var i = 0; i < nums.length; i++) {
+        //    for (var j = i+1; j < nums.length; j++) {
+        //        if (nums[i] == nums[j]) {
+        //            i == j;
+        //            break;
+        //        }
+        //        if (nums[i] != nums[j] && j==nums.length-1) {
+        //            temp[index] = nums[i];
+        //            console.log(temp[index]);
+        //            index++;  
+        //        }
+        //    }
+        //}
+
+        
+        //输出用空格代替0的杨辉三角形
+        //var rows = 5,
+        //    columns = rows * 2 - 1;
+        //var yh = [];
+        //for (var i = 0; i < rows; i++) {
+        //    yh[i] = [];
+        //    var lines = '';
+        //    for (var j = 0; j < columns; j++) {
+        //        if (i == 0) {
+        //            yh[i][j] = (j == rows - 1) ? 1 : 0;
+        //        } else {
+        //            var prerow = i - 1,
+        //                precolumn = j - 1 >= 0 ? yh[prerow][j - 1] : 0,
+        //                nextcolumn = j + 1 < columns ? yh[prerow][j + 1] : 0;
+        //            yh[i][j] = precolumn + nextcolumn;
+        //        }
+        //        lines += yh[i][j] + ' ';
+        //    }
+        //    console.log(lines.replace(/0/g, ''));
+        //}
+
+        //输出1000以内的所有“素数 / 质数”（只能被自己和1整除的数）
+        //for (var i = 2; i < 1000; i++) {
+        //    var found = true;
+        //    for (var j = 2; j < i; j++) {
+        //        if (i%j==0) {
+        //            found = false;
+        //            break;
+        //        }
+        //    }
+        //    if (found) {
+        //        console.log(j);
+        //    }
+        //}
+
+        //完成冒泡排序（必做，参考c#）
+        //var numbers=[10,2,9,3,6,4,8,5,7,0,1]
+        //for (var i = 1; i < numbers.length; i++) {
+        //    for (var j = 0; j < numbers.length-i; j++) {
+        //        if (numbers[j] > numbers[j+1]) {
+        //            var temp = numbers[j];
+        //            numbers[j] = numbers[j + 1];
+        //            numbers[j + 1] = temp;
+        //        }
+        //    }
+        //}
+        //console.log(numbers);
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     </script>
