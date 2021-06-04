@@ -68,12 +68,12 @@
         //        if (nums[i] != nums[j] && j==nums.length-1) {
         //            temp[index] = nums[i];
         //            console.log(temp[index]);
-        //            index++;  
+        //            index++;
         //        }
         //    }
         //}
 
-        
+
         //输出用空格代替0的杨辉三角形
         //var rows = 5,
         //    columns = rows * 2 - 1;
@@ -105,7 +105,7 @@
         //        }
         //    }
         //    if (found) {
-        //        console.log(j);
+        //        console.log(i);
         //    }
         //}
 
@@ -122,16 +122,187 @@
         //}
         //console.log(numbers);
 
+        //1.构建函数:
+        //has9(number) ，可以判断number中是否带有数字9；
+        //has8(number) ，可以判断number中是否带有数字8；
+        //has6(number) ，可以判断number中是否带有数字6；
+        //让get986()通过调用has9() / has8() / has6() ，能找出number以内有多少个数字包含：9或者8或6。
 
+        //var number = "number是99886";
 
+        //function has9(number) {
+        //    var str = number + '',
+        //        index = 0;
+        //    for (var i = 0; i < str.length; i++) {
+        //        if (str[i] == 9) {
+        //            index++;
+        //        }
+        //    }
+        //    console.log(`number里面一共有${index}个9`);
+        //}
 
+        //function has8(number) {
+        //    var str = number + '',
+        //        index = 0;
+        //    for (var i = 0; i < str.length; i++) {
+        //        if (str[i] == 8) {
+        //            index++;
+        //        }
+        //    }
+        //    console.log(`number里面一共有${index}个8`);
+        //}
 
+        //function has6(number) {
+        //    var str = number + '',
+        //        index = 0;
+        //    for (var i = 0; i < str.length; i++) {
+        //        if (str[i]==6) {
+        //            index++;
+        //        }
+        //    }
+        //    console.log(`number里面一共有${index}个6`);
+        //}
 
+        //function get986(func) {
+        //    func(number);
+        //}
+        //get986(function() {
+        //    has9("number是99886");
+        //    has8("number是99886");
+        //    has6("number是99886");
+        //});
 
+        //2.将之前“找出素数”的代码封装成一个函数findPrime(max) ，可以打印出max以内的所有素数。
+        //function findPrime(max) {
+        //    for (var i = 2; i < max; i++) {
+        //        var found = true;
+        //        for (var j = 2; j < i; j++) {
+        //            if (i % j == 0) {
+        //                found = false;
+        //                break;
+        //            }
+        //        }
+        //        if (found) {
+        //            console.log(i);
+        //        }
+        //    }
+        //}
+        //findPrime(10000);
 
+        //3.自行设计参数，将之前“累加求和”的代码封装成一个函数Sum() ，可以计算任意起始位置、任意步长（如：1, 3, 5……或者0, 5, 10, 15……）的等差数列之和。
+        //1.等差求和公式
+        //function Sum(FirstNum, Gap, number) {
+        //    sum =(number * FirstNum) +(number * (number - 1) / 2) * Gap;
+        //    console.log(`初始位置为${FirstNum},步长为${Gap},项数为${number}次,sum为${sum}`);
+        //}
+        //Sum(1, 2, 10);
 
+        //2.for循环
+        //function sum(firstnum, gap, number) {
+        //    var sum = firstnum,
+        //        nextnum = firstnum + gap;
+        //    for (var i = 1; i < number; i++) {
+        //        sum += nextnum;
+        //        nextnum += 2;
+        //    }
+        //    console.log(`初始位置为${firstnum},步长为${gap},项数为${number}次,sum为${sum}`);
+        //}
+        //sum(1,2,10)
 
+        //4.封装一个函数，建立一个函数getMaxNumber() ，可以接受任意多各种类型的参数，并找出里面最大的数（忽略数值以外的其他类型）
+        //function getMaxNumber(items) {
+        //    var temp = [],
+        //        index = 0;
+        //    for (var i = 0; i < items.length; i++) {
+        //        if (!isNaN(items[i])) {
+        //            temp[index] = items[i];
+        //            index++;
+        //        } /*else contine*/
+        //    }
+        //    var max = temp[0];
+        //    for (var j = 0; j < temp.length; j++) {
+        //        if (max < temp[j]) {
+        //            max = temp[j];
+        //        }
+        //    }
+        //    console.log('max:' + max);
 
+        //}
+        //getMaxNumber([1, 3.14, -10086, "100", "NaN", "Na1", true]);
+
+        //5.封装一个函数swap(arr, i, j)，可以交换数组arr里下标 i 和 j 的值
+        //function swap(arr, i, j) {
+        //    //console.log(`arr${[i]}:`+arr[i]+`arr${[j]}:`+arr[j]);
+        //    var temp=arr[j];
+        //    arr[j] = arr[i];
+        //    arr[i] = temp;
+        //    //console.log(`arr${[i]}:` + arr[i] + `arr${[j]}:` + arr[j]);
+        //}
+        //swap([1, 2, 3, 4, 5], 1, 4);
+
+        ////6.利用上面的swap()函数，将“冒泡排序”封装成函数bubblesort()
+        //function bubblesort(numbers) {
+        //    for (var i = 1; i < numbers.length; i++) {
+        //        for (var j = 0; j < numbers.length - i; j++) {
+        //            if (numbers[j] > numbers[j + 1]) {
+        //                //var temp = numbers[j];
+        //                //numbers[j] = numbers[j + 1];
+        //                //numbers[j + 1] = temp;
+        //                swap(numbers, j+1, j);
+        //            }
+        //        }
+        //    }
+        //    console.log(numbers);
+        //}
+        //bubblesort([10, 2, 9, 3, 6, 4, 8, 5, 7, 0, 1]);
+
+        //7.封装函数deleteDuplicated()删除一个数组里面重复的元素
+        //function deleteDuplicated(nums) {
+        //    console.log(nums);
+        //    for (var i = 0; i < nums.length; i++) {
+        //        var found = true;
+        //        for (var j = i + 1; j < nums.length; j++) {
+        //            if (nums[i] == nums[j]) {
+        //                found = false;
+        //                break;
+        //            }
+        //        }
+        //        if (found) {
+        //            console.log(nums[i]);
+        //        }
+        //    }
+        //}
+        //deleteDuplicated([2, 3, 2, 3, 2, 4, 1, 0, 1, 5]);
+
+        //8.不使用JavaScript内置函数
+        //     1.将一个字符串顺序颠倒，比如：'hello,yuanzhan' 变成 'nahznauy,olleh'。
+        //     2.统计出这段文字中有多少个单词：
+        //       There are two ways to create a RegExp object : a literal notation and a constructor. 
+        //       To indicate strings, the parameters to the literal notation do not use quotation marks
+        //       while the parameters to the constructor function do use quotation - marks.So 
+        //       the following expressions create the same regular expression
+        //8-1
+        //function GetReversal(str) {
+        //    var temp = [];
+        //    for (var i = 0; i < str.length; i++) {
+        //        temp[i] = str[str.length-1-i];
+        //    }
+        //    var s = temp.join('')
+        //    console.log(s);
+        //}
+        //GetReversal('hello,yuanzhan')
+        //8-2
+        //function GetNumber(sentence) {
+        //    var word = 1;
+        //    for (var i = 0; i < sentence.length; i++) {
+        //        if (sentence[i]==' ') {
+        //            word++;
+        //        }
+        //    }
+        //    console.log(word);
+
+        //}
+        //GetNumber('There are two ways to create a RegExp object : a literal notation and a constructor.To indicate strings, the parameters to the literal notation do not use quotation marks while the parameters to the constructor function do use quotation - marks.So the following expressions create the same regular expression');
 
 
 
