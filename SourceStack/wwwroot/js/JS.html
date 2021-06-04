@@ -304,6 +304,86 @@
         //}
         //GetNumber('There are two ways to create a RegExp object : a literal notation and a constructor.To indicate strings, the parameters to the literal notation do not use quotation marks while the parameters to the constructor function do use quotation - marks.So the following expressions create the same regular expression');
 
+        //使用“模拟名称空间”技术，构建一个函数函数yz.fei.get(number) ；
+        //var yz = {};
+        //yz.fei = {
+        //    get:function (number) {
+        //        console.log(number);
+        //    }
+        //};
+        //yz.fei.get(100);
+
+        //yz.fei.get(number, handler)除number以外，还可以接受回调函数handler做参数，得到：0到number间有多少个满足handler条件的整数。
+        //回调函数handler能对number进行运算，并返回bool值的，比如has6()
+        //让yz.fei.get(number)调用实现之前“统计含9 / 8 / 6数字个数”的作业
+        //var yz = {};
+        //yz.fei = {
+        //    get:function (number, handler) {
+        //    for (var i = 0; i < number; i++) {
+        //        if (handler(i)) {
+        //            console.log(i);
+        //        } /*else continue*/
+        //    }
+        //}
+        //};
+        
+        //function has6(number) {
+        //    var str = number + '',
+        //        index = 0;
+        //    for (var i = 0; i < str.length; i++) {
+        //        if (str[i] == 6) {
+        //            index++;
+        //            return true;
+        //        }
+        //    }
+        //    return false;
+        //}
+        ////yz.fei.get(100, has6)
+
+        //function has8(number) {
+        //    var str = number + '',
+        //        index = 0;
+        //    for (var i = 0; i < str.length; i++) {
+        //        if (str[i] == 8) {
+        //            index++;
+        //            return true;
+        //        }
+        //    }
+        //    return false;
+        //}
+
+        //function has9(number) {
+        //    var str = number + '',
+        //        index = 0;
+        //    for (var i = 0; i < str.length; i++) {
+        //        if (str[i] == 9) {
+        //            index++;
+        //            return true;
+        //        }
+        //    }
+        //    return false;
+        //}
+        //get()函数调用回调函数进行运算，只要回调函数运行结果为真，就累加计数
+        //最后返回累加值
+        //var YZ = {};
+        //YZ.FEI = {
+        //    Get: function (number) {
+        //        var count = 0;
+        //        for (var i = 0; i < number; i++) {
+        //            if (has6(i) || has8(i) || has9(i)) {
+        //                console.log(i);
+        //                count++;
+        //            }
+        //        }
+        //        return count;
+        //    }
+        //}
+        //var result = YZ.FEI.Get(100);
+        //console.log(result);
+
+
+
+
 
 
     </script>
