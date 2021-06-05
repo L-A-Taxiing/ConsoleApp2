@@ -4,21 +4,104 @@
     <meta charset="utf-8" />
     <title></title>
     <script>
+        //1.使用JavaScript内置字符串函数，处理 “‘源栈’：飞哥小班教学，线下免费收看” ：将“飞哥”改成“大神”，“线下”改成“线上”。
+        //var slogan = "'源栈':飞哥小班教学，线下免费收看";
+        //console.log(slogan);
+        //var reg = /(.*)飞哥(.*)线下/g;
+        //console.log(slogan.replace(reg,"$1大神$2线上"));
+
+        //2.将数组['why', 'gIT', 'vs2019', 'community', 'VERSION']规范化，让所有元素：
+        //     首字母大写开头，其他字母小写
+        //var array = ['why', 'gIT', 'vs2019', 'community', 'VERSION'],
+        //    str = [],
+        //    index = 0;
+        //for (var i = 0; i < array.length; i++) {
+        //    str[index] = array[i].toLowerCase().replace(/^[a-z]/, L => L.toUpperCase());
+        //    index++;
+        //}
+        //console.log(str);
+        //     截去超过6个字符的部分，如'community'将变成'Commun'
+        //var array = ['why', 'gIT', 'vs2019', 'community', 'VERSION'],
+        //    temp = [],
+        //    index = 0;
+        //for (var i = 0; i < array.length; i++) {
+        //    if (array[i].length > 6) {
+        //        temp[index] = array[i].substring(0, 6);
+        //        index++;
+        //    } else {
+        //        temp[index] = array[i];
+        //        index++;
+        //    }
+        //}
+        //console.log(temp);
 
 
+        //3.使用正则表达式判断某个字符串:
+        //是否是合格的Email格式
+        //function IsAvailableEmail(Email) {
+        //    var reg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
+        //    if (reg.test(Email)) {
+        //        console.log('邮箱格式正确!');
+        //    } else {
+        //        console.log('邮箱格式不正确!');
+        //    }
+        //}
+        //IsAvailableEmail('gfm47414810da@163.com');
+
+        //是否是小数（正负小数都可以）
+        //function IsDecimal(number) {
+        //    var reg = /^([-]?\d+)\.\d+$/;
+        //    if (reg.test(number)) {
+        //        console.log('是小数!');
+        //    } else {
+        //        console.log('不是小数!');
+        //    }
+        //}
+        //IsDecimal(16.1);
+
+        //将所有以zyf - 开头的属性去掉zyf - （尽可能多的制造测试用例，比如：<a lzyf-old=''，或者：<span>zyf---+---fyz</span> ……）
+        //
+
+        //4.利用新学到的Array函数，重新完成之前的数组相关作业
+        //写数组作业的时候，用过Array函数的方法，这题过了
+
+        //5.在上述数组头部加上小鱼老师，末尾加上大飞哥
+        //var array = [1, 2, 2, 3, 4, 5];
+        //array.unshift("大鱼老师");
+        //array.push("小飞哥");
+        //console.log(array);
+
+        //6.创建一个函数getRandomArray(length, max) ，能返回一个长度不大于length，每个元素值不大于max的随机整数数组。
+        //function getRandomArray(Length, Max) {
+        //    var temp = [];
+        //    index = 0;
+        //    for (var i = 0; i < Math.ceil(Math.random() * Length); i++) {
+        //        temp[index] = Math.floor(Math.random() * Max);
+        //        index++
+        //    }
+        //    return temp;
+        //}
+        //console.log(getRandomArray(100000, 10));
 
 
+        //7.生成一个函数toChinese() ，可将传入的日期参数（如：new Date() ）转换成中文日期格式（如：2019年10月4日 16点54分）
+        //function toChinese(Date) {
+        //    var CNTime = '';
+        //    CNTime += Date.getFullYear() + '年';
+        //    CNTime += Date.getMonth()+ 1 + '月';
+        //    CNTime += Date.getDate() + '日';
+        //    CNTime += Date.getHours() + '点';
+        //    CNTime += Date.getMinutes() + '分';
+        //    return CNTime;
 
+        //}
+        //console.log(toChinese(new Date()));
 
-
-
-
-
-
-
-
-
-
+        //8.生成一个函数addDays(number) ，可在当前日期的基础上增加number天
+        //function addDays(number) {
+        //    return new Date(new Date().setDate(new Date().getDate()+number));
+        //}
+        //console.log(addDays(20));
 
     </script>
 </head>
