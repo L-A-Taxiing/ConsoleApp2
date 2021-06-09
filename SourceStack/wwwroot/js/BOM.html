@@ -103,14 +103,62 @@
         //}
         //console.log(addDays(20));
 
-        
-        confirm('111')
+        //完成猜数字的游戏
+        //1.弹出游戏玩法说明，等待用户点击“确认”，开始游戏；
+        //2.浏览器生成一个不大于1000的随机正整数；（Math.floor(Math.random() * 1000) ）
+        //3.用户输入猜测；
+        //4.如果用户没有猜对，浏览器比较后告知结果：“大了”或者“小了”。如果用户：
+        //  只用了不到6次就猜到，弹出：碉堡了！
+        //  只用了不到8次就猜到，弹出：666！
+        //  用了8 - 10次猜到，弹出：猜到了。
+        //  用了10次都还没猜对，弹出：^ (*￣(oo) ￣)^
+        //function GuessNumber(random) {
+        //    if (confirm('确认')) {
+        //        confirm(random);
+        //        for (var i = 1; i <= 10; i++) {
+        //            var GuessNum = prompt('输入猜中的数值:');
+        //            if (GuessNum != random) {
+        //                if (i == 10) {
+        //                    alert('^ (*￣(oo) ￣) ^');
+        //                    return;
+        //                }
+        //                if (GuessNum > random) {
+        //                    alert(`大了!还剩${10 - i}次`);
+        //                } else {
+        //                    alert(`小了!还剩${10 - i}次`);
+        //                }
 
+        //            } else {
+        //                if (i < 6) {
+        //                    alert(`碉堡了!只使用了${i}次`);
+        //                } else if (i < 8) {
+        //                    alert(`666!只使用了${i}次`);
+        //                } else {
+        //                    alert(`猜到了。一共使用了${i}次`);
+        //                }
+        //                return;
+        //            }
+        //        }
+        //    }
+        //}
+        //GuessNumber(Math.floor(Math.random() * 1000));
 
+        /*分别使用setInterval()使用setTimeout()实现：每隔1秒钟依次显示：第n周，源栈同学random人。（n逐次递增，random随机）*/
+        var n = 1;
+        //setInterval(function () {
+        //    console.log(`第${n}周,源栈同学${Math.ceil(Math.random() * 1000)}人`);
+        //    n += 1;
+        //    console.log(new Date());
+        //}, 1000);
 
-        
-
-
+        //function Timeout() {
+        //    var random = Math.ceil(Math.random() * 1000);
+        //    console.log(`第${n}周,源栈同学${random}人`);
+        //    n += 1;
+        //    console.log(new Date());
+        //    setTimeout(Timeout, 1000);
+        //}
+        //Timeout();
 
     </script>
 </head>

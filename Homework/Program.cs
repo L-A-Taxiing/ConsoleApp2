@@ -979,7 +979,6 @@ namespace Homework
             //Console.WriteLine("请输入一个不超过1000的自然数");
             //for (int i = 1; i <= 10; i++)
             //{
-
             //    int Guessnum = Convert.ToInt32(Console.ReadLine());
             //    if (Guessnum != random)
             //    {
@@ -996,7 +995,6 @@ namespace Homework
             //        {
             //            Console.WriteLine($"太小了呢!（还剩{10 - i}次）");
             //        }
-
             //    }
             //    else
             //    {
