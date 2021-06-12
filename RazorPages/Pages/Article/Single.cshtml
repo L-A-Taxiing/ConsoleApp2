@@ -1,0 +1,9 @@
+﻿@page
+@model RazorPages.Pages.Article.SingleModel
+@{
+}
+<h1>@Model.Article.Title</h1>
+<article>
+    @Model.Article.Body
+</article>
+作者：<a href="/User/@Model.Article.Author.Id">@Model.Article.Author.Name</a>
