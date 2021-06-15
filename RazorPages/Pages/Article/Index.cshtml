@@ -1,0 +1,16 @@
+﻿@page
+@model RazorPages.Pages.Article.IndexModel
+@{
+}
+<h1>文章列表</h1>
+
+@foreach (var item in Model.Articles)
+{
+<div>
+    <small>@item.PublishTime.ToString("yyyy年MM月dd日 hh点mm分")</small>
+    <h2><a href="/Article/Single?id=@item.Id">@item.Title</a></h2>
+    <p>@item.Body</p>
+
+</div>
+
+}
