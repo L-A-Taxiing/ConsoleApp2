@@ -8,7 +8,36 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
-@{ 
-    int age = 23;
+<a asp-page="/Article/Single" asp-route-id="8">文章</a>
+<pager path="/Index" pageIndex="3">第3页</pager>
+
+
+@if (Request.Method == "POST")
+{
+    <p>@Model.NewUser.Name 注册成功！</p>
 }
-<p>@age<p/>
+
+@*@if (ViewData["UserName"]!=null)
+{
+<p>@ViewData["UserName"]</p>
+}*@
+<form method="post" asp-page="/Index">
+    <label>用户名</label>
+    <input placeholder="....." asp-for="NewUser.Name" />
+    <label>密码</label>
+    @*<input asp-for="" />*@
+    <button type="submit">提交</button>
+
+    <label>性别</label>
+    <input type="radio" asp-for="NewUser.IsMale" value="true">男
+    <input type="radio" asp-for="NewUser.IsMale" value="false">女
+
+    <input asp-for="RememberMe">RememberMe
+
+    <select asp-for="BirthMonths" asp-items="Model.AvailableMonths"></select>
+    <select asp-for="BirthMonths" asp-items="Html.GetEnumSelectList(typeof(DayOfWeek))"></select>
+
+    <textarea asp-for="NewUser.Introduction"></textarea>
+
+</form>
+ 

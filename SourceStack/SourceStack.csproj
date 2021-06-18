@@ -5,6 +5,29 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="Pages\Html\Account.html" />
+    <Content Include="Pages\Html\Article\602.html" />
+    <Content Include="Pages\Html\Article\Article.html" />
+    <Content Include="Pages\Html\Edit.html" />
+    <Content Include="Pages\Html\Exam.html" />
+    <Content Include="Pages\Html\FAQ.html" />
+    <Content Include="Pages\Html\Float\007.html" />
+    <Content Include="Pages\Html\Float\float.html" />
+    <Content Include="Pages\Html\Form\Contact.html" />
+    <Content Include="Pages\Html\Form\Log.html" />
+    <Content Include="Pages\Html\Form\Profile.html" />
+    <Content Include="Pages\Html\Form\Register.html" />
+    <Content Include="Pages\Html\HelpBean.html" />
+    <Content Include="Pages\Html\HelpMoney.html" />
+    <Content Include="Pages\Html\HelpPoint.html" />
+    <Content Include="Pages\Html\Invite.html" />
+    <Content Include="Pages\Html\Plan.html" />
+    <Content Include="Pages\Html\Problem.html" />
+    <Content Include="Pages\Html\Suggest.html" />
+    <Content Include="Pages\Welcome.html" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FontAwesome" Version="4.7.0" />
   </ItemGroup>
 

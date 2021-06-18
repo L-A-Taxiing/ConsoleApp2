@@ -1,0 +1,25 @@
+﻿@page
+@model RazorPages.Pages.Article.MessageModel
+@{
+}
+<form method="post">
+
+    @*@foreach (var item in Model.Messages)
+    {
+        <input asp-for="@item.Selected">
+        <span>@item.CreateTime</span>
+        <span>@item.Content.</span>
+        <hr />
+
+    }*@
+    @for (int i = 0; i < Model.Messages.Count; i++)
+    {
+        <input asp-for="@Model.Messages[i].Selected">
+        <span>@Model.Messages[i].CreateTime</span>
+        <span>@Model.Messages[i].Content.</span>
+        <input type="hidden"asp-for="@Model.Messages[i].Id">
+        <hr />
+    }
+
+    <button type="submit">提交</button>
+</form>

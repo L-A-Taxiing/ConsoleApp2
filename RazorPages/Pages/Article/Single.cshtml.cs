@@ -16,11 +16,11 @@ namespace RazorPages.Pages.Article
         {
             articleRepository = new ArticleRepository();    //实例化
         }
-        public E.Article Article { get; set; }             //Model里面有一个Entity对象
+        public E.Article Article { get; set; }              //Model里面有一个Entity对象
 
         public void OnGet()
         {
-            Article = articleRepository.Find(8);   //通过Repository拿到Entity对象
+            Article = articleRepository.Find(8);            //通过Repository拿到Entity对象
         }
     }
 

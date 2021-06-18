@@ -17,16 +17,16 @@ namespace RazorPages.Pages.Article
         {
             articleRepositories = new ArticleRepository();
         }
-        public IList<E.Article> Articles{ get; set; }
+        public IList<E.Article> Articles { get; set; }
+        public int ArticleNums { get; set; }
 
         public void OnGet()
         {
-            Articles = articleRepositories.Get();
+            int pageIndex = Convert.ToInt32(Request.Query["pageIndex"][0]);
 
-
-
-
-
+            Articles = articleRepositories.Get(pageIndex, 2);
+            ArticleNums = articleRepositories.ArticleNum();
+            
         }
     }
 }
