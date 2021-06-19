@@ -58,23 +58,6 @@ namespace Homework
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             //5.在Main()函数调用ContentService时，捕获一切异常，并记录异常的消息和堆栈信息
             try
             {
