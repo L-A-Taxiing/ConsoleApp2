@@ -11,7 +11,7 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             DLinkNode<int> age = new DLinkNode<int>();
-            Console.WriteLine(age.Max()); 
+            Console.WriteLine(age.Max());
             Console.WriteLine(MyClass.FindPrimeNum(1, 100));
 
 
@@ -32,6 +32,7 @@ namespace ConsoleApp1
             node2.Previous = node1;
             node1.Previous = null;
             Console.WriteLine(node1.Max());
+
 
         }
     }

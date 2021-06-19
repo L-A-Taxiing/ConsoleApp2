@@ -1,0 +1,131 @@
+﻿@page
+@model RazorPages.Pages.Article.CandleModel
+@{
+}
+@*1.利用循环分支，实现如下图所示的页面效果：*@
+@*<div style="text-align:center">
+        @for (int i = 1; i < 6; i++)
+        {
+            @for (int j = 1; j <= i * 2 - 1; j++)
+            {
+                string color = i % 2 == 0 ? "red" : "blue";
+                <strong style="color:@color">i</strong>
+            }
+            <br />
+        }
+    </div>*@
+
+@*2.新建 /Task/History/Month 页面，利用表格，输出按月按周组织的任意一个月份的日历。可参考：一起帮·任务历史月表*@
+@{
+    int year = 2021, month = 6;
+    DateTime FirstMonday = GetFirstDay(year, month);
+}
+@functions{
+    DateTime GetFirstDay(int year, int month)
+    {
+        DateTime FirstMonday = new DateTime(year, month, 1);
+        int Year, Month;
+        if (DayOfWeek.Monday == FirstMonday.DayOfWeek)
+        {
+            return FirstMonday;
+        }
+        else
+        {
+            if (month == 1)
+            {
+                Year = year - 1;
+                Month = 12;
+            }
+            else
+            {
+                Year = year;
+                Month = month - 1;
+            }
+            return new DateTime(Year, Month, (DateTime.DaysInMonth(Year, Month) - GetDayofWeek(FirstMonday.DayOfWeek) + 2));
+
+        }
+
+    }
+
+    int GetDayofWeek(DayOfWeek day)
+    {
+        int result = (int)day;
+        if (result == 0)
+        {
+            return 7;
+        }
+        return result;
+    }
+
+}
+
+<div>
+    <div>@(year)年@(month)月</div>
+    <table border="1">
+        <thead style="text-align:center">
+            <tr>
+                <th>一</th>
+                <th>二</th>
+                <th>三</th>
+                <th>四</th>
+                <th>五</th>
+                <th>六</th>
+                <th>日</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @{
+                int j = 0;
+                int Days = DateTime.DaysInMonth(FirstMonday.Year, FirstMonday.Month) - FirstMonday.Day + 1 + DateTime.DaysInMonth(year, month);
+            }
+
+            @for (int i = 1; i <= Math.Ceiling((float)Days / 7); i++)
+            {
+            <tr>
+                @while (j <= Math.Ceiling((float)Days / 7) * 7)
+                {
+                    if ((j + 1) % 7 == 0)
+                    {
+                        @if (FirstMonday.AddDays(j).Month != month)
+                        {
+                            <td style="color:gainsboro">
+                                @FirstMonday.AddDays(j).ToString("yyyy年MM月dd日")
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                @FirstMonday.AddDays(j).ToString("yyyy年MM月dd日")
+                            </td>
+                        }
+                        j++;
+                        break;
+                    }
+                    else
+                    {
+                        @if (FirstMonday.AddDays(j).Month != month)
+                        {
+                            <td style="color:gainsboro">
+                                @FirstMonday.AddDays(j).ToString("yyyy年MM月dd日")
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                @FirstMonday.AddDays(j).ToString("yyyy年MM月dd日")
+                            </td>
+                        }
+                        j++;
+                    }
+                }
+            </tr>
+            }
+
+
+
+
+
+        </tbody>
+    </table>
+</div>
