@@ -16,7 +16,10 @@ namespace RazorPages.Repositories
             {
                 new User
                 {
-                    Id=1
+                    Id=1,
+                    Name="叶飞",
+                    Password="1234"
+                    
                 },
             };
         }
