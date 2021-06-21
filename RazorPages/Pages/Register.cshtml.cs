@@ -36,7 +36,7 @@ namespace RazorPages.Pages
         }
         public void OnPost() 
         {
-            //Entities.User invitedBy = userRepository.GetByName(NewUser.InvitedBy.Name);
+            Entities.User invitedBy = userRepository.GetByName(NewUser.InvitedBy.Name);
             //if (invitedBy==null)
             //{
 
@@ -45,9 +45,9 @@ namespace RazorPages.Pages
             //{
 
             //}
-            //NewUser.InvitedBy = invitedBy;
-            //NewUser.Register();
-            //userRepository.Save(NewUser);
+            NewUser.InvitedBy = invitedBy;
+            NewUser.Register();
+            userRepository.Save(NewUser);
         }
     }
 }

@@ -26,7 +26,7 @@ namespace RazorPages.Pages.Article
 
             Articles = articleRepositories.Get(pageIndex, 2);
             ArticleNums = articleRepositories.ArticleNum();
-            
         }
+       
     }
 }
