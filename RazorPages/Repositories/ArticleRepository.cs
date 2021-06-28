@@ -16,7 +16,7 @@ namespace RazorPages.Repositories
             {
                 new Article
                 {
-                   Id=8,
+                   Id=16,
                    Title = @"1-高阶:泛型/集合/Lambda/异常/IO/多线程",
                    Body = @"泛型 可以有泛型方法/类等，同C#",
 

@@ -5,11 +5,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using RazorPages.Filters;
 using RazorPages.Repositories;
 
 namespace RazorPages.Pages
 {
     [BindProperties]
+    [ClearContext]
     public class RegisterModel : PageModel
     {
         private UserRepository userRepository;

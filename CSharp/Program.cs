@@ -26,9 +26,8 @@ namespace CSharp
             Animals<Foods> my = new Animals<Foods>();
             my.Kind = new Foods();
 
-            
 
-
+          
 
 
 

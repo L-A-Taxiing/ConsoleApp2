@@ -30,9 +30,16 @@ namespace RazorPages.Repositories
 
             };
         }
-        public IList<Message> GetMine()
+        public IList<Message> GetMine(bool onlyNotRead=false)
         {
-            return messages;
+            var result = messages;
+            if (onlyNotRead)
+            {
+                result = messages.Where(m => !m.HasRead).ToList();
+            }//else nothing
+            return result;
+
+
         }
 
         public Message Find(int id)

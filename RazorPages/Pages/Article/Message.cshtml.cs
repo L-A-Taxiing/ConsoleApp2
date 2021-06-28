@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using RazorPages.Entities;
+using RazorPages.Filters;
 using RazorPages.Repositories;
 
 namespace RazorPages.Pages.Article
@@ -21,13 +23,39 @@ namespace RazorPages.Pages.Article
         [BindProperty]
         public IList<Message> Messages { get; set; }
 
+        //public override void OnPageHandlerSelected(PageHandlerSelectedContext context)
+        //{
+        //    base.OnPageHandlerSelected(context);
+        //}
+        //public override void OnPageHandlerExecuting(PageHandlerExecutingContext context)
+        //{
+        //    base.OnPageHandlerExecuting(context);
+        //}
+        //public override void OnPageHandlerExecuted(PageHandlerExecutedContext context)
+        //{
+        //    base.OnPageHandlerExecuted(context);
+        //}
+        //public override Task OnPageHandlerSelectionAsync(PageHandlerSelectedContext context)
+        //{
+        //    return base.OnPageHandlerSelectionAsync(context);
+        //}
+        //public override Task OnPageHandlerExecutionAsync(PageHandlerExecutingContext context, PageHandlerExecutionDelegate next)
+        //{
+        //    return base.OnPageHandlerExecutionAsync(context, next);
+        //}
 
-        public void OnGet()
+
+        public IActionResult OnGet()
         {
-            Messages = messageRepository.GetMine();
+            if (string.IsNullOrEmpty(Request.Cookies[Keys.UserId]))
+            {
+                return RedirectToPage("/Log/On");
+            }
+            Messages = messageRepository.GetMine(true);
+            return Page();
         }
-        public void OnPost()
-        {
+        public IActionResult OnPost()
+        { 
             foreach (var item in Messages)
             {
                 if (item.Selected)
@@ -35,6 +63,9 @@ namespace RazorPages.Pages.Article
                     messageRepository.Find(item.Id).Read();
                 }
             }
+            //Messages = messageRepository.GetMine(true);
+            return RedirectToPage();
+
 
         }
     }

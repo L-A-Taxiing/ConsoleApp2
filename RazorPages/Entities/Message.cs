@@ -10,8 +10,10 @@ namespace RazorPages.Entities
         public bool Selected { get; set; }
         public DateTime CreateTime { get; set; }
         public string Content { get; set; }
+        public bool HasRead { get; set; }
         public void Read() 
-        { 
+        {
+            HasRead = true;
         }
     }
 }

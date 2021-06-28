@@ -13,6 +13,7 @@ namespace RazorPages.Pages.Article
     public class IndexModel : PageModel
     {
         private ArticleRepository articleRepositories;
+        public int Index { get; set; }
         public IndexModel()
         {
             articleRepositories = new ArticleRepository();
@@ -23,9 +24,9 @@ namespace RazorPages.Pages.Article
         public void OnGet()
         {
             int pageIndex = Convert.ToInt32(Request.Query["pageIndex"][0]);
-
             Articles = articleRepositories.Get(pageIndex, 2);
             ArticleNums = articleRepositories.ArticleNum();
+            Index = pageIndex;
         }
        
     }

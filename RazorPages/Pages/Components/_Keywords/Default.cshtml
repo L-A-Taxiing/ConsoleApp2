@@ -1,0 +1,9 @@
+﻿@using RazorPages.Entities
+@model IList<Keyword>
+@{
+}
+<h2>关键字</h2>
+@foreach (var item in Model)
+ {
+<a href="/keywords/@item.Id">@item.Name</a>
+ }

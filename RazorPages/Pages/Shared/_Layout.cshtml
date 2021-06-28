@@ -6,11 +6,107 @@
     <title>@ViewData["Title"] - RazorPages</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/Content/font-awesome.css">
 </head>
 <body>
     <header>
-        header
-        <hr/>
+        <div class="fixed-top">
+            <nav class="navbar navbar-light" style="background-color: #f8f9fa">
+                <div class="container">
+                    <div>
+                        <img src="/images/logo-big.ico" alt="一起帮·网络互助平台" style="margin-top:-6px" />
+                        <span class="navbar-brand">
+                            一起帮<small>·网络互助平台</small>
+                            <i class="fa fa-bell" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <div class="navbar-nav">
+                        <ul class="nav nav-pills">
+                            <li class="nav nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="padding-right: 10px">
+                                    <i class="fa fa-question-circle" aria-hidden="true"></i> 求助
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">督导班</a>
+                                    <a class="dropdown-item" href="#">列表</a>
+                                    <a class="dropdown-item" href="#">疑问发布</a>
+                                    <a class="dropdown-item" href="#">疑问列表</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">列表</a>
+                                    <a class="dropdown-item" href="#">发布</a>
+                                </div>
+                            </li>
+
+                            <li class="nav nav-pills">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aia-expanded="false" style="padding-right: 10px">
+                                    <i class="fa fa-eye" aria-hidden="true"></i> 督促
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">求督促</a>
+                                    <a class="dropdown-item" href="#">督促别人</a>
+                                    <a class="dropdown-item" href="#">我的目标</a>
+                                    <a class="dropdown-item" href="#">我的督促</a>
+                                    <a class="dropdown-item" href="#">未交作业</a>
+                                </div>
+                            </li>
+
+                            <li class="nav nav-pills">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aia-expanded="false" style="padding-right: 10px">
+                                    <i class="fa fa-book" aria-hidden="true"></i> 文章
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">列表</a>
+                                    <a class="dropdown-item" href="#">开通</a>
+                                </div>
+                            </li>
+
+                            <li class="nav nav-pills">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aia-expanded="false" style="padding-right: 10px">
+                                    <i class="fa fa-user" aria-hidden="true"></i> 用户
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">新手任务</a>
+                                    <a class="dropdown-item" href="#">我的主页</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a href="#">帮帮豆</a>
+                                    <a href="#">帮帮点</a>
+                                    <a href="#">帮帮币</a>
+                                    <div class="dropdown-divider"></div>
+                                    <small>修改</small>
+                                    <a href="#">我的密码</a>
+                                    <a href="#">联系方式</a>
+                                    <a href="#">个人资料</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a href="/Log/off">退出登录</a>
+                                </div>
+                            </li>
+
+                            <li class="nav nav-pills">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aia-expanded="false">
+                                    <i class="fa fa-tachometer" aria-hidden="true"></i> 后台
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">邀请注册</a>
+                                    <a class="dropdown-item" href="#">我的消息</a>
+                                    <a class="dropdown-item" href="#">我的草稿</a>
+                                    <div class="dropdown-divider"></div>
+                                    <small>广告推广</small>
+                                    <a href="#">联系方式</a>
+                                    <a href="#">侧边栏</a>
+                                    <div class="dropdown-divider"></div>
+                                    <small>帮帮币</small>
+                                    <a href="#">购买</a>
+                                    <a href="#">出售</a>
+                                    <a href="#">已购买</a>
+                                    <a href="#">已出售</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <hr />
         @if (ViewData["HasLogOn"] == null)
         {
             <span>未登录</span>
@@ -20,17 +116,46 @@
             <span>已登录</span>
 
         }
-        <a href="/Log/off">退出登录</a>>
     </header>
+    <br/>
     <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+        @RenderBody()
+    </div>
+    <br/>
+    <div style="position:fixed;bottom:60px;right:60px">
+        <div style="border:10px solid;border-top-right-radius:10px;border-bottom-left-radius:10px;border-color:lightcyan;background-color:lightcyan;margin-bottom:5px">
+            <i class="fa fa-question-circle" aria-hidden="true" style="margin-left:8px"></i>
+            <br>
+            <a href="#">帮助</a>
+        </div>
+        <div style="border:10px solid;border-top-right-radius:10px;border-bottom-left-radius:10px;border-color:lightcyan;background-color:lightcyan">
+            <i class="fa fa-comments" aria-hidden="true" style="margin-left:8px"></i>
+            <br>
+            <a href="#">反馈</a>
+
+        </div>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <hr style="align-items:center;width:80%" />
+    <footer>
         <div class="container">
-            &copy; 2021 - RazorPages - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            <div class="row">
+                <div class="col-6">
+                    <a href="#">关于我们</a>|
+                    <a href="#">源栈课堂</a>|
+                    <a href="#">常见问题</a>|
+                    <a href="#">意见建议</a>|
+                    <a href="#">历史通知</a>|
+                    <a href="#">友情捐赠</a>|
+                    <a href="#">诚邀合伙人</a>
+                </div>
+                <div class="w-100">
+
+                </div>
+                <div class="col-6" style="margin-left:70%">
+                    <span> <a href="#">渝ICP备18007191号（备案）</a><span>©2021 - 自由</span><img src="/images/freeflying.ico" alt="自由飞" /></span>
+                </div>
+            </div>
         </div>
     </footer>
 

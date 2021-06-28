@@ -6,14 +6,16 @@
 
 @foreach (var item in Model.Articles)
 {
-<div>
-    <small>@item.PublishTime.ToString("yyyy年MM月dd日 hh点mm分")</small>
-    <h2><a href="/Article/Single?id=@item.Id">@item.Title</a></h2>
-    <p>@item.Body</p>
-</div>
+    <div>
+        <small>@item.PublishTime.ToString("yyyy年MM月dd日 hh点mm分")</small>
+        <h2><a href="/Article/Single?id=@item.Id">@item.Title</a></h2>
+        <p>@item.Body</p>
+    </div>
 }
-@for (int i = 0; i< Math.Ceiling((float)Model.ArticleNums/2); i++)
+@for (int i = 0; i < Math.Ceiling((float)Model.ArticleNums / 2); i++)
 {
-<a href="/Article?pageIndex=@(i+1)">@(i+1)</a>;
-}  
-<a href="/Index/Page-3">第3页</a>
+    <a href="/Article?pageIndex=@(i+1)">@(i+1)</a>;
+}
+<br/>
+<a href="/Article?pageIndex=@(Model.Index-1)">上一页</a>
+<a href="/Article?pageIndex=@(Model.Index+1)">下一页</a>
