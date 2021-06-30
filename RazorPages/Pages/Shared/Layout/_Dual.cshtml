@@ -2,9 +2,15 @@
 @{
     Layout = "_Layout";
 }
+@section Subtitle{
+    @RenderSection("Subtitle")
+}
+
+
 <div class="container">
-    <h1>@ViewData["Title"]</h1>
-    <hr />
+   
+    <h1>@RenderSection("Icon")@ViewData["Title"]</h1>
+    <hr/>
 
     <div class="row">
         <div class="col-5 ">

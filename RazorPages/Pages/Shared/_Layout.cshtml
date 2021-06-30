@@ -78,7 +78,16 @@
                                     <a href="#">联系方式</a>
                                     <a href="#">个人资料</a>
                                     <div class="dropdown-divider"></div>
-                                    <a href="/Log/off">退出登录</a>
+                                    @if (ViewData["HasLogOn"] == null)
+                                    {
+                                        <a href="/Log/On">登录</a>
+                                    }
+                                    else
+                                    {
+                                        <a href="/Log/off">退出登录</a>
+
+
+                                    }
                                 </div>
                             </li>
 
@@ -107,22 +116,27 @@
                 </div>
             </nav>
         </div>
-        <hr />
-        @if (ViewData["HasLogOn"] == null)
-        {
-            <span>未登录</span>
-        }
-        else
-        {
-            <span>已登录</span>
 
-        }
+        <hr />
+
     </header>
-    <br/>
+    <div style="height:25px;margin-top:10px" class="container alert-secondary">
+        <div class="row">
+            <p style="font-size:14px" class="col-10">
+                <span class="fa fa-calendar"></span>
+                因为注册时使用了<a href=" ">Zoulily2</a>的邀请码，系统赠送给 和光同尘
+            </p>
+            <p style="font-size:14px" class="col-2">
+                <a class="float-right " href=" "><span class="fa fa-hand-o-right"></span>全部消息</a>
+            </p>
+        </div>
+    </div>
+
+    <br />
     <div class="container">
         @RenderBody()
     </div>
-    <br/>
+    <br />
     <div style="position:fixed;bottom:60px;right:60px">
         <div style="border:10px solid;border-top-right-radius:10px;border-bottom-left-radius:10px;border-color:lightcyan;background-color:lightcyan;margin-bottom:5px">
             <i class="fa fa-question-circle" aria-hidden="true" style="margin-left:8px"></i>
@@ -136,6 +150,7 @@
 
         </div>
     </div>
+
 
     <hr style="align-items:center;width:80%" />
     <footer>

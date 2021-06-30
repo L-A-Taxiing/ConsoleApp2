@@ -4,29 +4,35 @@
     Layout = "Layout/_Dual";
     ViewData["Title"] = "注册";
 }
+@section Subtitle{
+    注册
+}
 
 <form method="post" asp-page="/Register">
     <div style="padding:10px 20px;border:2px dashed;background-color:lightyellow">
+        <div class="text-right" style="padding-top:10px;">
+            <a href="/"><span class="fa fa-question-circle"></span> 为什么需要邀请</a>
+        </div>
         <div>
-            <label>邀请人：（* 必填，没有邀请人）</label>
-            <input asp-for="NewUser.InvitedBy.Name"class="form-control">
+            <label>邀请人：（* 必填，<a href="/" class="text-info">没有邀请人</a>）</label>
+            <input asp-for="NewUser.InvitedBy.Name" class="form-control" placeholder="他的用户名，模糊查询只能从头开始">
         </div>
         <div>
             <label>邀请码：（* 必填）</label>
-            <input asp-for="NewUser.InvitedBy.InviteCode"class="form-control">
+            <input asp-for="NewUser.InvitedBy.InviteCode" class="form-control" placeholder="4位数字">
         </div>
     </div>
     <div>
         <label>用户名：（* 必填）</label>
-        <input asp-for="NewUser.Name" class="form-control"/>
+        <input asp-for="NewUser.Name" class="form-control"placeholder="登录用户名，可修改，不能重复" />
     </div>
     <div>
         <label>密码：（* 必填）</label>
-        <input asp-for="NewUser.Password" class="form-control"/>
+        <input asp-for="NewUser.Password" class="form-control"placeholder="不少于4个字符" />
     </div>
     <div>
         <label>验证密码：（* 必填）</label>
-        <input asp-for="VerifyPassword"class="form-control" />
+        <input asp-for="VerifyPassword" class="form-control"placeholder="和密码相同" />
     </div>
     <div>
         <label>QQ:(*必填)</label>
