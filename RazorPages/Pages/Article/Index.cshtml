@@ -2,6 +2,9 @@
 @model RazorPages.Pages.Article.IndexModel
 @{
 }
+@section Subtitle{
+    文章分页
+}
 <h1>文章列表</h1>
 
 @foreach (var item in Model.Articles)
@@ -16,6 +19,12 @@
 {
     <a href="/Article?pageIndex=@(i+1)">@(i+1)</a>;
 }
-<br/>
+<br />
 <a href="/Article?pageIndex=@(Model.Index-1)">上一页</a>
 <a href="/Article?pageIndex=@(Model.Index+1)">下一页</a>
+
+
+<a asp-page="FAQ">FAQ页面</a>
+<a asp-page="FAQ/User">FAQ页面</a>
+<a asp-page="FAQ/User" asp-fragment="credit">FAQ页面</a>
+<a asp-page="FAQ/User" asp-route-on="credit">FAQ页面</a>

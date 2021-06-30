@@ -2,6 +2,9 @@
 @model RazorPages.Pages.Article.CandleModel
 @{
 }
+@section SubTitle{
+    Candle
+}
 @*1.利用循环分支，实现如下图所示的页面效果：*@
 @*<div style="text-align:center">
         @for (int i = 1; i < 6; i++)
@@ -82,44 +85,44 @@
 
             @for (int i = 1; i <= Math.Ceiling((float)Days / 7); i++)
             {
-            <tr>
-                @while (j <= Math.Ceiling((float)Days / 7) * 7)
-                {
-                    if ((j + 1) % 7 == 0)
+                <tr>
+                    @while (j <= Math.Ceiling((float)Days / 7) * 7)
                     {
-                        @if (FirstMonday.AddDays(j).Month != month)
+                        if ((j + 1) % 7 == 0)
                         {
-                            <td style="color:gainsboro">
-                                @FirstMonday.AddDays(j).ToString("yyyy年MM月dd日")
-                            </td>
+                            @if (FirstMonday.AddDays(j).Month != month)
+                            {
+                                <td style="color:gainsboro">
+                                    @FirstMonday.AddDays(j).ToString("yyyy年MM月dd日")
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @FirstMonday.AddDays(j).ToString("yyyy年MM月dd日")
+                                </td>
+                            }
+                            j++;
+                            break;
                         }
                         else
                         {
-                            <td>
-                                @FirstMonday.AddDays(j).ToString("yyyy年MM月dd日")
-                            </td>
+                            @if (FirstMonday.AddDays(j).Month != month)
+                            {
+                                <td style="color:gainsboro">
+                                    @FirstMonday.AddDays(j).ToString("yyyy年MM月dd日")
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @FirstMonday.AddDays(j).ToString("yyyy年MM月dd日")
+                                </td>
+                            }
+                            j++;
                         }
-                        j++;
-                        break;
                     }
-                    else
-                    {
-                        @if (FirstMonday.AddDays(j).Month != month)
-                        {
-                            <td style="color:gainsboro">
-                                @FirstMonday.AddDays(j).ToString("yyyy年MM月dd日")
-                            </td>
-                        }
-                        else
-                        {
-                            <td>
-                                @FirstMonday.AddDays(j).ToString("yyyy年MM月dd日")
-                            </td>
-                        }
-                        j++;
-                    }
-                }
-            </tr>
+                </tr>
             }
 
 

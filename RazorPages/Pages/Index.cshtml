@@ -10,7 +10,9 @@
 </div>
 <a asp-page="/Article/Single" asp-route-id="8">文章</a>
 <pager path="/Index" pageIndex="3">第3页</pager>
-
+@section Subtitle{ 
+    Index主页
+}
 
 @if (Request.Method == "POST")
 {
@@ -40,5 +42,6 @@
     <textarea asp-for="NewUser.Introduction"></textarea>
 
 </form>
+<datetime asp-showicon="true"asp-only="date">@DateTime.Now</datetime>
 <vc:_keywords></vc:_keywords>
  
