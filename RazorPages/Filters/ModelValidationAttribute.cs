@@ -18,7 +18,7 @@ namespace RazorPages.Filters
         {
 
             ///1.把ModelState中的错误信息装入TempData
-            if (context.HandlerMethod.ToString()== "POST")    //POST
+            if (context.HandlerMethod.HttpMethod== "Post")    //POST
             {
                 //1.从ModelState中提取Error信息
                 Dictionary<string, string> errors =
@@ -31,7 +31,7 @@ namespace RazorPages.Filters
                 //2.将Error信息存放到TempData
                 ((PageModel)context.HandlerInstance).TempData[Keys.ErrorInfo] = errors;
                 //有Error重定向
-                context.Result = new RedirectToPageResult("/Log/On");
+                //context.Result = new RedirectToPageResult("/Log/On");
 
             }
             ///2.从TempDta取出ModelState中的错误信息

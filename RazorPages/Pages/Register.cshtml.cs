@@ -11,7 +11,7 @@ using RazorPages.Repositories;
 namespace RazorPages.Pages
 {
     [BindProperties]
-    [ClearContext]
+    [AutoModelValidation]
     public class RegisterModel : PageModel
     {
         private UserRepository userRepository;
@@ -34,10 +34,14 @@ namespace RazorPages.Pages
 
         public void OnGet()
         {
-
+           
         }
-        public void OnPost() 
+        public IActionResult OnPost() 
         {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
             Entities.User invitedBy = userRepository.GetByName(NewUser.InvitedBy.Name);
             //if (invitedBy==null)
             //{
@@ -49,7 +53,21 @@ namespace RazorPages.Pages
             //}
             NewUser.InvitedBy = invitedBy;
             NewUser.Register();
-            userRepository.Save(NewUser);
+            if (userRepository.GetByName(NewUser.Name)!=null)
+            {
+                ModelState.AddModelError("NewUser.Name", "用户名已经被使用");
+                return Page();
+            }
+            else
+            {
+                userRepository.Save(NewUser);
+
+            }
+            Response.Cookies.Append(nameof(NewUser.Name), NewUser.Name);
+            Response.Cookies.Append(nameof(NewUser.Password), NewUser.Password);
+            //return RedirectToPage("/Log/On");
+            return RedirectToPage("/Log/On");
         }
     }
 }
+

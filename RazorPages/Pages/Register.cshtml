@@ -16,23 +16,28 @@
         <div>
             <label>邀请人：（* 必填，<a href="/" class="text-info">没有邀请人</a>）</label>
             <input asp-for="NewUser.InvitedBy.Name" class="form-control" placeholder="他的用户名，模糊查询只能从头开始">
+            <span asp-validation-for="NewUser.InvitedBy"></span>
         </div>
         <div>
             <label>邀请码：（* 必填）</label>
             <input asp-for="NewUser.InvitedBy.InviteCode" class="form-control" placeholder="4位数字">
+            <span asp-validation-for="NewUser.InviteCode"></span>
         </div>
     </div>
     <div>
         <label>用户名：（* 必填）</label>
         <input asp-for="NewUser.Name" class="form-control"placeholder="登录用户名，可修改，不能重复" />
+        <span asp-validation-for="NewUser.Name"></span>
     </div>
     <div>
         <label>密码：（* 必填）</label>
         <input asp-for="NewUser.Password" class="form-control"placeholder="不少于4个字符" />
+        <span asp-validation-for="NewUser.Password"></span>
     </div>
     <div>
         <label>验证密码：（* 必填）</label>
         <input asp-for="VerifyPassword" class="form-control"placeholder="和密码相同" />
+        <span asp-validation-for="VerifyPassword"></span>
     </div>
     <div>
         <label>QQ:(*必填)</label>

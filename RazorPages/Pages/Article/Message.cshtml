@@ -2,22 +2,25 @@
 @model RazorPages.Pages.Article.MessageModel
 @{
 }
+@section Subtitle{
+    文章
+}
 <form method="post">
 
     @*@foreach (var item in Model.Messages)
-    {
-        <input asp-for="@item.Selected">
-        <span>@item.CreateTime</span>
-        <span>@item.Content.</span>
-        <hr />
+        {
+            <input asp-for="@item.Selected">
+            <span>@item.CreateTime</span>
+            <span>@item.Content.</span>
+            <hr />
 
-    }*@
+        }*@
     @for (int i = 0; i < Model.Messages.Count; i++)
     {
         <input asp-for="@Model.Messages[i].Selected">
         <span>@Model.Messages[i].CreateTime</span>
         <span>@Model.Messages[i].Content.</span>
-        <input type="hidden"asp-for="@Model.Messages[i].Id">
+        <input type="hidden" asp-for="@Model.Messages[i].Id">
         <hr />
     }
 
