@@ -5,4 +5,23 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="_16bang.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>_16bang.xsd</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="_16bang.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_16bang.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
 </Project>

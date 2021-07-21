@@ -1,0 +1,49 @@
+﻿@page
+@model RazorPages.Pages.Article.CandleModel
+@{
+    DateTime date1 = new DateTime(2021, 2, 1);
+    DateTime date2 = new DateTime(date1.Year,date1.Month,date1.Day).AddMonths(1);
+}
+@section SubTitle{
+    AAA
+}
+@*//新建 / Task / History / Month 页面，利用表格，输出按月按周组织的任意一个月份的日历。可参考：一起帮·任务历史月表*@
+<p>@date1.ToString("yyyy年-MM-月")</p>
+<table style="border:1px dashed">
+
+    <tr>
+
+        <td>一</td>
+        <td>二</td>
+        <td>三</td>
+        <td>四</td>
+        <td>五</td>
+        <td>六</td>
+        <td>日</td>
+
+    </tr>
+    @while (date1<date2)
+    {
+        <tr>
+            @if (date1.DayOfWeek != DayOfWeek.Monday)
+            {
+                date1 = date1.AddDays(-1);
+
+            }
+            else
+            {
+                for (int j = 0; j < 7; j++)
+                {
+                    <td>@date1.ToString("MM月-dd日")</td>
+                    date1 = date1.AddDays(1);
+                }
+            }
+        </tr>
+    }
+
+
+
+</table>
+
+
+

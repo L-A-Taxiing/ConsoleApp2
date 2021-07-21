@@ -52,7 +52,7 @@ namespace RazorPages.Pages
 
             //}
             NewUser.InvitedBy = invitedBy;
-            NewUser.Register();
+            //NewUser.Register();
             if (userRepository.GetByName(NewUser.Name)!=null)
             {
                 ModelState.AddModelError("NewUser.Name", "用户名已经被使用");

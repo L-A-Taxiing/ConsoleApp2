@@ -15,9 +15,9 @@ namespace RazorPages.Entities
         public string InviteCode { get; set; }
         public int BCredit { get; private set; }
 
-        public void Register() 
-        {
-            InvitedBy.BCredit += 10;
-        }
+        //public void Register() 
+        //{
+        //    InvitedBy.BCredit += 10;
+        //}
     }
 }
