@@ -10,7 +10,7 @@ namespace RazorPages.Repositories
 {
     public class UserRepository
     {
-
+        DBHelper helper = new DBHelper();
         public void Save(User NewUser)
         {
             string UserName = NewUser.Name;
@@ -33,7 +33,6 @@ namespace RazorPages.Repositories
                 command.Parameters.Add(PWord);
 
                 DbDataReader reader = command.ExecuteReader();
-                
 
 
             }
@@ -65,7 +64,6 @@ namespace RazorPages.Repositories
                 user.InvitedBy.Id = (int)reader["Id"];
                 user.InvitedBy.Name = (string)reader["UserName"];
                 return user;
-
 
             }
         }
