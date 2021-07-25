@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CSharp._17bangTableAdapters;
+using System;
+using static CSharp._17bang;
 
 namespace CSharp
 {
@@ -20,24 +22,19 @@ namespace CSharp
         static void Main(string[] args)
         {
 
-            Animals<string> lw= new Animals<string>();
-            lw.Kind = "青龙";
+            //Animals<string> lw= new Animals<string>();
+            //lw.Kind = "青龙";
 
-            Animals<Foods> my = new Animals<Foods>();
-            my.Kind = new Foods();
+            //Animals<Foods> my = new Animals<Foods>();
+            //my.Kind = new Foods();
 
+            //_17Bang bang = new _17Bang();
 
-          
-
-
-
-
+            MessageTableAdapter adapter = new MessageTableAdapter();
+            MessageDataTable Messages = adapter.GetData();
 
 
-
-
-
-
+            adapter.DeleteQuery(10);
 
 
 

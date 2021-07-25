@@ -14,7 +14,7 @@ namespace RazorPages.Repositories
         public void Save(User NewUser)
         {
             string UserName = NewUser.Name;
-            string PassWord = NewUser.Password;
+            int PassWord = NewUser.Password;
             string connectionString = @"Data Source = (localdb)\MSSQLLocalDB; 
              Initial Catalog = 17bang;
              Integrated Security = True; ";
@@ -42,18 +42,17 @@ namespace RazorPages.Repositories
         }
         internal User GetByName(string name)
         {
-            string UserName = name;
             string connectionString = @"Data Source = (localdb)\MSSQLLocalDB; 
              Initial Catalog = 17bang;
              Integrated Security = True; ";
             using(DbConnection connection=new SqlConnection(connectionString))
             {
                 connection.Open();
-                DbParameter UName = new SqlParameter("@Name", UserName);
                 DbCommand command = new SqlCommand(
                     $"SELECT Id,UserName,PassWord FROM [User] WHERE UserName=@Name"
                     );
                 command.Connection = connection;
+                DbParameter UName = new SqlParameter("@Name", name);
                 command.Parameters.Add(UName);
                 DbDataReader reader = command.ExecuteReader();
                 if (!reader.Read())
@@ -61,8 +60,9 @@ namespace RazorPages.Repositories
                     return null;
                 }
                 User user = new User();
-                user.InvitedBy.Id = (int)reader["Id"];
-                user.InvitedBy.Name = (string)reader["UserName"];
+                user.Id = (int)reader["Id"];
+                user.Name = (string)reader["UserName"];
+                user.Password =(int)reader["PassWord"];
                 return user;
 
             }
@@ -81,7 +81,7 @@ namespace RazorPages.Repositories
                 {
                     Id=1,
                     Name="叶飞",
-                    Password="1234"
+                    Password=1234
 
                 },
             };

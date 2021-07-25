@@ -60,7 +60,7 @@ namespace RazorPages.Pages.Article
             {
                 if (item.Selected)
                 {
-                    messageRepository.Find(item.Id).Read();
+                    messageRepository.Find(item.Id);
                 }
             }
             //Messages = messageRepository.GetMine(true);

@@ -13,7 +13,7 @@ namespace RazorPages
         private const string connectionString= @"Data Source = (localdb)\MSSQLLocalDB; 
              Initial Catalog = 17bang;
              Integrated Security = True; ";
-        public DbConnection GetNewConnetion()
+        public SqlConnection GetNewConnetion()
         {
             return new SqlConnection(connectionString);
         }

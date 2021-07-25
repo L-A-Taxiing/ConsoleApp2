@@ -21,7 +21,7 @@ namespace RazorPages.Pages
         }
 
         public Entities.User NewUser { get; set; }
-        public string VerifyPassword { get; set; }
+        public int VerifyPassword { get; set; }
 
         //[RegularExpression(@"[1-9]\d{4,}", ErrorMessage = "QQ格式不对劲")]
         //public string QQ { get; set; }
@@ -64,7 +64,7 @@ namespace RazorPages.Pages
 
             }
             Response.Cookies.Append(nameof(NewUser.Name), NewUser.Name);
-            Response.Cookies.Append(nameof(NewUser.Password), NewUser.Password);
+            Response.Cookies.Append(nameof(NewUser.Password),NewUser.Password.ToString());
             //return RedirectToPage("/Log/On");
             return RedirectToPage("/Log/On");
         }
