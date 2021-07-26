@@ -15,18 +15,18 @@ namespace RazorPages
     {
         public static void Main(string[] args)
         {
-            //CreateHostBuilder(args).Build().Run();
+            CreateHostBuilder(args).Build().Run();
 
-            SqlDbContext context = new SqlDbContext();
-            var db = context.Database;  //DataBase从何来
+            //SqlDbContext context = new SqlDbContext();
+            //var db = context.Database;  //DataBase从何来
 
-            //Create数据库的同时建立表结构，
-            db.EnsureCreated();
+            ////Create数据库的同时建立表结构，
+            //db.EnsureCreated();
 
-            //Enusure：存在才删除，不存在才创建
-            db.EnsureDeleted();
+            ////Enusure：存在才删除，不存在才创建
+            //db.EnsureDeleted();
 
-            db.Migrate();
+            //db.Migrate();
             //类似于Update-Database: apply all pending migrations
             //本身不生成Migrations
 
