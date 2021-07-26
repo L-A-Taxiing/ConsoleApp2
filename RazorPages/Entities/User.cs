@@ -16,6 +16,7 @@ namespace RazorPages.Entities
         public int BCredit { get; private set; }
         
         public int FailedTry { get; set; }
+        public DateTime CreateTime { get; set; }
 
         //public void Register() 
         //{

@@ -36,15 +36,18 @@ namespace RazorPages.Migrations
 
             modelBuilder.Entity("RazorPages.Entities.User", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)")
+                        .HasColumnName("UserName");
 
                     b.Property<int>("BCredit")
                         .HasColumnType("int");
 
-                    b.Property<int>("FailedTry")
+                    b.Property<DateTime>("CreateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Id")
                         .HasColumnType("int");
 
                     b.Property<string>("Introduction")
@@ -53,30 +56,32 @@ namespace RazorPages.Migrations
                     b.Property<string>("InviteCode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("InvitedById")
-                        .HasColumnType("int");
+                    b.Property<string>("InvitedByName")
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<bool>("IsMale")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("Password")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("Name");
 
-                    b.HasIndex("InvitedById");
+                    b.HasIndex("CreateTime")
+                        .IsUnique();
 
-                    b.ToTable("User");
+                    b.HasIndex("InvitedByName");
+
+                    b.ToTable("Register");
+
+                    b.HasCheckConstraint("Ck_CreateTime", "CreateTime>=2020/1/1");
                 });
 
             modelBuilder.Entity("RazorPages.Entities.User", b =>
                 {
                     b.HasOne("RazorPages.Entities.User", "InvitedBy")
                         .WithMany()
-                        .HasForeignKey("InvitedById");
+                        .HasForeignKey("InvitedByName");
 
                     b.Navigation("InvitedBy");
                 });
