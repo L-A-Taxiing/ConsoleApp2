@@ -1,12 +1,20 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace RazorPages.Entities
 {
+    [Table("Register")]
+    [Index("CreateTime",IsUnique =true)]
     public class User : Entity
     {
+        [Column("UserName")]
+        [MaxLength(256)]
+        [Key]
         public string Name { get; set; }
         public string Introduction { get; set; }
         public int Password { get; set; }
@@ -16,6 +24,7 @@ namespace RazorPages.Entities
         public string InviteCode { get; set; }
         public int BCredit { get; private set; }
 
+        [NotMapped]
         public int FailedTry { get; set; }
         public DateTime CreateTime { get; set; }
 
