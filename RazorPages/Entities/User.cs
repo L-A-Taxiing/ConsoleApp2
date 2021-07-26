@@ -8,13 +8,14 @@ namespace RazorPages.Entities
     public class User : Entity
     {
         public string Name { get; set; }
-        public bool IsMale { get; set; }
         public string Introduction { get; set; }
         public int Password { get; set; }
+        public bool IsMale { get; set; }
+
         public User InvitedBy { get; set; }
         public string InviteCode { get; set; }
         public int BCredit { get; private set; }
-        
+
         public int FailedTry { get; set; }
         public DateTime CreateTime { get; set; }
 
