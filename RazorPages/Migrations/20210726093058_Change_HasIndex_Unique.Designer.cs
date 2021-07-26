@@ -10,8 +10,8 @@ using RazorPages;
 namespace RazorPages.Migrations
 {
     [DbContext(typeof(SqlDbContext))]
-    [Migration("20210726074631_Init")]
-    partial class Init
+    [Migration("20210726093058_Change_HasIndex_Unique")]
+    partial class Change_HasIndex_Unique
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,10 +23,10 @@ namespace RazorPages.Migrations
 
             modelBuilder.Entity("RazorPages.Entities.User", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)")
+                        .HasColumnName("UserName");
 
                     b.Property<int>("BCredit")
                         .HasColumnType("int");
@@ -34,41 +34,24 @@ namespace RazorPages.Migrations
                     b.Property<DateTime>("CreateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("FailedTry")
-                        .HasColumnType("int");
-
                     b.Property<string>("Introduction")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("InviteCode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("InvitedById")
-                        .HasColumnType("int");
-
                     b.Property<bool>("IsMale")
                         .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Password")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("Name");
 
-                    b.HasIndex("InvitedById");
+                    b.HasIndex("CreateTime")
+                        .IsUnique();
 
-                    b.ToTable("User");
-                });
-
-            modelBuilder.Entity("RazorPages.Entities.User", b =>
-                {
-                    b.HasOne("RazorPages.Entities.User", "InvitedBy")
-                        .WithMany()
-                        .HasForeignKey("InvitedById");
-
-                    b.Navigation("InvitedBy");
+                    b.ToTable("Register");
                 });
 #pragma warning restore 612, 618
         }

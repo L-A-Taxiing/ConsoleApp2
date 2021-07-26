@@ -10,8 +10,8 @@ using RazorPages;
 namespace RazorPages.Migrations
 {
     [DbContext(typeof(SqlDbContext))]
-    [Migration("20210726080107_Add_User_SomeChanges")]
-    partial class Add_User_SomeChanges
+    [Migration("20210726093414_HasCheck")]
+    partial class HasCheck
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,17 +34,11 @@ namespace RazorPages.Migrations
                     b.Property<DateTime>("CreateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
-
                     b.Property<string>("Introduction")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("InviteCode")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("InvitedByName")
-                        .HasColumnType("nvarchar(256)");
 
                     b.Property<bool>("IsMale")
                         .HasColumnType("bit");
@@ -57,20 +51,9 @@ namespace RazorPages.Migrations
                     b.HasIndex("CreateTime")
                         .IsUnique();
 
-                    b.HasIndex("InvitedByName");
-
                     b.ToTable("Register");
 
                     b.HasCheckConstraint("CK_CreateTime", "CreateTime>2020-1-1");
-                });
-
-            modelBuilder.Entity("RazorPages.Entities.User", b =>
-                {
-                    b.HasOne("RazorPages.Entities.User", "InvitedBy")
-                        .WithMany()
-                        .HasForeignKey("InvitedByName");
-
-                    b.Navigation("InvitedBy");
                 });
 #pragma warning restore 612, 618
         }

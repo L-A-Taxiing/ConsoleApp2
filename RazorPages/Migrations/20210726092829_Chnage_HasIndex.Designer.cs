@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RazorPages;
 
 namespace RazorPages.Migrations
 {
     [DbContext(typeof(SqlDbContext))]
-    partial class SqlDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210726092829_Chnage_HasIndex")]
+    partial class Chnage_HasIndex
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,12 +48,9 @@ namespace RazorPages.Migrations
 
                     b.HasKey("Name");
 
-                    b.HasIndex("CreateTime")
-                        .IsUnique();
+                    b.HasIndex("CreateTime");
 
                     b.ToTable("Register");
-
-                    b.HasCheckConstraint("CK_CreateTime", "CreateTime>2020-1-1");
                 });
 #pragma warning restore 612, 618
         }

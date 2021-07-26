@@ -11,6 +11,7 @@ namespace RazorPages
     {
 
         //public DbSet<Student> Students { get; set; }
+        
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -25,17 +26,20 @@ namespace RazorPages
             modelBuilder.Entity<User>(U =>
             {
                 U.ToTable("Register");
-                U.Property(u => u.Name).HasColumnName("UserName");
+                U.Property("Name").HasColumnName("UserName");
                 U.Property(u => u.Name).HasMaxLength(256);
-                U.Property(u => u.Password).IsRequired();
                 U.HasKey(u => u.Name);
+                U.Ignore(u => u.Id);
+                U.Ignore(u => u.InvitedBy);
                 U.Ignore(u => u.FailedTry);
                 U.HasIndex(u => u.CreateTime).IsUnique();
                 U.HasCheckConstraint("CK_CreateTime", "CreateTime>2020-1-1");
+                
+
 
             });
 
-
+          
 
             base.OnModelCreating(modelBuilder);
         }
