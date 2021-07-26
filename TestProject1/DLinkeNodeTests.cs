@@ -13,11 +13,11 @@ namespace DLinkNodeTests
         [SetUp]//每次测试自动调用，就不需要调用了
         public void SetUp()
         {
-            node1 = new DLinkNode<int>() { value = 1 };
-            node2 = new DLinkNode<int>() { value = 2 };
-            node3 = new DLinkNode<int>() { value = 3 };
-            node4 = new DLinkNode<int>() { value = 4 };
-            node5 = new DLinkNode<int>() { value = 5 };
+            node1 = new DLinkNode<int>() { Value = 1 };
+            node2 = new DLinkNode<int>() { Value = 2 };
+            node3 = new DLinkNode<int>() { Value = 3 };
+            node4 = new DLinkNode<int>() { Value = 4 };
+            node5 = new DLinkNode<int>() { Value = 5 };
         }
 
         [Test]
@@ -165,11 +165,11 @@ namespace DLinkNodeTests
             }
             // 1 2 3 4 5
             Assert.AreEqual(5, nodes.Count);
-            Assert.AreEqual(node1.value,nodes[0].value);
-            Assert.AreEqual(node2.value,nodes[1].value);
-            Assert.AreEqual(node3.value,nodes[2].value);
-            Assert.AreEqual(node4.value,nodes[3].value);
-            Assert.AreEqual(node5.value,nodes[4].value);
+            Assert.AreEqual(node1.Value,nodes[0].Value);
+            Assert.AreEqual(node2.Value,nodes[1].Value);
+            Assert.AreEqual(node3.Value,nodes[2].Value);
+            Assert.AreEqual(node4.Value,nodes[3].Value);
+            Assert.AreEqual(node5.Value,nodes[4].Value);
 
         }
 
