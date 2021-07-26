@@ -15,7 +15,7 @@ namespace RazorPages
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             string conStr = @"Data Source = (localdb)\MSSQLLocalDB; 
-             Initial Catalog = 17bang;
+             Initial Catalog = 18bang;
              Integrated Security = True; ";
             optionsBuilder.UseSqlServer(conStr);
             base.OnConfiguring(optionsBuilder);
