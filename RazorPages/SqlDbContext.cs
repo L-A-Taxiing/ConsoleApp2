@@ -38,12 +38,12 @@ namespace RazorPages
                 U.Property("Name").HasColumnName("UserName");
                 U.Property(u => u.Name).HasMaxLength(256);
                 U.HasKey(u => u.Name);
-                U.Ignore(u => u.Id);
+                //U.Ignore(u => u.Id);
                 U.Ignore(u => u.InvitedBy);
                 U.Ignore(u => u.FailedTry);
                 U.HasIndex(u => u.CreateTime).IsUnique();
                 U.HasCheckConstraint("CK_CreateTime", "CreateTime>2020-1-1");
-                
+                U.HasKey(u => u.Id);
 
 
             });
