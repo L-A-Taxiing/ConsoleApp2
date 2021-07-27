@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using RazorPages.Entities;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,15 @@ namespace RazorPages
             string conStr = @"Data Source = (localdb)\MSSQLLocalDB; 
              Initial Catalog = 18bang;
              Integrated Security = True; ";
-            optionsBuilder.UseSqlServer(conStr);
+            optionsBuilder.UseSqlServer(conStr)
+
+#if DEBUG
+                 .EnableSensitiveDataLogging(true)
+#endif
+                .LogTo(
+                (id, level) => level == LogLevel.Debug,
+                log => Console.WriteLine(log)
+                ) ;
             base.OnConfiguring(optionsBuilder);
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

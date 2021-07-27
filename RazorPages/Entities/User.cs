@@ -22,7 +22,7 @@ namespace RazorPages.Entities
 
         public User InvitedBy { get; set; }
         public string InviteCode { get; set; }
-        public int BCredit { get; private set; }
+        public int BCredit { get;  set; }
 
         //[NotMapped]
         public int FailedTry { get; set; }
