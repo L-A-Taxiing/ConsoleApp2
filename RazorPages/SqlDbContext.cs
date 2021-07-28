@@ -12,7 +12,7 @@ namespace RazorPages
     {
 
         //public DbSet<Student> Students { get; set; }
-        
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -24,10 +24,11 @@ namespace RazorPages
 #if DEBUG
                  .EnableSensitiveDataLogging(true)
 #endif
-                .LogTo(
-                (id, level) => level == LogLevel.Debug,
-                log => Console.WriteLine(log)
-                ) ;
+                //.LogTo(
+                //(id, level) => level == LogLevel.Debug,
+                //log => Console.WriteLine(log)
+                //)
+                ;
             base.OnConfiguring(optionsBuilder);
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -37,7 +38,7 @@ namespace RazorPages
                 U.ToTable("Register");
                 U.Property("Name").HasColumnName("UserName");
                 U.Property(u => u.Name).HasMaxLength(256);
-                U.HasKey(u => u.Name);
+                //U.HasKey(u => u.Name);
                 //U.Ignore(u => u.Id);
                 U.Ignore(u => u.InvitedBy);
                 U.Ignore(u => u.FailedTry);
@@ -48,7 +49,7 @@ namespace RazorPages
 
             });
 
-          
+
 
             base.OnModelCreating(modelBuilder);
         }
