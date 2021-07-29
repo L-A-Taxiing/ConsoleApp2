@@ -103,6 +103,16 @@ namespace RazorPages.Repositories
             }
             //return messages.Where(m => m.Id == id).SingleOrDefault();
         }
+        public IList<Message> GetMessage()
+        {
+            SqlDbContext context = new SqlDbContext();
+            IQueryable<Message> query = context.Messages
+                .OrderBy(m => m.HasRead)
+                .ThenByDescending(m => m.PublishDateTime);
+            return query.ToList();
+
+
+        }
 
     }
 }

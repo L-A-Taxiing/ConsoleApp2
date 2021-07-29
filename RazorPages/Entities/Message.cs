@@ -8,8 +8,10 @@ namespace RazorPages.Entities
     public class Message:Entity
     {
         public bool Selected { get; set; }
-        public DateTime PublishDateTime { get; set; }
+        public string Title { get; set; }
         public string Content { get; set; }
+        public DateTime PublishDateTime { get; set; }
+
         public bool HasRead { get; set; }
         public bool Read() 
         {

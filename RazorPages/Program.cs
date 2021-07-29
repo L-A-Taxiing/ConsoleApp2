@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using RazorPages.Entities;
+using RazorPages.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,53 @@ namespace RazorPages
         public static void Main(string[] args)
         {
             //CreateHostBuilder(args).Build().Run();
+
+
+            //利用Linq to EntityFramework，实现方法：
+            //GetBy(IList < ProblemStatus > exclude, bool hasSummary, bool descByPublishTime)，
+            //该方法可以根据输入参数：
+            //1.IList<ProblemStatus> exclude：不显示（排除）某些状态的求助
+            //2.bool hasSummary：只显示已有总结的求助（如果传入值为true的话）
+            //3.bool descByPublishTime：按发布时间正序还是倒序
+
+            //实现方法：GetMessage()，靠将消息列表：
+            //1.所有未读在已读前面
+            //2.未读和已读各自按生成时间排序
+
+            MessageRepository message = new MessageRepository();
+            IList<Message> messages = message.GetMessage();
+
+            ProblemRepository problem = new ProblemRepository();
+            IList<Problem> problems = problem.GetBy(new List<ProblemStatus> {ProblemStatus.canceled}, true, true);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             //SqlDbContext context = new SqlDbContext();
             //var db = context.Database;  //DataBase从何来
@@ -33,7 +81,7 @@ namespace RazorPages
 
 
             //利用EF，插入3个User对象
-            SqlDbContext context = new SqlDbContext();
+            //SqlDbContext context = new SqlDbContext();
             //User user1= new User
             //{
             //    Name = "叶飞",
@@ -88,8 +136,7 @@ namespace RazorPages
             //User user = context.Find<User>(3);
             //context.Remove<User>(user);
 
-
-            context.SaveChanges();
+            //context.SaveChanges();
 
 
 

@@ -12,6 +12,8 @@ namespace RazorPages
     {
 
         //public DbSet<Student> Students { get; set; }
+        public DbSet<Problem> Problems { get; set; }
+        public DbSet<Message> Messages { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -46,9 +48,11 @@ namespace RazorPages
                 U.HasCheckConstraint("CK_CreateTime", "CreateTime>2020-1-1");
                 U.HasKey(u => u.Id);
 
-
             });
-
+            modelBuilder.Entity<Message>(M =>
+            {
+                M.Ignore(m => m.Selected);
+            });
 
 
             base.OnModelCreating(modelBuilder);
