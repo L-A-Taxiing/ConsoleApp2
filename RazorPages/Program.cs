@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -18,17 +19,55 @@ namespace RazorPages
         {
             //CreateHostBuilder(args).Build().Run();
 
+            //用事务实现帮帮币出售的过程
+            //卖方帮帮币足够，扣减数额后成功提交。
+            //卖房帮帮币不够，事务回滚，买卖双方帮帮币不变。
+
+            //SqlDbContext context = new SqlDbContext();
+            //context.AddRange(
+            //    new User
+            //    {
+            //        Name="fg",
+            //        Password=1234,
+            //        IsMale=true,
+            //        BCredit=10,
+            //        CreateTime=new DateTime(2021,10,10),
+            //        EmailAddressId=2,
+            //        HelpBean=50
+
+            //    },
+            //    new User 
+            //    {
+            //        Name = "fd",
+            //        Password = 2345,
+            //        IsMale = false,
+            //        BCredit = 10,
+            //        CreateTime = new DateTime(2021, 10, 11),
+            //        EmailAddressId = 1,
+            //        HelpBean = 20
+
+            //    }
+            //    );
+            //context.SaveChanges();
+            //using (IDbContextTransaction transaction = context.Database.BeginTransaction())
+            //{
+            //    try
+            //    {
+            //        User fg = context.Users.Where(u => u.Name == "fg")
+            //            .SingleOrDefault();
+            //        fg.HelpBean -= 10;
+            //        context.SaveChanges();
+            //        transaction.Commit();
+
+            //    }
+            //    catch (Exception)
+            //    {
+            //        transaction.Rollback();
+            //        throw;
+            //    }
 
 
-            SqlDbContext context = new SqlDbContext();
-            context.AddRange(
-                new Suggest { Suggestions="ErrorList"},
-                new Paper { AuthorName="李腾"},
-                new Question { QuestionNum=10}
-
-                );
-
-            context.SaveChanges();
+            //}
 
 
 
@@ -38,11 +77,14 @@ namespace RazorPages
 
 
 
+            //context.AddRange(
+            //    new Suggest { Suggestions = "ErrorList" },
+            //    new Paper { AuthorName = "李腾" },
+            //    new Question { QuestionNum = 10 }
 
+            //    );
 
-
-
-
+            //context.SaveChanges();
 
 
             //利用Linq to EntityFramework，实现方法：

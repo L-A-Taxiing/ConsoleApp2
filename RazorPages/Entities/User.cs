@@ -31,6 +31,8 @@ namespace RazorPages.Entities
         public int EmailAddressId { get; set; }
         public Email EmailAddress { get; set; }
 
+        public int HelpBean { get; set; }
+
         //public void Register() 
         //{
         //    InvitedBy.BCredit += 10;

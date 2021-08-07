@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RazorPages;
 
 namespace RazorPages.Migrations
 {
     [DbContext(typeof(SqlDbContext))]
-    partial class SqlDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210807051827_AddUser")]
+    partial class AddUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -153,8 +155,6 @@ namespace RazorPages.Migrations
                     b.ToTable("User");
 
                     b.HasCheckConstraint("CK_CreateTime", "CreateTime>'2020-1-1'");
-
-                    b.HasCheckConstraint("CK_HelpBean", "HelpBean>0");
                 });
 
             modelBuilder.Entity("RazorPages.Entities.Paper", b =>
