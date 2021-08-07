@@ -20,9 +20,15 @@ namespace RazorPages
 
 
 
+            SqlDbContext context = new SqlDbContext();
+            context.AddRange(
+                new Suggest { Suggestions="ErrorList"},
+                new Paper { AuthorName="ÀîÌÚ"},
+                new Question { QuestionNum=10}
 
+                );
 
-
+            context.SaveChanges();
 
 
 
