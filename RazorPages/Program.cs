@@ -19,6 +19,26 @@ namespace RazorPages
             //CreateHostBuilder(args).Build().Run();
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             //利用Linq to EntityFramework，实现方法：
             //GetBy(IList < ProblemStatus > exclude, bool hasSummary, bool descByPublishTime)，
             //该方法可以根据输入参数：
@@ -30,38 +50,11 @@ namespace RazorPages
             //1.所有未读在已读前面
             //2.未读和已读各自按生成时间排序
 
-            MessageRepository message = new MessageRepository();
-            IList<Message> messages = message.GetMessage();
+            //MessageRepository message = new MessageRepository();
+            //IList<Message> messages = message.GetMessage();
 
-            ProblemRepository problem = new ProblemRepository();
-            IList<Problem> problems = problem.GetBy(new List<ProblemStatus> {ProblemStatus.canceled}, true, true);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            //ProblemRepository problem = new ProblemRepository();
+            //IList<Problem> problems = problem.GetBy(new List<ProblemStatus> {ProblemStatus.canceled}, true, true);
 
 
 

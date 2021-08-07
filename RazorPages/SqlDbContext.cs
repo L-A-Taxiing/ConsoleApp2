@@ -48,13 +48,15 @@ namespace RazorPages
                 U.HasCheckConstraint("CK_CreateTime", "CreateTime>2020-1-1");
                 U.HasKey(u => u.Id);
 
+                U.HasOne<Email>(u => u.EmailAddress)
+                .WithOne(e => e.Owner)
+                .HasForeignKey<User>(u => u.EmailAddressId);
             });
             modelBuilder.Entity<Message>(M =>
             {
                 M.Ignore(m => m.Selected);
             });
-
-
+          
             base.OnModelCreating(modelBuilder);
         }
     }

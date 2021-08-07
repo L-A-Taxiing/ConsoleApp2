@@ -28,6 +28,9 @@ namespace RazorPages.Entities
         public int FailedTry { get; set; }
         public DateTime CreateTime { get; set; }
 
+        public int EmailAddressId { get; set; }
+        public Email EmailAddress { get; set; }
+
         //public void Register() 
         //{
         //    InvitedBy.BCredit += 10;
