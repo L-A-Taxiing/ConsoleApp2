@@ -1,11 +1,84 @@
 ﻿@model MVCSample.Models.RegisterModel
 @{
     ViewBag.Title = "Index";
+
+    int[] month = new int[12];
+    for (int i = 0; i < 12; i++)
+    {
+        month[i] = i + 1;
+    }
+
+    //    IDictionary<int, string> months = new Dictionary<int, string>
+    //{
+    //    {1,"一" },
+    //    {2,"二" },
+    //    {3,"三" },
+    //    {4,"四" },
+    //    {5,"五" },
+    //    {6,"六" },
+    //    {7,"日" },
+    //};
 }
 
 <h2>注册</h2>
 
-<label>用户:</label>@Model.Name
-<br/>
-<label>密码:</label>@Model.Password
-<br/>
+
+@using (Html.BeginForm())
+{
+    <label>用户:</label>
+    @Html.TextBoxFor(m => m.Name, new
+    {
+        style = "background-color:blue;",
+        @class = "form-control",    //需要在前面加@
+        zyf_username_duplicated = string.Empty
+    })
+
+
+    <label> 密码:</label>
+    @Html.PasswordFor(m => m.Password, new Dictionary<string, object> { })
+    <br />
+
+    <label> 日期:</label>
+    @Html.TextBoxFor(m => m.BirthDay, "{0:D}")
+    <br />
+
+    <label > 自我介绍:</label>
+    @Html.TextArea("SelfIntroduction")
+    <br />
+
+    <label> @Html.LabelFor(m => m.IsMale) </label>
+
+    <label>
+    @Html.RadioButtonFor(m => m.IsMale, true)男
+    </label>
+
+    <label>
+    @Html.RadioButtonFor(m => m.IsMale, false, new { @checked = string.Empty })女
+    </label>
+
+    <br />
+
+    <label> 星期:</label>
+    for (int i = 0; i < Model.Rest.Count; i++)
+    {
+        <label>
+        @Model.Rest[i].DayOfWeek
+        @Html.CheckBoxFor(m => m.Rest[i].Selected)
+        </label>
+    }
+    <br/>
+
+    <label> 出生月份:</label>
+    @Html.DropDownListFor(m => m.BirthMonth, new SelectList(month@*Model.Keywords,"Value","Text"*@), "----")
+
+    <br />
+
+    <label>兴趣爱好:</label>
+    @Html.EnumDropDownListFor(m => m.Hobbies)
+    <br />
+
+
+    <button type="submit">提交</button>
+
+}
+
