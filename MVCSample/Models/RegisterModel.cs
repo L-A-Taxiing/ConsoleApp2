@@ -9,6 +9,7 @@ namespace MVCSample.Models
 {
     public class RegisterModel
     {
+        [Required(ErrorMessage ="用戶名不能為空")]
         public string Name { get; set; }
         public string Password { get; set; }
         public DateTime BirthDay { get; set; }

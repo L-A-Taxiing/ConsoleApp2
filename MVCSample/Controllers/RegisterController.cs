@@ -12,6 +12,11 @@ namespace MVCSample.Controllers
         // GET: Register
         public ActionResult Index()
         {
+
+            if (TempData["e"]!=null)
+            {
+                ModelState.Merge(TempData["e"] as ModelStateDictionary);
+            }
             RegisterModel model = new RegisterModel
             {
                 Name = "大飞哥",
@@ -40,6 +45,28 @@ namespace MVCSample.Controllers
             };
             return View(model);
         }
+
+
+
+        [HttpPost]
+        public ActionResult Index(int? id, string name, RegisterModel model)
+        {
+            //if (!ModelState.IsValid)
+            //{
+            //    return View(model);
+            //}
+            //return View();
+
+            if (!ModelState.IsValid)
+            {
+                TempData["e"] = ModelState;
+                return RedirectToAction(nameof(Index));
+            }
+            return View();
+
+        }
+
     }
+
 
 }
