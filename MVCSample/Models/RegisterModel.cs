@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace MVCSample.Models
 {
+    [Serializable]
     public class RegisterModel
     {
         [Required(ErrorMessage ="用戶名不能為空")]

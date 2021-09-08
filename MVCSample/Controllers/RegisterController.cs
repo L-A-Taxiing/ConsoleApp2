@@ -12,7 +12,24 @@ namespace MVCSample.Controllers
         // GET: Register
         public ActionResult Index()
         {
+            ////首先有一个cookie，名字叫user
+            //HttpCookie cookie = new HttpCookie("user");
 
+            ////在cookie中添加若干个键值对
+            //cookie.Values.Add("id", "98");
+            //cookie.Values.Add("pwd", "1234");
+
+            //cookie.Expires = DateTime.Now.AddDays(14);
+            //Response.Cookies.Add(cookie);
+
+            ////cookie取和删除
+            //HttpCookie cookie = Request.Cookies["user"];
+            //cookie.Expires = DateTime.Now.AddDays(-1);
+            //Response.Cookies.Add(cookie);
+
+
+            Session["User"] = new RegisterModel { Name = "飞哥" };
+         
             if (TempData["e"]!=null)
             {
                 ModelState.Merge(TempData["e"] as ModelStateDictionary);
@@ -51,6 +68,7 @@ namespace MVCSample.Controllers
         [HttpPost]
         public ActionResult Index(int? id, string name, RegisterModel model)
         {
+
             //if (!ModelState.IsValid)
             //{
             //    return View(model);
