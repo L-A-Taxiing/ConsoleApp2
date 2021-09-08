@@ -1,4 +1,5 @@
-﻿using MVCSample.Models;
+﻿using MVCSample.Filters;
+using MVCSample.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace MVCSample.Controllers
     public class RegisterController : Controller
     {
         // GET: Register
+        [ModelErrorTransferFilter]
         public ActionResult Index()
         {
             ////首先有一个cookie，名字叫user
@@ -30,10 +32,10 @@ namespace MVCSample.Controllers
 
             Session["User"] = new RegisterModel { Name = "飞哥" };
          
-            if (TempData["e"]!=null)
-            {
-                ModelState.Merge(TempData["e"] as ModelStateDictionary);
-            }
+            //if (TempData[Keys.ErrorInModel]!=null)
+            //{
+            //    ModelState.Merge(TempData[Keys.ErrorInModel] as ModelStateDictionary);
+            //}
             RegisterModel model = new RegisterModel
             {
                 Name = "大飞哥",
@@ -68,19 +70,19 @@ namespace MVCSample.Controllers
         [HttpPost]
         public ActionResult Index(int? id, string name, RegisterModel model)
         {
-
+           
             //if (!ModelState.IsValid)
             //{
             //    return View(model);
             //}
             //return View();
 
-            if (!ModelState.IsValid)
-            {
-                TempData["e"] = ModelState;
-                return RedirectToAction(nameof(Index));
-            }
-            return View();
+            //if (!ModelState.IsValid)
+            //{
+            //    TempData[Keys.ErrorInModel] = ModelState;
+            //    return RedirectToAction(nameof(Index));
+            //}
+            return View(model);
 
         }
 
