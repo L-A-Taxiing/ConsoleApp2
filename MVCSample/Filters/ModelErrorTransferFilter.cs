@@ -8,10 +8,14 @@ namespace MVCSample.Filters
 {
     public class ModelErrorTransferFilter:ActionFilterAttribute
     {
-
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             ModelStateDictionary modelState = ((Controller)(filterContext.Controller)).ModelState;
+
+            if (filterContext.IsChildAction)
+            {
+
+            }//根据Action究竟被谁调用判断
             if (filterContext.HttpContext.Request.HttpMethod=="POST")
             {
                 if (!modelState.IsValid)
