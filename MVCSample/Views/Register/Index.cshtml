@@ -78,6 +78,8 @@
     @Html.EnumDropDownListFor(m => m.Hobbies)
     <br />
 
+    @Html.Partial("_User",Model.InvitedBy@*new MVCSample.Models.UserModel { Id=10,Name="我是哥哥" }*@,new ViewDataDictionary { { "Level", 3 } })
+    <br/>
 
     <button type="submit">提交</button>
 

@@ -59,7 +59,9 @@ namespace MVCSample.Controllers
                     new SelectListItem{Text="C#",Value="2"},
                     new SelectListItem{Text="Java",Value="3"}
 
-                }
+                },
+
+                InvitedBy =new UserModel {Id=12,Name="韩佳宝" }
 
             };
             return View(model);

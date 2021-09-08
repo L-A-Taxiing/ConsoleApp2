@@ -10,6 +10,9 @@ namespace MVCSample.Models
     [Serializable]
     public class RegisterModel
     {
+        //PartialView 传Model
+        public UserModel InvitedBy { get; set; }
+
         [Required(ErrorMessage ="用戶名不能為空")]
         public string Name { get; set; }
         public string Password { get; set; }
