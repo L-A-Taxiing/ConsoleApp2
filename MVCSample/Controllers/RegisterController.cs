@@ -72,7 +72,6 @@ namespace MVCSample.Controllers
         [HttpPost]
         public ActionResult Index(int? id, string name, RegisterModel model)
         {
-           
             //if (!ModelState.IsValid)
             //{
             //    return View(model);
