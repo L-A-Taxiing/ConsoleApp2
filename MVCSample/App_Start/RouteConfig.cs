@@ -13,14 +13,11 @@ namespace MVCSample
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
-               name: "Contact",
-               url: "Home/Contact",
-               defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-           );
-
-
-
+           // routes.MapRoute(
+           //    name: "Contact",
+           //    url: "Home/Contact",
+           //    defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+           //);
 
 
             routes.MapRoute(

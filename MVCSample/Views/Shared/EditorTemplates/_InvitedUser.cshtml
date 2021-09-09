@@ -1,0 +1,10 @@
+﻿@model MVCSample.Models.UserModel
+
+<label>用户名:</label>
+@Html.TextBoxFor(m => m.Name)
+<br/>
+<label>Id:</label>
+@Html.TextBoxFor(m => m.Id)
+
+
+@*如果写相对路径，需要建立一个EditorTemplates文件夹，不写的话需要和Model同名，不使用Editor传到后台不会绑定(可查看页面)*@

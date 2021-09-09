@@ -1,8 +1,15 @@
-﻿@{
+﻿@model MVCSample.Models.ContactModel
+@{
     ViewBag.Title = "联系我们";
 }
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
+
+@using (Html.BeginForm())
+{
+    @Html.EditorFor(m=>m.InvitedBy,"_InvitedUser")
+   
+}
 
 <address>
     One Microsoft Way<br />

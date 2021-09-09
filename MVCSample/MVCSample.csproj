@@ -129,6 +129,7 @@
     </Compile>
     <Compile Include="HtmlHelper\YzHtmlHelperExtension.cs" />
     <Compile Include="Keys.cs" />
+    <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -171,6 +172,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Register\Index.cshtml" />
     <Content Include="Views\Shared\_User.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\_InvitedUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

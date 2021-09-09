@@ -82,6 +82,11 @@
     <br/>
 
     @Html.Action("_User","Shared",new {level=3})
+    <br/>
+
+
+    @Html.EditorFor(m=>m.InvitedBy,"_InvitedUser")
+    <br/>
 
     <button type="submit">提交</button>
 
