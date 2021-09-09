@@ -8,5 +8,7 @@ namespace DAL
 {
     internal class DbHelper  //给DAL使用不暴露出来
     {
+
+
     }
 }
