@@ -8,5 +8,6 @@ namespace BLL
 {
     public class Student
     {
+        public double Score { get; internal set; }
     }
 }

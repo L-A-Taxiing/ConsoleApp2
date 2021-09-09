@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassLibrary1
+namespace DAL
 {
-    public class DbHelper
+    internal class DbHelper  //给DAL使用不暴露出来
     {
     }
 }
