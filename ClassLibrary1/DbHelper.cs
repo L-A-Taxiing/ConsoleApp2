@@ -8,7 +8,9 @@ namespace DAL
 {
     internal class DbHelper  //给DAL使用不暴露出来
     {
-
-
+        internal void ExecuteReader(string cmdText)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

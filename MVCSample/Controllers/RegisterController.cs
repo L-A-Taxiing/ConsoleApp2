@@ -5,85 +5,53 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BLL.Repositories;
+using BLL.Entities;
 
+//Ctrl alt+w打开watch  ctrl \+E打开ErrorList
 namespace MVCSample.Controllers
 {
     public class RegisterController : Controller
     {
+
+        private StudentRepository studentRepository;
+        public RegisterController()
+        {
+            studentRepository = new StudentRepository();
+        }
+
         // GET: Register
-        [ModelErrorTransferFilter]
         public ActionResult Index()
         {
-            ////首先有一个cookie，名字叫user
-            //HttpCookie cookie = new HttpCookie("user");
-
-            ////在cookie中添加若干个键值对
-            //cookie.Values.Add("id", "98");
-            //cookie.Values.Add("pwd", "1234");
-
-            //cookie.Expires = DateTime.Now.AddDays(14);
-            //Response.Cookies.Add(cookie);
-
-            ////cookie取和删除
-            //HttpCookie cookie = Request.Cookies["user"];
-            //cookie.Expires = DateTime.Now.AddDays(-1);
-            //Response.Cookies.Add(cookie);
-
-
-            Session["User"] = new RegisterModel { Name = "飞哥" };
-         
-            //if (TempData[Keys.ErrorInModel]!=null)
-            //{
-            //    ModelState.Merge(TempData[Keys.ErrorInModel] as ModelStateDictionary);
-            //}
-            RegisterModel model = new RegisterModel
-            {
-                Name = "大飞哥",
-                Password = "1234",
-                Rest = new List<RestItem>
-                {
-                    new RestItem { DayOfWeek = DayOfWeek.Monday },
-                    new RestItem { DayOfWeek = DayOfWeek.Tuesday },
-                    new RestItem { DayOfWeek = DayOfWeek.Wednesday },
-                    new RestItem { DayOfWeek = DayOfWeek.Thursday },
-                    new RestItem { DayOfWeek = DayOfWeek.Friday },
-                    new RestItem { DayOfWeek = DayOfWeek.Saturday },
-                    new RestItem { DayOfWeek = DayOfWeek.Sunday },
-
-
-                },
-
-                Keywords = new List<SelectListItem>
-                {
-                    new SelectListItem{Text="SQL",Value="1"},
-                    new SelectListItem{Text="C#",Value="2"},
-                    new SelectListItem{Text="Java",Value="3"}
-
-                },
-
-                InvitedBy =new UserModel {Id=12,Name="韩佳宝" }
-
-            };
-            return View(model);
+            return View();
         }
 
 
 
         [HttpPost]
-        public ActionResult Index(int? id, string name, RegisterModel model)
+        public ActionResult Index(RegisterModel model)  //不要直接使用entitiy作为model 
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return View(model);
-            //}
-            //return View();
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
 
-            //if (!ModelState.IsValid)
-            //{
-            //    TempData[Keys.ErrorInModel] = ModelState;
-            //    return RedirectToAction(nameof(Index));
-            //}
-            return View(model);
+            //用户名是否重复
+            if (studentRepository.GetByName(model.Name)!=null)
+            {
+                ModelState.AddModelError("Name", "用户名不能重复");
+            }
+
+            Student student = new Student
+            {
+                Name = model.Name,
+                Password = model.Password
+            };
+            student.Register();
+            int id = studentRepository.Save(student);
+
+            return View();
+
 
         }
 

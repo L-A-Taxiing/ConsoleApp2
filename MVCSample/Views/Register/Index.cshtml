@@ -2,91 +2,36 @@
 @{
     ViewBag.Title = "Index";
 
-    int[] month = new int[12];
-    for (int i = 0; i < 12; i++)
-    {
-        month[i] = i + 1;
-    }
 
-    //    IDictionary<int, string> months = new Dictionary<int, string>
-    //{
-    //    {1,"一" },
-    //    {2,"二" },
-    //    {3,"三" },
-    //    {4,"四" },
-    //    {5,"五" },
-    //    {6,"六" },
-    //    {7,"日" },
-    //};
 }
 
 <h2>注册</h2>
 
-@Html.ValidationSummary()
 @using (Html.BeginForm())
 {
-    <label>用户:</label>
-    @Html.TextBoxFor(m => m.Name, new
-    {
-        style = "background-color:blue;",
-        @class = "form-control",    //需要在前面加@
-        zyf_username_duplicated = string.Empty
-    })
-    @Html.ValidationMessageFor(m=>m.Name)
+    <div>
+        <label>邀请人</label>
+        @Html.TextBoxFor(m => m.InvitedBy)
+        @Html.ValidationMessageFor(m=>m.InvitedBy)
+    </div>
 
-    <br/>
-    <label> 密码:</label>
-    @Html.PasswordFor(m => m.Password, new Dictionary<string, object> { })
-    <br />
+    <div>
+        <label>用户名</label>
+        @Html.TextBoxFor(m => m.Name)
+        @Html.ValidationMessageFor(m=>m.Name)
+    </div>
 
-    <label> 日期:</label>
-    @Html.TextBoxFor(m => m.BirthDay, "{0:D}")
-    <br />
+    <div>
+        <label>密码</label>
+        @Html.PasswordFor(m => m.Password)
+        @Html.ValidationMessageFor(m=>m.Password)
+    </div>
 
-    <label > 自我介绍:</label>
-    @Html.TextArea("SelfIntroduction")
-    <br />
+    <div>
+        <label>确认密码</label>
+        @Html.PasswordFor(m => m.ConfirmPassword)
+    </div>
 
-    <label> @Html.LabelFor(m => m.IsMale) </label>
-
-    <label>
-    @Html.RadioButtonFor(m => m.IsMale, true)男
-    </label>
-
-    <label>
-    @Html.RadioButtonFor(m => m.IsMale, false, new { @checked = string.Empty })女
-    </label>
-
-    <br />
-
-    <label> 星期:</label>
-    for (int i = 0; i < Model.Rest.Count; i++)
-    {
-        <label>
-        @Model.Rest[i].DayOfWeek
-        @Html.CheckBoxFor(m => m.Rest[i].Selected)
-        </label>
-    }
-    <br/>
-
-    <label> 出生月份:</label>
-    @Html.DropDownListFor(m => m.BirthMonth, new SelectList(month@*Model.Keywords,"Value","Text"*@), "----")
-
-    <br />
-
-    <label>兴趣爱好:</label>
-    @Html.EnumDropDownListFor(m => m.Hobbies)
-    <br />
-
-    @Html.Partial("_User",Model.InvitedBy@*new MVCSample.Models.UserModel { Id=10,Name="我是哥哥" }*@,new ViewDataDictionary { { "Level", 3 } })
-    <br/>
-
-    @Html.Action("_User","Shared",new {level=3})
-    <br/>
-
-
-    @Html.EditorFor(m=>m.InvitedBy,"_InvitedUser")
-    <br/>
 
     <button type="submit">提交</button>
 

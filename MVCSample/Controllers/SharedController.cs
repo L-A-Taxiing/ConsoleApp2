@@ -22,5 +22,12 @@ namespace MVCSample.Controllers
             //partialveiw 不会引用layout
             return PartialView(model);
         }
+
+
+        public PartialViewResult _LogOnStatus()
+        {
+
+            return PartialView();
+        }
     }
 }
