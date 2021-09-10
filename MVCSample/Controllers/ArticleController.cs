@@ -3,22 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using BLL.Repositories;
 using MVCSample.Models.Article;
-using BLL.Entities;
+using ProdService;
 
 namespace MVCSample.Controllers
 {
     public class ArticleController : Controller
     {
-
-        private ArticleRepository articleRepository;
-        private UserRepository userRepository;
+        private UserService userService;
+     
         public ArticleController()
         {
-            SqlDbContext context = new SqlDbContext();
-            articleRepository = new ArticleRepository(context);
-            userRepository = new UserRepository(context);
+            userService = new UserService();   
         }
         // GET: Article
         public ActionResult Index()
@@ -39,20 +35,8 @@ namespace MVCSample.Controllers
         public ActionResult New(NewModel model)
         {
             int CurrentUserId = 3;
-            Article article = new Article
-            {
-                Title = model.Title,
-                Body = model.Body
 
-            };
-
-            //User author = userRepository.Find(CurrentUserId);
-            User author = userRepository.LoadProxy(CurrentUserId);
-            article.Author = author;
-            articleRepository.Save(article);
-
-
-
+            userService.Publish(model, CurrentUserId);
 
             return View();
         }

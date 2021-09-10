@@ -137,10 +137,6 @@
     </Compile>
     <Compile Include="HtmlHelper\YzHtmlHelperExtension.cs" />
     <Compile Include="Keys.cs" />
-    <Compile Include="Models\Article\NewModel.cs" />
-    <Compile Include="Models\ContactModel.cs" />
-    <Compile Include="Models\RegisterModel.cs" />
-    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -186,6 +182,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -201,13 +198,13 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Entities\Entities.csproj">
-      <Project>{156b15f2-d6bb-41cc-b72f-0d36c7ef22ff}</Project>
-      <Name>Entities</Name>
+    <ProjectReference Include="..\ProdService\ProdService.csproj">
+      <Project>{9a1a676a-a28c-4924-9538-bed7eb199b96}</Project>
+      <Name>ProdService</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Repositories\Repositories.csproj">
-      <Project>{3598ae0c-36b8-48ba-90d4-33a45c70d123}</Project>
-      <Name>Repositories</Name>
+    <ProjectReference Include="..\ViewModel\ViewModel.csproj">
+      <Project>{8c86c78d-8ffa-4188-b534-e7b0ca8ef296}</Project>
+      <Name>ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
