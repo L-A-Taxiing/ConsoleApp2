@@ -8,14 +8,35 @@ using System.Threading.Tasks;
 
 namespace BLL.Repositories
 {
-    class SqlDbContext:DbContext
+    public class SqlDbContext<T> : SqlDbContext where T : BaseEntity
     {
-        public SqlDbContext():base("21bang")
+        public DbSet<T> Entities { get; set; }
+
+    }
+    public class SqlDbContext : DbContext
+    {
+        public SqlDbContext() : base("21bang")
         {
 
         }
-        public DbSet<Student> Students { get; set; }
+
+        //public DbSet<User> Users { get; set; }
+        //public DbSet<Article> Articles { get; set; }
+        //如果这样写就会让所有的仓库都乱了
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>();
+            modelBuilder.Entity<Article>(); 
+
+            base.OnModelCreating(modelBuilder);
+        }
 
 
     }
 }
+       
+
+
+
+

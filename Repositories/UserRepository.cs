@@ -7,17 +7,20 @@ using System.Threading.Tasks;
 
 namespace BLL.Repositories
 {
-    public class StudentRepository
+    public class UserRepository:BaseRepository<User>
     {
-        public Student Find(int Id)
+        public User Find(int Id)
         {
             throw new NotImplementedException("");
 
         }
-        public Student GetByName(string name)
+
+
+
+        public User GetByName(string name)   //子类需要Context
         {
-            SqlDbContext context = new SqlDbContext();
-            return context.Students
+            //SqlDbContext context = new SqlDbContext();
+            return context.Entities
                 .Where(s => s.Name == name)
                 .SingleOrDefault();
 
@@ -25,9 +28,5 @@ namespace BLL.Repositories
 
         }
 
-        public int Save(Student student)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

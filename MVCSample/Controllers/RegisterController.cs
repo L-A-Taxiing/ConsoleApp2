@@ -14,10 +14,10 @@ namespace MVCSample.Controllers
     public class RegisterController : Controller
     {
 
-        private StudentRepository studentRepository;
+        private UserRepository studentRepository;
         public RegisterController()
         {
-            studentRepository = new StudentRepository();
+            studentRepository = new UserRepository();
         }
 
         // GET: Register
@@ -29,6 +29,7 @@ namespace MVCSample.Controllers
 
 
         [HttpPost]
+        [ModelErrorTransferFilter]
         public ActionResult Index(RegisterModel model)  //不要直接使用entitiy作为model 
         {
             if (!ModelState.IsValid)
@@ -40,9 +41,10 @@ namespace MVCSample.Controllers
             if (studentRepository.GetByName(model.Name)!=null)
             {
                 ModelState.AddModelError("Name", "用户名不能重复");
+                return RedirectToAction(nameof(Index));
             }
 
-            Student student = new Student
+            User student = new User
             {
                 Name = model.Name,
                 Password = model.Password
