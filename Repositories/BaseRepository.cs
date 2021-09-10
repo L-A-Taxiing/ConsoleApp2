@@ -7,7 +7,7 @@ using System.Data.Entity;
 
 namespace BLL.Repositories
 {
-    public class BaseRepository<T> where T: Entities.BaseEntity
+    public class BaseRepository<T> where T: Entities.BaseEntity,new()//必须有构造函数
     {
         protected SqlDbContext context;
 
@@ -36,7 +36,14 @@ namespace BLL.Repositories
 
         }
 
+        public T LoadProxy(int id)
+        {
 
+            T entity = new T { Id = id };
+            dbset.Attach(entity);
+            return entity;
+
+        }
 
     }
 }

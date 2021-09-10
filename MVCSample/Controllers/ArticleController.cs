@@ -46,7 +46,8 @@ namespace MVCSample.Controllers
 
             };
 
-            User author = userRepository.Find(CurrentUserId);
+            //User author = userRepository.Find(CurrentUserId);
+            User author = userRepository.LoadProxy(CurrentUserId);
             article.Author = author;
             articleRepository.Save(article);
 
