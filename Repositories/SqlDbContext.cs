@@ -5,19 +5,20 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace BLL.Repositories
 {
-    public class SqlDbContext<T> : SqlDbContext where T : BaseEntity
-    {
-        public DbSet<T> Entities { get; set; }
+    //public class SqlDbContext<T> : SqlDbContext where T : BaseEntity
+    //{
+    //    public DbSet<T> Entities { get; set; }
 
-    }
+    //}
     public class SqlDbContext : DbContext
     {
         public SqlDbContext() : base("21bang")
         {
-
+            Database.Log=s=> Debug.WriteLine(s);
         }
 
         //public DbSet<User> Users { get; set; }
@@ -31,8 +32,7 @@ namespace BLL.Repositories
 
             base.OnModelCreating(modelBuilder);
         }
-
-
+        
     }
 }
        
