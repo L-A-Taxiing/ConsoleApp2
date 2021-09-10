@@ -127,6 +127,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\SharedController.cs" />
@@ -136,6 +137,7 @@
     </Compile>
     <Compile Include="HtmlHelper\YzHtmlHelperExtension.cs" />
     <Compile Include="Keys.cs" />
+    <Compile Include="Models\Article\NewModel.cs" />
     <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\UserModel.cs" />
@@ -180,6 +182,7 @@
     <Content Include="Views\Register\Index.cshtml" />
     <Content Include="Views\Shared\_User.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\_InvitedUser.cshtml" />
+    <Content Include="Views\Article\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

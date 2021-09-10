@@ -17,7 +17,7 @@ namespace MVCSample.Controllers
         private UserRepository studentRepository;
         public RegisterController()
         {
-            studentRepository = new UserRepository();
+            //studentRepository = new UserRepository();
         }
 
         // GET: Register

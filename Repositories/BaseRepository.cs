@@ -13,9 +13,9 @@ namespace BLL.Repositories
 
         protected DbSet<T> dbset;
 
-        public BaseRepository()
+        public BaseRepository(SqlDbContext context)
         {
-            context = new SqlDbContext();
+            this.context = context;
             dbset = context.Set<T>();
         }
 

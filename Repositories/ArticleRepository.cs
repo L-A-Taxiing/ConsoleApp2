@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BLL.Entities;
 
 namespace BLL.Repositories
 {
-    public class ArticleRepository:BaseRepository<Entities.Article>
+    public class ArticleRepository : BaseRepository<Article>
     {
-
-
-
-
+        public ArticleRepository(SqlDbContext context) : base(context)
+        {
+        }
     }
 }

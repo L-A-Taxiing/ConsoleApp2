@@ -10,15 +10,14 @@ namespace BLL.Repositories
 {
     public class UserRepository:BaseRepository<User>
     {
-        public UserRepository()
+        public UserRepository(SqlDbContext context):base(context)
         {
-            context = new SqlDbContext();
-            dbset=context.Set<User>();
+
         }
         public User Find(int Id)
         {
-            //return context.Set<User>().Find();
-            throw new NotImplementedException("");
+            return dbset.Find(Id);
+            //throw new NotImplementedException();
 
         }
 
