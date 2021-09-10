@@ -198,9 +198,17 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MockService\MockService.csproj">
+      <Project>{de0dbf28-5fe6-4abd-aa34-6c9a2cbac5dc}</Project>
+      <Name>MockService</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ProdService\ProdService.csproj">
       <Project>{9a1a676a-a28c-4924-9538-bed7eb199b96}</Project>
       <Name>ProdService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ServiceInterface\ServiceInterface.csproj">
+      <Project>{7773c6e8-7e87-4538-8f01-e51b8cd268e2}</Project>
+      <Name>ServiceInterface</Name>
     </ProjectReference>
     <ProjectReference Include="..\ViewModel\ViewModel.csproj">
       <Project>{8c86c78d-8ffa-4188-b534-e7b0ca8ef296}</Project>

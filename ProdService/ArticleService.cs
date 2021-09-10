@@ -1,6 +1,7 @@
 ﻿using BLL.Entities;
 using BLL.Repositories;
 using MVCSample.Models.Article;
+using ServiceInterface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,18 +11,18 @@ using System.Threading.Tasks;
 
 namespace ProdService
 {
-    public class UserService
+    public class ArticleService : IArticleService
     {
         private ArticleRepository articleRepository;
         private UserRepository userRepository;
-        public UserService()
+        public ArticleService()
         {
             SqlDbContext context = new SqlDbContext();
             articleRepository = new ArticleRepository(context);
             userRepository = new UserRepository(context);
         }
 
-        public void Publish(NewModel model,int CurrentId)
+        public void Publish(NewModel model,int CurrentUserId)
         {
             Article article = new Article
             {

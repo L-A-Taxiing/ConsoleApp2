@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9A1A676A-A28C-4924-9538-BED7EB199B96}</ProjectGuid>
+    <ProjectGuid>{DE0DBF28-5FE6-4ABD-AA34-6C9A2CBAC5DC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SRV.ProdService</RootNamespace>
-    <AssemblyName>SRV.ProdService</AssemblyName>
+    <RootNamespace>SRV.MockService</RootNamespace>
+    <AssemblyName>SRV.MockService</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -45,20 +45,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Entities\Entities.csproj">
-      <Project>{156b15f2-d6bb-41cc-b72f-0d36c7ef22ff}</Project>
-      <Name>Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Repositories\Repositories.csproj">
-      <Project>{3598ae0c-36b8-48ba-90d4-33a45c70d123}</Project>
-      <Name>Repositories</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ServiceInterface\ServiceInterface.csproj">
-      <Project>{7773C6E8-7E87-4538-8F01-E51B8CD268E2}</Project>
+      <Project>{7773c6e8-7e87-4538-8f01-e51b8cd268e2}</Project>
       <Name>ServiceInterface</Name>
     </ProjectReference>
     <ProjectReference Include="..\ViewModel\ViewModel.csproj">
-      <Project>{8c86c78d-8ffa-4188-b534-e7b0ca8ef296}</Project>
+      <Project>{8C86C78D-8FFA-4188-B534-E7B0CA8EF296}</Project>
       <Name>ViewModel</Name>
     </ProjectReference>
   </ItemGroup>

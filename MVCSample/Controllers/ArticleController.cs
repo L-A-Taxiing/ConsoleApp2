@@ -4,17 +4,18 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MVCSample.Models.Article;
-using ProdService;
+using ServiceInterface;
 
 namespace MVCSample.Controllers
 {
     public class ArticleController : Controller
     {
-        private UserService userService;
+        private IArticleService articleService;
      
         public ArticleController()
         {
-            userService = new UserService();   
+            articleService = new ProdService.ArticleService();  //后端开发人员选择
+            articleService = new MockService.ArticleService();  //前端开发人员选择
         }
         // GET: Article
         public ActionResult Index()
@@ -36,7 +37,7 @@ namespace MVCSample.Controllers
         {
             int CurrentUserId = 3;
 
-            userService.Publish(model, CurrentUserId);
+            articleService.Publish(model, CurrentUserId);
 
             return View();
         }
