@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceInterface", "Service
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockService", "MockService\MockService.csproj", "{DE0DBF28-5FE6-4ABD-AA34-6C9A2CBAC5DC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp2.0", "CSharp2.0\CSharp2.0.csproj", "{A4BC1603-37F8-4E65-A06C-16740B178E63}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -109,6 +111,10 @@ Global
 		{DE0DBF28-5FE6-4ABD-AA34-6C9A2CBAC5DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE0DBF28-5FE6-4ABD-AA34-6C9A2CBAC5DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE0DBF28-5FE6-4ABD-AA34-6C9A2CBAC5DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4BC1603-37F8-4E65-A06C-16740B178E63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4BC1603-37F8-4E65-A06C-16740B178E63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4BC1603-37F8-4E65-A06C-16740B178E63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4BC1603-37F8-4E65-A06C-16740B178E63}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
