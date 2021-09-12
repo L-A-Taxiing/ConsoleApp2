@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MVCSample.Models
+namespace SRV.ViewModel
 {
     public class ContactModel
     {

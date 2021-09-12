@@ -10,5 +10,7 @@ namespace MVCSample
         public const string ErrorInModel = "e";
 
         public const string User = "User";
+        public const string Id = "Id";
+        public const string Password = "password";
     }
 }

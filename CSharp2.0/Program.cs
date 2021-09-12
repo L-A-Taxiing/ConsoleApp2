@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using static CSharp2._0.Enumrator;
 
 namespace CSharp2._0
 {
@@ -23,13 +24,8 @@ namespace CSharp2._0
             //    new Student{Name="345"},
             //    new Student{Name="456"}
             //};
-            foreach (var item in new Student())
-            {
-                Console.WriteLine(((Student)item).Name);
-            }
 
         }
-
 
 
 

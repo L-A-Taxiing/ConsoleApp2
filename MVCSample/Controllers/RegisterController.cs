@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.ComponentModel.DataAnnotations;
 using System.Web.UI;
+using SRV.ServiceInterface;
 
 //Ctrl alt+w打开watch  ctrl \+E打开ErrorList
 namespace MVCSample.Controllers
@@ -15,9 +16,11 @@ namespace MVCSample.Controllers
     {
 
         //private UserRepository userRepository;
+        private IUserService userService;
         public RegisterController()
         {
             //studentRepository = new UserRepository();
+            userService = new SRV.MockService.UserService();
         }
 
         // GET: Register
@@ -51,8 +54,14 @@ namespace MVCSample.Controllers
             //int id = userRepository.Save(student);
 
             //int UerId = userService.Register(model);
-            int UserId = 3;
-            Response.Cookies.Add(new HttpCookie(Keys.User, UserId.ToString()));
+            //int UserId = 3;
+            int UserId = userService.Register(model);
+            HttpCookie cookie = new HttpCookie(Keys.User/*, UserId.ToString()*/);
+            /* Response.Cookies.Add(new HttpCookie(Keys.User, UserId.ToString()));*///可以伪造
+            cookie.Values.Add(Keys.Id, UserId.ToString());
+            cookie.Values.Add(Keys.Password, UserId.ToString());
+            Response.Cookies.Add(cookie);
+
             return View();
 
 

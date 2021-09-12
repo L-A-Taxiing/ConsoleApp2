@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace MVCSample.Models
+namespace SRV.ViewModel
 {
     public class RegisterModel
     {

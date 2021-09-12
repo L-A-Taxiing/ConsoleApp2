@@ -40,7 +40,7 @@ namespace CSharp2._0
 
         public bool MoveNext()
         {
-            if (_index>=_localStudents.Length)
+            if (_index >= _localStudents.Length)
             {
                 return false;
             }

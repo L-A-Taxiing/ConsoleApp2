@@ -1,4 +1,4 @@
-﻿using ServiceInterface;
+﻿using SRV.ServiceInterface;
 using SRV.ViewModel.Article;
 using System;
 using System.Collections.Generic;
