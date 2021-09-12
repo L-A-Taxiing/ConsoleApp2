@@ -1,7 +1,7 @@
 ﻿using BLL.Entities;
 using BLL.Repositories;
-using MVCSample.Models.Article;
 using ServiceInterface;
+using SRV.ViewModel.Article;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +22,12 @@ namespace ProdService
             userRepository = new UserRepository(context);
         }
 
-        public void Publish(NewModel model,int CurrentUserId)
+        public SingleModel GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Publish(NewModel model,int CurrentUserId)
         {
             Article article = new Article
             {
@@ -36,7 +41,7 @@ namespace ProdService
             article.Author = author;
             articleRepository.Save(article);
 
-
+            return article.Id;
         }
 
 

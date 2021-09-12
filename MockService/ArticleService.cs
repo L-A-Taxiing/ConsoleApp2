@@ -1,5 +1,5 @@
-﻿using MVCSample.Models.Article;
-using ServiceInterface;
+﻿using ServiceInterface;
+using SRV.ViewModel.Article;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +10,26 @@ namespace MockService
 {
     public class ArticleService : IArticleService
     {
-        public void Publish(NewModel model, int CurrentUserId)
+        public int Publish(NewModel model, int CurrentUserId)
         {
-            throw new NotImplementedException();
+            return 1;
+        }
+        public SingleModel GetById(int id)
+        {
+
+            return new SingleModel
+            {
+
+                Title = "我是Title",
+                Body = "我是Body"
+
+            };
+        
+        
+        
+        
+        
+        
         }
     }
 }

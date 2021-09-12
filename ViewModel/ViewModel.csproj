@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Article\NewModel.cs" />
+    <Compile Include="Article\SingleModel.cs" />
     <Compile Include="ContactModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegisterModel.cs" />

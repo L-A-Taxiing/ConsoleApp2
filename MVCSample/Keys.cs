@@ -9,5 +9,6 @@ namespace MVCSample
     {
         public const string ErrorInModel = "e";
 
+        public const string User = "User";
     }
 }

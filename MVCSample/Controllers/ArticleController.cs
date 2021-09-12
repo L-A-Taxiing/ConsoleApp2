@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using MVCSample.Models.Article;
 using ServiceInterface;
+using SRV.ViewModel.Article;
 
 namespace MVCSample.Controllers
 {
@@ -15,7 +15,7 @@ namespace MVCSample.Controllers
         public ArticleController()
         {
             articleService = new ProdService.ArticleService();  //后端开发人员选择
-            articleService = new MockService.ArticleService();  //前端开发人员选择
+            //articleService = new MockService.ArticleService();  //前端开发人员选择
         }
         // GET: Article
         public ActionResult Index()
@@ -37,11 +37,20 @@ namespace MVCSample.Controllers
         {
             int CurrentUserId = 3;
 
-            articleService.Publish(model, CurrentUserId);
+            int id=articleService.Publish(model, CurrentUserId);
 
-            return View();
+            return RedirectToAction("Single",new {id=id });
         }
+         
 
+        public ActionResult Single(int id)
+        {
+            SingleModel model = articleService.GetById(id);
+            return View(model);
+
+
+
+        }
 
 
 

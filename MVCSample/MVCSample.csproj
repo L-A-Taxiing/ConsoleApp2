@@ -179,6 +179,7 @@
     <Content Include="Views\Shared\_User.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\_InvitedUser.cshtml" />
     <Content Include="Views\Article\New.cshtml" />
+    <Content Include="Views\Article\Single.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -214,6 +215,9 @@
       <Project>{8c86c78d-8ffa-4188-b534-e7b0ca8ef296}</Project>
       <Name>ViewModel</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

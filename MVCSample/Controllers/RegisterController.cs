@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.ComponentModel.DataAnnotations;
+using System.Web.UI;
 
 //Ctrl alt+w打开watch  ctrl \+E打开ErrorList
 namespace MVCSample.Controllers
@@ -49,6 +50,9 @@ namespace MVCSample.Controllers
             //student.Register();
             //int id = userRepository.Save(student);
 
+            //int UerId = userService.Register(model);
+            int UserId = 3;
+            Response.Cookies.Add(new HttpCookie(Keys.User, UserId.ToString()));
             return View();
 
 
