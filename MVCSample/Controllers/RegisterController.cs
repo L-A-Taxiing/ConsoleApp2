@@ -1,5 +1,4 @@
 ﻿using MVCSample.Filters;
-using MVCSample.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +7,7 @@ using System.Web.Mvc;
 using System.ComponentModel.DataAnnotations;
 using System.Web.UI;
 using SRV.ServiceInterface;
+using SRV.ViewModel;
 
 //Ctrl alt+w打开watch  ctrl \+E打开ErrorList
 namespace MVCSample.Controllers
@@ -20,9 +20,11 @@ namespace MVCSample.Controllers
         public RegisterController()
         {
             //studentRepository = new UserRepository();
-            userService = new SRV.MockService.UserService();
+            //userService = new SRV.MockService.UserService();
+            userService = new SRV.ProdService.UserService();
         }
 
+        [ModelErrorTransferFilter]
         // GET: Register
         public ActionResult Index()
         {

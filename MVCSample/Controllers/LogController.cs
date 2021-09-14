@@ -14,10 +14,11 @@ namespace MVCSample.Controllers
         private IUserService userService;
         public LogController()
         {
-
+            userService = new SRV.ProdService.UserService();
         }
         // GET: Log
         public ActionResult On()
+        
         {
             return View();
         }

@@ -1,5 +1,5 @@
-﻿using MVCSample.Models;
-using SRV.ServiceInterface;
+﻿using SRV.ServiceInterface;
+using SRV.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;

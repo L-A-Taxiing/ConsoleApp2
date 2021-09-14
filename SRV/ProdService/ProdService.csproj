@@ -43,13 +43,14 @@
   <ItemGroup>
     <Compile Include="ArticleService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Entities\Entities.csproj">
+    <ProjectReference Include="..\..\Entities\Entities.csproj">
       <Project>{156b15f2-d6bb-41cc-b72f-0d36c7ef22ff}</Project>
       <Name>Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Repositories\Repositories.csproj">
+    <ProjectReference Include="..\..\Repositories\Repositories.csproj">
       <Project>{3598ae0c-36b8-48ba-90d4-33a45c70d123}</Project>
       <Name>Repositories</Name>
     </ProjectReference>
