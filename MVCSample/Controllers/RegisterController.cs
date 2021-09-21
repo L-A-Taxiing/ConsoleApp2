@@ -61,7 +61,7 @@ namespace MVCSample.Controllers
             HttpCookie cookie = new HttpCookie(Keys.User/*, UserId.ToString()*/);
             /* Response.Cookies.Add(new HttpCookie(Keys.User, UserId.ToString()));*///可以伪造
             cookie.Values.Add(Keys.Id, UserId.ToString());
-            cookie.Values.Add(Keys.Password, UserId.ToString());
+            cookie.Values.Add(Keys.Password,model.Password);
             Response.Cookies.Add(cookie);
 
             return View();
