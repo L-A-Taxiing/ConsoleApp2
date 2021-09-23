@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 using static CSharp2._0.Enumrator;
 
 namespace CSharp2._0
@@ -41,67 +42,85 @@ namespace CSharp2._0
             //2 4 6 8
             //9 11 13 15
             //10 12 14 16
-            int j;
-            for (int i = 1; i <= 100 / 4; i++)
-            {
-                if (i % 2 != 0)
-                {
-                    j = 4 * (i - 1) + 1;
-                    //for (int k = j; k <= j+6;)
-                    //{
-                    //    if (k>100)
-                    //    {
-                    //        return;
-                    //    }
-                    //    Console.Write(k+" ");
-                    //    k += 2;
-                    //}
-                    //Console.WriteLine();
-                }
-                else
-                {
-                    j = 4 * (i - 2) + 2;
-                    //for (int k = j; k <= j + 6;)
-                    //{
-                    //    if (k > 100)
-                    //    {
-                    //        return;
-                    //    }
-                    //    Console.Write(k + " ");
-                    //    k += 2;
-                    //}
-                    //Console.WriteLine();
-                }
-                for (int k = j; k <= j + 6;)
-                {
-                    if (k > 100)
-                    {
-                        return;
-                    }
-                    Console.Write(k + " ");
-                    k += 2;
-                }
-                Console.WriteLine();
+            //int j;
+            //for (int i = 1; i <= 100 / 4; i++)
+            //{
+            //    if (i % 2 != 0)
+            //    {
+            //        j = 4 * (i - 1) + 1;
+            //        //for (int k = j; k <= j+6;)
+            //        //{
+            //        //    if (k>100)
+            //        //    {
+            //        //        return;
+            //        //    }
+            //        //    Console.Write(k+" ");
+            //        //    k += 2;
+            //        //}
+            //        //Console.WriteLine();
+            //    }
+            //    else
+            //    {
+            //        j = 4 * (i - 2) + 2;
+            //        //for (int k = j; k <= j + 6;)
+            //        //{
+            //        //    if (k > 100)
+            //        //    {
+            //        //        return;
+            //        //    }
+            //        //    Console.Write(k + " ");
+            //        //    k += 2;
+            //        //}
+            //        //Console.WriteLine();
+            //    }
+            //    for (int k = j; k <= j + 6;)
+            //    {
+            //        if (k > 100)
+            //        {
+            //            return;
+            //        }
+            //        Console.Write(k + " ");
+            //        k += 2;
+            //    }
+            //    Console.WriteLine();
 
-            }
+            //}
 
-
-
-
-
-
+            //3.写一个自定义方法，该方法接受一个数字形式的字符串参数，例如"135792468",返回该字符串中每一个单个数字
+            //的和，如上例中返回"1+3+5+..."的和
+            Console.WriteLine(GetSum("125792468"));
 
 
-
-
-
-
-
+            //4.写一个自定义方法，该方法接受一个身份证号码，解析得到出生年月日
+            Console.WriteLine(GetBirthDay("321281199803085917"));
 
         }
+        public static int GetSum(string number)
+        {
+            int sum = 0;
+            char[] array = number.ToCharArray();
+            for (int i = 0; i < array.Length; i++)
+            {
+               sum+= int.Parse(array[i].ToString());
+            }
+            return sum;
+        }
 
-
-
+        public static Object GetBirthDay(String Id)
+        {
+            if (string.IsNullOrEmpty(Id))
+            {
+                return "身份证不能为空!";
+            }
+            if (Id.Length!=18)
+            {
+                return "身份证号必须为18位!";
+            }
+            string birthday = "";
+            birthday = Id.Substring(6, 4) + "-" + Id.Substring(10, 2) + "-" + Id.Substring(12, 2);
+            DateTime b = Convert.ToDateTime(birthday);
+            return b.ToString("yyyy年MM月dd日");
+        }
 
 
     }
